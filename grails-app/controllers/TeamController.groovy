@@ -23,6 +23,9 @@ class TeamController {
             render(view: "create", model: [teamInstance: teamInstance])
             return
         }
+        def leader = teamInstance.getLeader()
+        leader.setTeam(teamInstance)
+        leader.save(flush: true)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.id])
         redirect(action: "show", id: teamInstance.id)

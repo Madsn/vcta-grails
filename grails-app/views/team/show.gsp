@@ -34,6 +34,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${teamInstance?.leader}">
+				<li class="fieldcontain">
+					<span id="leader-label" class="property-label"><g:message code="team.leader.label" default="Leader" /></span>
+					
+						<span class="property-value" aria-labelledby="leader-label"><g:link controller="person" action="show" id="${teamInstance?.leader?.id}">${teamInstance?.leader?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${teamInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="team.name.label" default="Name" /></span>

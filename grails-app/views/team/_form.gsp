@@ -19,6 +19,14 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'leader', 'error')} required">
+	<label for="leader">
+		<g:message code="team.leader.label" default="Leader" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="leader" name="leader.id" from="${Person.list()}" optionKey="id" required="" value="${teamInstance?.leader?.id}" class="many-to-one"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'name', 'error')} ">
 	<label for="name">
 		<g:message code="team.name.label" default="Name" />
