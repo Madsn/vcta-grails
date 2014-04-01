@@ -7,4 +7,8 @@ class Team {
         members nullable: true
         leader nullable: false
     }
+
+    String toString() {
+        return "Team " + id + ": " + name
+    }
 }

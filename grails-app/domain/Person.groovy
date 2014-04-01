@@ -5,4 +5,8 @@ class Person {
     static constraints = {
         team nullable: true
     }
+
+    String toString() {
+        return "Person " + id + ": " + name
+    }
 }
