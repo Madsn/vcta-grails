@@ -17,9 +17,9 @@
 
 nimble {
 	organization {
-		name = ""
-		displayname = ""
-		description = ""
+		name = "Systematic"
+		displayname = "Systematic"
+		description = "Vi cykler til arbejde"
 		logo = ""
 		logosmall = ""
 		url = ""
