@@ -1,8 +1,8 @@
 class Team {
     String name
-    Person leader
+    User leader
 
-    static hasMany = [members: Person]
+    static hasMany = [members: User]
     static constraints = {
         members nullable: true
         leader nullable: false

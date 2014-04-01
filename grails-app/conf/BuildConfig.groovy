@@ -45,8 +45,8 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.8.3"
+        runtime ":hibernate:2.2.5"
+        runtime ":jquery:1.9.0"
         runtime ":resources:1.2.6"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
@@ -59,5 +59,9 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.8"
 
         compile ':cache:1.1.1'
+        compile(':nimble:0.7'){
+            excludes 'hibernate'
+            excludes 'resources'
+        }
     }
 }
