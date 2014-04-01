@@ -17,15 +17,13 @@
 </li>
 </ul>
 
-
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'teamName', 'error')} required">
-	<label for="teamName">
-		<g:message code="team.teamName.label" default="Team Name" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'name', 'error')} ">
+	<label for="name">
+		<g:message code="team.name.label" default="Name" />
+		
 	</label>
-	<g:textField name="teamName" required="" value="${teamInstance?.teamName}"/>
-
+	<g:textField name="name" value="${teamInstance?.name}"/>
 </div>
 

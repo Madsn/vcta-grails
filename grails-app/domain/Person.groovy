@@ -1,8 +1,8 @@
 class Person {
-    String userName
+    String name
+    Team team
 
-    static belongsTo = [ team : Team ]
-    static mapping = {
-        team lazy: true
+    static constraints = {
+        team nullable: true
     }
 }

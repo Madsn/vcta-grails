@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -32,19 +32,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${personInstance?.userName}">
+				<g:if test="${personInstance?.name}">
 				<li class="fieldcontain">
-					<span id="userName-label" class="property-label"><g:message code="person.userName.label" default="User Name" /></span>
+					<span id="name-label" class="property-label"><g:message code="person.name.label" default="Name" /></span>
 					
-						<span class="property-value" aria-labelledby="userName-label"><g:fieldValue bean="${personInstance}" field="userName"/></span>
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${personInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>
 			
 			</ol>
-			<g:form url="[resource:personInstance, action:'delete']" method="DELETE">
+			<g:form>
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${personInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:hiddenField name="id" value="${personInstance?.id}" />
+					<g:link class="edit" action="edit" id="${personInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

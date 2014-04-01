@@ -1,8 +1,8 @@
 class Team {
-    String teamName
+    String name
 
-    static hasMany = [ members : Person ]
-    static mapping = {
-        members lazy: true
+    static hasMany = [members: Person]
+    static constraints = {
+        members nullable: true
     }
 }

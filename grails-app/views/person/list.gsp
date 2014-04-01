@@ -18,15 +18,15 @@
 		<div id="list-person" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
+			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<table>
-			<thead>
+				<thead>
 					<tr>
 					
 						<th><g:message code="person.team.label" default="Team" /></th>
 					
-						<g:sortableColumn property="userName" title="${message(code: 'person.userName.label', default: 'User Name')}" />
+						<g:sortableColumn property="name" title="${message(code: 'person.name.label', default: 'Name')}" />
 					
 					</tr>
 				</thead>
@@ -36,14 +36,14 @@
 					
 						<td><g:link action="show" id="${personInstance.id}">${fieldValue(bean: personInstance, field: "team")}</g:link></td>
 					
-						<td>${fieldValue(bean: personInstance, field: "userName")}</td>
+						<td>${fieldValue(bean: personInstance, field: "name")}</td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${personInstanceCount ?: 0}" />
+				<g:paginate total="${personInstanceTotal}" />
 			</div>
 		</div>
 	</body>

@@ -1,102 +1,100 @@
+import org.springframework.dao.DataIntegrityViolationException
 
-
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-
-@Transactional(readOnly = true)
 class PersonController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Person.list(params), model:[personInstanceCount: Person.count()]
+    def index() {
+        redirect(action: "list", params: params)
     }
 
-    def show(Person personInstance) {
-        respond personInstance
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [personInstanceList: Person.list(params), personInstanceTotal: Person.count()]
     }
 
     def create() {
-        respond new Person(params)
+        [personInstance: new Person(params)]
     }
 
-    @Transactional
-    def save(Person personInstance) {
-        if (personInstance == null) {
-            notFound()
+    def save() {
+        def personInstance = new Person(params)
+        if (!personInstance.save(flush: true)) {
+            render(view: "create", model: [personInstance: personInstance])
             return
         }
 
-        if (personInstance.hasErrors()) {
-            respond personInstance.errors, view:'create'
+        flash.message = message(code: 'default.created.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])
+        redirect(action: "show", id: personInstance.id)
+    }
+
+    def show(Long id) {
+        def personInstance = Person.get(id)
+        if (!personInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), id])
+            redirect(action: "list")
             return
         }
 
-        personInstance.save flush:true
+        [personInstance: personInstance]
+    }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])
-                redirect personInstance
+    def edit(Long id) {
+        def personInstance = Person.get(id)
+        if (!personInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [personInstance: personInstance]
+    }
+
+    def update(Long id, Long version) {
+        def personInstance = Person.get(id)
+        if (!personInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), id])
+            redirect(action: "list")
+            return
+        }
+
+        if (version != null) {
+            if (personInstance.version > version) {
+                personInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                          [message(code: 'person.label', default: 'Person')] as Object[],
+                          "Another user has updated this Person while you were editing")
+                render(view: "edit", model: [personInstance: personInstance])
+                return
             }
-            '*' { respond personInstance, [status: CREATED] }
         }
-    }
 
-    def edit(Person personInstance) {
-        respond personInstance
-    }
+        personInstance.properties = params
 
-    @Transactional
-    def update(Person personInstance) {
-        if (personInstance == null) {
-            notFound()
+        if (!personInstance.save(flush: true)) {
+            render(view: "edit", model: [personInstance: personInstance])
             return
         }
 
-        if (personInstance.hasErrors()) {
-            respond personInstance.errors, view:'edit'
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])
+        redirect(action: "show", id: personInstance.id)
+    }
+
+    def delete(Long id) {
+        def personInstance = Person.get(id)
+        if (!personInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), id])
+            redirect(action: "list")
             return
         }
 
-        personInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Person.label', default: 'Person'), personInstance.id])
-                redirect personInstance
-            }
-            '*'{ respond personInstance, [status: OK] }
+        try {
+            personInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'person.label', default: 'Person'), id])
+            redirect(action: "list")
         }
-    }
-
-    @Transactional
-    def delete(Person personInstance) {
-
-        if (personInstance == null) {
-            notFound()
-            return
-        }
-
-        personInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Person.label', default: 'Person'), personInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'person.label', default: 'Person'), id])
+            redirect(action: "show", id: id)
         }
     }
 }

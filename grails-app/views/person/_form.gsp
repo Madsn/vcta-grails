@@ -2,21 +2,19 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'team', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'team', 'error')} ">
 	<label for="team">
 		<g:message code="person.team.label" default="Team" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="team" name="team.id" from="${Team.list()}" optionKey="id" required="" value="${personInstance?.team?.id}" class="many-to-one"/>
-
+	<g:select id="team" name="team.id" from="${Team.list()}" optionKey="id" value="${personInstance?.team?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'userName', 'error')} required">
-	<label for="userName">
-		<g:message code="person.userName.label" default="User Name" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'name', 'error')} ">
+	<label for="name">
+		<g:message code="person.name.label" default="Name" />
+		
 	</label>
-	<g:textField name="userName" required="" value="${personInstance?.userName}"/>
-
+	<g:textField name="name" value="${personInstance?.name}"/>
 </div>
 

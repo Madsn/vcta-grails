@@ -1,102 +1,100 @@
+import org.springframework.dao.DataIntegrityViolationException
 
-
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-
-@Transactional(readOnly = true)
 class TeamController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Team.list(params), model:[teamInstanceCount: Team.count()]
+    def index() {
+        redirect(action: "list", params: params)
     }
 
-    def show(Team teamInstance) {
-        respond teamInstance
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        [teamInstanceList: Team.list(params), teamInstanceTotal: Team.count()]
     }
 
     def create() {
-        respond new Team(params)
+        [teamInstance: new Team(params)]
     }
 
-    @Transactional
-    def save(Team teamInstance) {
-        if (teamInstance == null) {
-            notFound()
+    def save() {
+        def teamInstance = new Team(params)
+        if (!teamInstance.save(flush: true)) {
+            render(view: "create", model: [teamInstance: teamInstance])
             return
         }
 
-        if (teamInstance.hasErrors()) {
-            respond teamInstance.errors, view:'create'
+        flash.message = message(code: 'default.created.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.id])
+        redirect(action: "show", id: teamInstance.id)
+    }
+
+    def show(Long id) {
+        def teamInstance = Team.get(id)
+        if (!teamInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), id])
+            redirect(action: "list")
             return
         }
 
-        teamInstance.save flush:true
+        [teamInstance: teamInstance]
+    }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.id])
-                redirect teamInstance
+    def edit(Long id) {
+        def teamInstance = Team.get(id)
+        if (!teamInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [teamInstance: teamInstance]
+    }
+
+    def update(Long id, Long version) {
+        def teamInstance = Team.get(id)
+        if (!teamInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), id])
+            redirect(action: "list")
+            return
+        }
+
+        if (version != null) {
+            if (teamInstance.version > version) {
+                teamInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                          [message(code: 'team.label', default: 'Team')] as Object[],
+                          "Another user has updated this Team while you were editing")
+                render(view: "edit", model: [teamInstance: teamInstance])
+                return
             }
-            '*' { respond teamInstance, [status: CREATED] }
         }
-    }
 
-    def edit(Team teamInstance) {
-        respond teamInstance
-    }
+        teamInstance.properties = params
 
-    @Transactional
-    def update(Team teamInstance) {
-        if (teamInstance == null) {
-            notFound()
+        if (!teamInstance.save(flush: true)) {
+            render(view: "edit", model: [teamInstance: teamInstance])
             return
         }
 
-        if (teamInstance.hasErrors()) {
-            respond teamInstance.errors, view:'edit'
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.id])
+        redirect(action: "show", id: teamInstance.id)
+    }
+
+    def delete(Long id) {
+        def teamInstance = Team.get(id)
+        if (!teamInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), id])
+            redirect(action: "list")
             return
         }
 
-        teamInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Team.label', default: 'Team'), teamInstance.id])
-                redirect teamInstance
-            }
-            '*'{ respond teamInstance, [status: OK] }
+        try {
+            teamInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'team.label', default: 'Team'), id])
+            redirect(action: "list")
         }
-    }
-
-    @Transactional
-    def delete(Team teamInstance) {
-
-        if (teamInstance == null) {
-            notFound()
-            return
-        }
-
-        teamInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Team.label', default: 'Team'), teamInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'team.label', default: 'Team'), id])
+            redirect(action: "show", id: id)
         }
     }
 }
