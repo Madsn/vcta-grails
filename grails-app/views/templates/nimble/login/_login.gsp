@@ -6,17 +6,17 @@
         Login
     </title>
 
-    <link href="/vcta-grails2/static/bundle-bundle_bootstrap_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
-    <script src="/vcta-grails2/static/plugins/jquery-1.9.0/js/jquery/jquery-1.9.0.min.js" type="text/javascript" ></script>
-    <link href="/vcta-grails2/static/plugins/nimble-0.7/css/nimble-login.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <link href="/vcta-grails/static/bundle-bundle_bootstrap_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <script src="/vcta-grails/static/plugins/jquery-1.9.0/js/jquery/jquery-1.9.0.min.js" type="text/javascript" ></script>
+    <link href="/vcta-grails/static/plugins/nimble-0.7/css/nimble-login.css" type="text/css" rel="stylesheet" media="screen, projection" />
 
 </head>
 <body>
 <div id="hd">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="brand" href="#">Systematic cykler til arbejde</a>
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="container-fluid"><div class="navbar-header"><a class="navbar-brand" href="#">Systematic cykler til arbejde</a></div>
+                
             </div>
         </div>
     </div>

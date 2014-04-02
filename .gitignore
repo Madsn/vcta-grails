@@ -21,3 +21,5 @@ web-app/WEB-INF/tld/c.tld
 web-app/WEB-INF/tld/fmt.tld
 .idea/
 *.iml
+.classpath
+.project

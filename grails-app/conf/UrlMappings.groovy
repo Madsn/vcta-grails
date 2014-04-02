@@ -7,9 +7,7 @@ class UrlMappings {
 			}
 		}
 
-		"/" {
-            controller = "main"
-        }
+		"/" (view: '/login')
 		"500"(view:'/error')
 
 	}
