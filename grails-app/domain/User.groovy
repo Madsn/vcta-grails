@@ -3,5 +3,8 @@
 
 class User extends grails.plugin.nimble.core.UserBase {
 
-	// Extend UserBase with your custom values here
+	static hasMany = [trips: Trip]
+	static constraints = {
+		trips(nullable: true, blank: true)
+	}
 }
