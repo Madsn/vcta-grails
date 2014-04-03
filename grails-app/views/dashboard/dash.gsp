@@ -4,6 +4,6 @@
         <meta name="layout" content="app" />
     </head>
     <body>
-    This is the dashboard
+    <g:render template="users" collection="${users}" />
     </body>
 </html>

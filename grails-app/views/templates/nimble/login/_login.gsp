@@ -6,9 +6,9 @@
         Login
     </title>
 
-    <link href="/vcta-grails/static/bundle-bundle_bootstrap_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
-    <script src="/vcta-grails/static/plugins/jquery-1.9.0/js/jquery/jquery-1.9.0.min.js" type="text/javascript" ></script>
-    <link href="/vcta-grails/static/plugins/nimble-0.7/css/nimble-login.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <link href="/static/bundle-bundle_bootstrap_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
+    <script src="/static/plugins/jquery-1.9.0/js/jquery/jquery-1.9.0.min.js" type="text/javascript" ></script>
+    <link href="/static/plugins/nimble-0.7/css/nimble-login.css" type="text/css" rel="stylesheet" media="screen, projection" />
 
 </head>
 <body>
@@ -39,7 +39,7 @@
         </div>
         <div style="text-align: center; margin-bottom: 3px;">-- OR --</div>
 
-        <form action="/vcta-grails2/auth/signin" method="post" name="login-form" id="login-form" >
+        <form action="/auth/signin" method="post" name="login-form" id="login-form" >
             <div class="login-input">
                 <div class="control-group">
                     <div class="controls ">
