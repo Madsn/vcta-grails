@@ -57,9 +57,10 @@ grails.project.dependency.resolution = {
         compile(':nimble:0.7'){
             excludes 'hibernate'
             excludes 'resources'
+			excludes 'jquery'
         }
 		
-		runtime ":jquery:1.9.0"
+		runtime ":jquery:1.11.0.1"
 		runtime ":hibernate:2.2.5"
 		runtime ":database-migration:1.3.8"
 		compile ":twitter-bootstrap:3.1.1"
