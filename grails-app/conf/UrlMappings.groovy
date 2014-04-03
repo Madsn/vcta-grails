@@ -8,6 +8,7 @@ class UrlMappings {
 		}
 
 		"/" (view: '/login')
+		"/dashboard" (view: '/dashboard')
 		"500"(view:'/error')
 
 	}

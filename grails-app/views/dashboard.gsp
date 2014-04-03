@@ -1,10 +1,9 @@
 <html>
     <head>
-        <title>Login</title>
+        <title>Dashboard</title>
         <meta name="layout" content="app" />
-
     </head>
     <body>
-    This is the login page
+    This is the dashboard
     </body>
 </html>
