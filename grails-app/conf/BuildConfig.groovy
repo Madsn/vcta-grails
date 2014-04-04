@@ -53,16 +53,16 @@ grails.project.dependency.resolution = {
 
         build ":tomcat:$grailsVersion"
 
+		compile ":jquery:1.9.0" // do not upgrade, nimble depends on version 1.9
         compile ':cache:1.1.1'
         compile(':nimble:0.7'){
             excludes 'hibernate'
             excludes 'resources'
-			excludes 'jquery'
+			//excludes 'jquery'
         }
 		
-		runtime ":jquery:1.11.0.1"
 		runtime ":hibernate:2.2.5"
 		runtime ":database-migration:1.3.8"
-		compile ":twitter-bootstrap:3.1.1"
+		//compile ":twitter-bootstrap:3.1.1"
     }
 }

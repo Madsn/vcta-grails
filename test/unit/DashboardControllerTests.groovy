@@ -1,5 +1,3 @@
-package vcta.grails
-
 
 
 import grails.test.mixin.*

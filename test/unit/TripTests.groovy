@@ -1,6 +1,3 @@
-package vcta.grails
-
-
 
 import grails.test.mixin.*
 import org.junit.*
