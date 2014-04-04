@@ -1,20 +1,21 @@
 
 
-
 class User extends grails.plugin.nimble.core.UserBase {
 
-	float totalKm = 0
-	
+	Team team
+
 	static hasMany = [trips: Trip]
+	
 	static constraints = {
 		trips(nullable: true, blank: true)
+		team(nullable: true, blank: true)
 	}
-	
-	def addKm(float km){
-		this.totalKm += km
-	}
-	
-	def removeKm(float km){
-		this.totalKm -= km
+
+	double getTotalKm() {
+		double totalkm = 0
+		for (Trip t in trips){
+			totalkm += t.getDistanceKm()
+		}
+		return totalkm
 	}
 }
