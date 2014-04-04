@@ -6,8 +6,10 @@
       </title>
       <r:require modules="nimble-login"/>
       <r:layoutResources/>
-   </head>
-   <body>
+       <meta name="layout" content="app" />
+</head>
+<body>
+<g:render template="/layouts/menu" />
       <div class="login-container">
          <div class="login-content">
             <h2 class="border-bottom">

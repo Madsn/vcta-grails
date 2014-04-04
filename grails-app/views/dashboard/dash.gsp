@@ -11,7 +11,13 @@
     </g:each>
     <br/>
     <p>Team:</p>
+    <g:if test="${user.team == null }">
+    <g:render template="noteam" collection="${user }" />
+    </g:if>
+    <g:if test="${user.team != null }">
     <g:render template="team" collection="${user.team}" />
+    </g:if>
+
     <br/>
     <p>My stats:</p>
     <g:render template="stats" collection="${user}" />

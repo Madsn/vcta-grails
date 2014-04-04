@@ -2,24 +2,31 @@
 <html>
 
 <head>
-  <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
-  <title><g:message code="nimble.view.account.registeraccount.complete.title" /></title>
+<meta name="layout" content="app" />
+<title><g:message
+		code="nimble.view.account.registeraccount.complete.title" /></title>
+
 </head>
-
 <body>
+	<g:render template="/layouts/menu" />
 
-	<h2><g:message code="nimble.view.account.registeraccount.complete.heading" /></h2>
+	<h2>
+		<g:message code="nimble.view.account.registeraccount.complete.heading" />
+	</h2>
 	<p>
-	  <g:message code="nimble.view.account.registeraccount.complete.descriptive" />
+		<g:message
+			code="nimble.view.account.registeraccount.complete.descriptive" />
 	</p>
 	<g:if test="${useractive}">
 		<p>
-			<g:message code="nimble.view.account.registeraccount.complete.sentemail" />
-	    </p>
+			<g:message
+				code="nimble.view.account.registeraccount.complete.sentemail" />
+		</p>
 	</g:if>
 	<g:else>
 		<p>
-			<a href="${createLink(uri:'/')}"><g:message code="nimble.view.account.registeraccount.complete.continue"/></a>
+			<a href="${createLink(uri:'/')}"><g:message
+					code="nimble.view.account.registeraccount.complete.continue" /></a>
 		</p>
 	</g:else>
 
