@@ -4,6 +4,9 @@
         <meta name="layout" content="app" />
     </head>
     <body>
+    <p>Trips</p>
+    <g:render template="trips" collection="${trips}" />
+    <br/>
     <p>Users:</p>
     <g:render template="users" collection="${users}" />
     <p>Teams:</p>

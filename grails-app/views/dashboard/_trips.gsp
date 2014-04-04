@@ -1,0 +1,1 @@
+<p>trip: ${trip.id}, distance: ${trip.distanceKm}, start date: ${trip.startTime }</p>
