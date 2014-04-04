@@ -7,8 +7,6 @@ import org.apache.shiro.SecurityUtils
 
 class DashboardController {
 
-	def userService
-
 	def index() {
 		def subject = SecurityUtils.getSubject()
 		def currentUser = User.get(subject.getPrincipal())
@@ -18,12 +16,12 @@ class DashboardController {
 		} else {
 			
 
-					def newTeam = new Team(name: "blap", leader: currentUser)
-					newTeam.addToMembers(currentUser)
-					newTeam.save(flush: true)
-			
-					currentUser.team = newTeam
-					currentUser.save(flush: true)
+//					def newTeam = new Team(name: "blap", leader: currentUser)
+//					newTeam.addToMembers(currentUser)
+//					newTeam.save(flush: true)
+//			
+//					currentUser.team = newTeam
+//					currentUser.save(flush: true)
 
 			//		def user = new User()
 			//		user.username = "user3"
@@ -48,10 +46,10 @@ class DashboardController {
 			//		newTeam.addMember(user)
 			//		newTeam.save()
 
-			def newTrip = new Trip(startTime: new Date(), owner: currentUser)
-			newTrip.setOwner(currentUser)
-			newTrip.setDistanceKm(15.5)
-			newTrip.save()
+//			def newTrip = new Trip(startTime: new Date(), owner: currentUser)
+//			newTrip.setOwner(currentUser)
+//			newTrip.setDistanceKm(15.5)
+//			newTrip.save()
 
 			//
 			//		def team = currentUser.team

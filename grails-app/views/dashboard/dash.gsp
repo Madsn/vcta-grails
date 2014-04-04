@@ -1,13 +1,11 @@
 <!doctype html>
-<%@page import="org.apache.shiro.SecurityUtils"%>
-<%@page import="grails.plugin.nimble.core.UserBase"%>
 <html>
     <head>
         <title>Dashboard</title>
         <meta name="layout" content="app" />
     </head>
     <body>
-    <p>Trips</p>
+    <p>Trips <g:link controller="trip" action="create">Add</g:link></p>
     <g:each in="${user.trips.sort{a,b -> a.startTime > b.startTime ? -1 : 1}}">
     <g:render template="trips" collection="${it}" />
     </g:each>
@@ -16,8 +14,6 @@
     <g:render template="team" collection="${user.team}" />
     <br/>
     <p>My stats:</p>
-    <p>${user.username }</p>
-    <!-- <p>Team: {currentUser.team.name }</p>-->
-    <p>Total distance: ${user.getTotalKm() }</p>
+    <g:render template="stats" collection="${user}" />
     </body>
 </html>

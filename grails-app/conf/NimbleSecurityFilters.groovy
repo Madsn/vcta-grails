@@ -48,5 +48,10 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 				accessControl { true }
 			}
 		}
+		users(controller: "trip") {
+			before = {
+				accessControl { true }
+			}
+		}
 	}
 }
