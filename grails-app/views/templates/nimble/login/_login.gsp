@@ -5,22 +5,12 @@
     <title>
         Login
     </title>
-
-    <link href="/static/bundle-bundle_bootstrap_head.css" type="text/css" rel="stylesheet" media="screen, projection" />
-    <script src="/static/plugins/jquery-1.9.0/js/jquery/jquery-1.9.0.min.js" type="text/javascript" ></script>
-    <link href="/static/plugins/nimble-0.7/css/nimble-login.css" type="text/css" rel="stylesheet" media="screen, projection" />
-
+    <meta name="layout" content="app" />
+    <r:require modules="nimble-login"/>
+    <r:layoutResources/>
 </head>
 <body>
-<div id="hd">
-    <div class="navbar navbar-default">
-        <div class="container">
-            <div class="container-fluid"><div class="navbar-header"><a class="navbar-brand" href="#">Systematic cykler til arbejde</a></div>
-                
-            </div>
-        </div>
-    </div>
-</div>
+<g:render template="/layouts/menu" />
 <div class="login-container">
     <div class="login-content">
         <h2 class="border-bottom">
@@ -33,9 +23,9 @@
                 Don't have an account yet ?
             </h4>
             Create a new account
-            <a href="/vcta-grails2/register">
+            <g:link controller = "account" action = "createuser">
                 Signup
-            </a>
+            </g:link>
         </div>
         <div style="text-align: center; margin-bottom: 3px;">-- OR --</div>
 

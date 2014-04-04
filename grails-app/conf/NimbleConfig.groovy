@@ -60,6 +60,16 @@ nimble {
 		user = "User"
 		profile = "Profile"
 	}
+	
+	passwords {
+		mustcontain {
+			lowercase = false
+			uppercase = false
+			numbers = false
+			symbols = false
+		}
+		minlength = 6
+	}
 }
 
 environments {
