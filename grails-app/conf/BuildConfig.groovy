@@ -63,6 +63,6 @@ grails.project.dependency.resolution = {
 		
 		runtime ":hibernate:2.2.5"
 		runtime ":database-migration:1.3.8"
-		//compile ":twitter-bootstrap:3.1.1"
+		//compile ":twitter-bootstrap:3.1.1" // Nimble not compatible with bootstrap 3
     }
 }

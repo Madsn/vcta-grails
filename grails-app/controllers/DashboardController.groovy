@@ -1,14 +1,12 @@
 
 import User
 import Team
+import org.apache.shiro.SecurityUtils
 
 class DashboardController {
-	
-    def index() { 
-		render(view: 'dash')
-	}
-	
-	def list() {
+
+	def index() {
+		def subject = SecurityUtils.getSubject()
 		def userList = User.list()
 		def newTeam = new Team(name: "blap", leader: userList.get(0))
 		newTeam.addMember(userList.get(0))

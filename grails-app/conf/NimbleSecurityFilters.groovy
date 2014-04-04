@@ -42,5 +42,11 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 				accessControl { role(AdminsService.ADMIN_ROLE) }
 			}
 		}
+		
+		users(controller: "dashboard") {
+			before = {
+				accessControl { true }
+			}
+		}
 	}
 }

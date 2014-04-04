@@ -19,11 +19,6 @@ class Team {
 		return teamTotal
 	}
 	
-	def beforeValidate = {
-		if (members == null)
-			members = []
-	}
-	
 	def addMember(User user){
 		if (members == null){
 			members = [user]
