@@ -1,14 +1,14 @@
 
-
 class User extends grails.plugin.nimble.core.UserBase {
 
 	Team team
 
-	static hasMany = [trips: Trip]
+	static hasMany = [trips: Trip, invitations: Invitation]
 	
 	static constraints = {
 		trips(nullable: true, blank: true)
 		team(nullable: true, blank: true)
+		invitations(nullable: true, blank: true)
 	}
 
 	double getTotalKm() {

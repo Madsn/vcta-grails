@@ -17,7 +17,14 @@
     <g:if test="${user.team != null }">
     <g:render template="team" collection="${user.team}" />
     </g:if>
-
+    <br/>
+    <g:if test="${user.invitations == null }" >
+    <p>You currently have no team invitations</p>
+    </g:if>
+    <g:if test="${user.invitations != null }" >
+    <p>You have the following team invitations:</p>
+    <g:render template="invitations" collection="${user.invitations}" />
+    </g:if>
     <br/>
     <p>My stats:</p>
     <g:render template="stats" collection="${user}" />

@@ -4,7 +4,7 @@
       <meta name="layout" content="app" />
    </head>
    <body>
-            <g:form action="savetrip" name="trip-create-form" method="post">
+            <g:form action="save" name="trip-create-form" method="post">
                <div class="form-input">
                   <div class="control-group">
                      <div class="controls ">                         

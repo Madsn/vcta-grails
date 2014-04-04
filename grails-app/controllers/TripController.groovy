@@ -6,7 +6,7 @@ class TripController {
 		render(view: 'create')
 	}
 	
-	def savetrip() {
+	def save() {
 		def subject = SecurityUtils.getSubject()
 		def currentUser = User.get(subject.getPrincipal())
 		println params
@@ -22,7 +22,7 @@ class TripController {
 		redirect (controller:'dashboard')
 	}
 	
-	def deletetrip() {
+	def delete() {
 		def trip = Trip.get(Integer.parseInt(params.id))
 		trip.delete()
 		redirect (controller:'dashboard')
