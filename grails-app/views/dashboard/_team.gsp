@@ -15,7 +15,7 @@
 </g:if>
 <p>Members:</p>
 <g:each var="member"
-	in="${team.getMembers().sort{a,b -> a.username > b.username ? 1 : -1}}">
+	in="${team.getUsers().sort{a,b -> a.username > b.username ? 1 : -1}}">
 	<p>
 		<g:if test="${team.leader.id == member.id }">
 Leader: 

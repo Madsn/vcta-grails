@@ -17,12 +17,12 @@ class TeamController {
 		def user2 = User.get(1)
 		user2.team = team
 		user2.save()
-		team.addToMembers(user2)
+		team.addToUsers(user2)
 		// -----
 
 		currentUser.team = team
 		currentUser.save()
-		team.addToMembers(currentUser)
+		team.addToUsers(currentUser)
 		team.save()
 		redirect (controller:'dashboard')
 	}
@@ -32,7 +32,7 @@ class TeamController {
 		def currentUser = User.get(subject.getPrincipal())
 		def team = Team.get(Integer.parseInt(params.id))
 		if(team != null && currentUser == team.leader){
-			for (u in team.members){
+			for (u in team.users){
 				u.team = null
 				u.save()
 			}
@@ -54,7 +54,7 @@ class TeamController {
 		} else {
 
 			userToRemove.team = null
-			team.removeFromMembers(userToRemove)
+			team.removeFromUsers(userToRemove)
 			userToRemove.save()
 			team.save()
 			redirect (controller:'dashboard')
