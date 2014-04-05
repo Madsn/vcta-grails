@@ -13,7 +13,6 @@ class TeamController {
 		def teamName = params.name
 		
 		def team = new Team(name: teamName, leader: currentUser)
-		team.addToMembers(currentUser)
 		team.save()
 		currentUser.team = team
 		currentUser.save()
@@ -22,11 +21,13 @@ class TeamController {
 	
 	def delete() {
 		def team = Team.get(Integer.parseInt(params.id))
-		for (User u in team.members){
-			u.team = null
-			u.save()
+		if(team != null){
+			for (u in team.members){
+				u.team = null
+				u.save()
+			}
+			team.delete()
 		}
-		team.delete()
 		redirect (controller:'dashboard')
 	}
 }
