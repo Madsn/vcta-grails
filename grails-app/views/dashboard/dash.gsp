@@ -15,7 +15,7 @@
     <g:render template="noteam" collection="${user }" />
     </g:if>
     <g:if test="${user.team != null }">
-    <g:render template="team" collection="${user.team}" />
+    <g:render template="team" collection="${user }" />
     </g:if>
     <br/>
     <g:if test="${user.invitations == null }" >

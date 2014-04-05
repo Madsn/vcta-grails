@@ -22,6 +22,10 @@ class TeamController {
 	
 	def delete() {
 		def team = Team.get(Integer.parseInt(params.id))
+		for (User u in team.members){
+			u.team = null
+			u.save()
+		}
 		team.delete()
 		redirect (controller:'dashboard')
 	}
