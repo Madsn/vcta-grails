@@ -8,6 +8,8 @@
 </p>
 <g:if test="${team.leader == user}">
 	<g:link controller="team" action="delete" id="${team.id}">Disband team</g:link>
+	<g:link controller="invitation" action="create"
+		params="${[userid: 1, teamid: team.id]}">Invite user</g:link>
 </g:if>
 <g:if test="${team.leader != user}">
 	<g:link controller="team" action="removefromteam"
@@ -32,3 +34,12 @@ Member:
 		</g:if>
 	</p>
 </g:each>
+<g:if test="${user.id == team.leader.id }">
+	<g:link controller="invitation" action="create" params="${[teamid: team.id, userid: 1]}">Invite</g:link>
+	<g:if test="${team.pendingInvitations.size() > 0}">
+		<p>Pending invitations:</p>
+		<g:each var="invitation" in="${team.pendingInvitations }">
+			${invitation.invitee.username} - <g:link controller="invitation" action="dismiss" id="${invitation.id}">Cancel</g:link>
+		</g:each>
+	</g:if>
+</g:if>

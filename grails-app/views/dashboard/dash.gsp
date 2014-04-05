@@ -5,7 +5,8 @@
         <meta name="layout" content="app" />
     </head>
     <body>
-    <p>${error}</p>
+    <p style="color:red;">${error}</p>
+    <p style="color:blue;">${msg}</p>
     <p>Trips <g:link controller="trip" action="create">Add</g:link></p>
     <g:each in="${user.trips.sort{a,b -> a.startTime > b.startTime ? -1 : 1}}">
     <g:render template="trips" collection="${it}" />

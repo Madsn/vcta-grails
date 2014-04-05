@@ -58,7 +58,11 @@ class DashboardController {
 			if (params.error != null){
 				errMsg = params.error
 			}
-			def map = [user: currentUser, error: errMsg]
+			def msg = ""
+			if (params.msg != null){
+				msg = params.msg
+			}
+			def map = [user: currentUser, error: errMsg, msg: msg]
 			render(view: 'dash', model: map)
 		}
 	}
