@@ -12,10 +12,11 @@ class InvitationController {
 		if (currentUser != invitee){
 			redirect(controller:'dashboard', params:['error':'Only invitee can accept an invitation'])
 		} else {
-			team.addToMembers(invitation.invitee)
+			team.addToUsers(invitation.invitee)
 			team.removeFromPendingInvitations(invitation)
 			team.save()
-			invitee.team = invitation.team
+			invitee.team = team
+			invitee.removeFromInvitations(invitation)
 			invitee.save()
 			invitation.delete()
 			redirect(controller: 'dashboard', params:['msg':'Team invitation was accepted'])
