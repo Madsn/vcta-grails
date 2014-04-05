@@ -9,7 +9,7 @@ class TripController {
 	def save() {
 		def subject = SecurityUtils.getSubject()
 		def currentUser = User.get(subject.getPrincipal())
-		println params
+
 		def distanceKm = Double.parseDouble(params.distanceKm)
 		def startTime = new Date().parse("yyyy-MM-dd'T'HH:mm", params.starttime)
 		def trip = new Trip()
