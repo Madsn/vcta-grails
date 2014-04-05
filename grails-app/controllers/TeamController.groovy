@@ -28,8 +28,10 @@ class TeamController {
 	}
 
 	def delete() {
+		def subject = SecurityUtils.getSubject()
+		def currentUser = User.get(subject.getPrincipal())
 		def team = Team.get(Integer.parseInt(params.id))
-		if(team != null){
+		if(team != null && currentUser == team.leader){
 			for (u in team.members){
 				u.team = null
 				u.save()
@@ -45,15 +47,30 @@ class TeamController {
 
 		def userToRemove = User.get(Integer.parseInt(params.userid))
 		def team = Team.get(Integer.parseInt(params.teamid))
-		if (currentUser != team.leader){
-			redirect (controller:'dashboard', params: ['error': 'Only the leader can remove team members'])
-		}else if (currentUser == userToRemove){
-			redirect(controller:'dashboard', params: ['error': 'You can\'t remove the leader from the group, appoint a new leader first'])
+		if (userToRemove == team.leader){
+			redirect (controller:'dashboard', params: ['error': 'You can\'t remove the leader from the group, appoint a new leader first'])
+		} else if (currentUser != userToRemove && currentUser != team.leader){
+			redirect(controller:'dashboard', params: ['error': 'Only the leader can remove team members'])
 		} else {
 
 			userToRemove.team = null
 			team.removeFromMembers(userToRemove)
 			userToRemove.save()
+			team.save()
+			redirect (controller:'dashboard')
+		}
+	}
+
+	def transferleadership() {
+		def subject = SecurityUtils.getSubject()
+		def currentUser = User.get(subject.getPrincipal())
+
+		def newLeader = User.get(Integer.parseInt(params.userid))
+		def team = Team.get(Integer.parseInt(params.teamid))
+		if (currentUser != team.leader){
+			redirect (controller:'dashboard', params: ['error': 'Only the leader can transfer leadership'])
+		}else {
+			team.leader = newLeader
 			team.save()
 			redirect (controller:'dashboard')
 		}
