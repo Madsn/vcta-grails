@@ -54,8 +54,11 @@ class DashboardController {
 			//
 			//		def team = currentUser.team
 			//		def tripList = Trip.findAllWhere(owner: currentUser)
-
-			def map = [user: currentUser]
+			def errMsg = ""
+			if (params.error != null){
+				errMsg = params.error
+			}
+			def map = [user: currentUser, error: errMsg]
 			render(view: 'dash', model: map)
 		}
 	}
