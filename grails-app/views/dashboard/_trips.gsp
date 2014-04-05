@@ -1,1 +1,1 @@
-<p>trip: ${trip.id}, distance: ${trip.distanceKm}, start date: ${trip.startTime } - <g:link controller="trip" action="delete" id="${trip.id}">Delete</g:link></p> 
+<p>${trip.id}, distance: ${trip.distanceKm}, start date: ${trip.startTime } - <g:link controller="trip" action="delete" id="${trip.id}">Delete</g:link></p> 

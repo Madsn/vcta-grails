@@ -7,12 +7,12 @@
     <body>
     <p style="color:red;">${error}</p>
     <p style="color:blue;">${msg}</p>
-    <p>Trips <g:link controller="trip" action="create">Add</g:link></p>
+    <h2>Trips <g:link controller="trip" action="create">Add</g:link></h2>
     <g:each in="${user.trips.sort{a,b -> a.startTime > b.startTime ? -1 : 1}}">
     <g:render template="trips" collection="${it}" />
     </g:each>
     <br/>
-    <p>Team:</p>
+    <h2>Team:</h2>
     <g:if test="${user.team == null }">
     <g:render template="noteam" collection="${user }" />
     </g:if>
@@ -28,7 +28,7 @@
     <g:render template="invitations" collection="${user.invitations}" />
     </g:if>
     <br/>
-    <p>My stats:</p>
+    <h2>My stats:</h2>
     <g:render template="stats" collection="${user}" />
     </body>
 </html>
