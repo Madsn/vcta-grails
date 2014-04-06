@@ -3,9 +3,10 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<a class="brand" href="/">Systemates roll to work</a>
+				<nav:menu scope="menu" id="navigation" />
 				<ul class="nav pull-right">
 					<n:isLoggedIn>
-					<li><g:link class="brand" uri="/logout">Log out</g:link></li>
+						<li><g:link class="brand" uri="/logout">Log out</g:link></li>
 					</n:isLoggedIn>
 				</ul>
 			</div>

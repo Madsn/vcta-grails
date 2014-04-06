@@ -9,7 +9,7 @@
     <p style="color:blue;">${msg}</p>
     <h2>Trips <g:link controller="trip" action="create">Add</g:link></h2>
     <g:each in="${user.trips.sort{a,b -> a.startTime > b.startTime ? -1 : 1}}">
-    <g:render template="trips" collection="${it}" />
+    <g:render template="trips" bean="${it}" var="trip" />
     </g:each>
     <br/>
     <h2>Team:</h2>

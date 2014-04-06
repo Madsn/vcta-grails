@@ -63,6 +63,7 @@ grails.project.dependency.resolution = {
 		
 		runtime ":hibernate:2.2.5"
 		runtime ":database-migration:1.3.8"
+		compile ":platform-core:1.0.RC6" // for marking current page as active in menu
 		//compile ":twitter-bootstrap:3.1.1" // Nimble not compatible with bootstrap 3
     }
 }

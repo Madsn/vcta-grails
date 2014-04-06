@@ -1,0 +1,1 @@
+<p>${user.username} - ${user.getTotalKm()}</p>
