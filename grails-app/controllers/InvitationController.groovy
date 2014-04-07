@@ -1,11 +1,9 @@
-import org.apache.shiro.SecurityUtils
+import Util
 
 class InvitationController {
 
 	def accept(){
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
-
+		def currentUser = Util.getCurrentUser()
 		def invitation = Invitation.get(Integer.parseInt(params.id))
 		def team = invitation.team
 		def invitee = invitation.invitee
@@ -24,8 +22,7 @@ class InvitationController {
 	}
 
 	def create(){
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 		def invitingTeam = Team.get(Integer.parseInt(params.teamid))
 		def invitee = User.get(Integer.parseInt(params.userid))
 		if (currentUser != invitingTeam.leader){
@@ -44,8 +41,7 @@ class InvitationController {
 	}
 
 	def dismiss(){
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 		def invitation = Invitation.get(Integer.parseInt(params.id))
 		if (currentUser == invitation.invitee || currentUser == invitation.team.leader){
 			def user = invitation.invitee

@@ -1,4 +1,4 @@
-import org.apache.shiro.SecurityUtils
+import Util
 
 class TeamController {
 
@@ -7,8 +7,7 @@ class TeamController {
 	}
 
 	def save() {
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 		println params
 		def teamName = params.name
 
@@ -28,8 +27,7 @@ class TeamController {
 	}
 
 	def delete() {
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 		def team = Team.get(Integer.parseInt(params.id))
 		if(team != null && currentUser == team.leader){
 			for (u in team.users){
@@ -42,8 +40,7 @@ class TeamController {
 	}
 
 	def removefromteam() {
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 
 		def userToRemove = User.get(Integer.parseInt(params.userid))
 		def team = Team.get(Integer.parseInt(params.teamid))
@@ -62,8 +59,7 @@ class TeamController {
 	}
 
 	def transferleadership() {
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 
 		def newLeader = User.get(Integer.parseInt(params.userid))
 		def team = Team.get(Integer.parseInt(params.teamid))

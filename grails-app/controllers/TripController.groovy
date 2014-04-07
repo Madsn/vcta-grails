@@ -1,4 +1,4 @@
-import org.apache.shiro.SecurityUtils
+import Util
 
 class TripController {
 
@@ -7,8 +7,7 @@ class TripController {
 	}
 	
 	def save() {
-		def subject = SecurityUtils.getSubject()
-		def currentUser = User.get(subject.getPrincipal())
+		def currentUser = Util.getCurrentUser()
 
 		def distanceKm = Double.parseDouble(params.distanceKm)
 		def startTime = new Date().parse("yyyy-MM-dd'T'HH:mm", params.starttime)
