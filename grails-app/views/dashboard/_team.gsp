@@ -13,32 +13,46 @@
 		params="${[userid: user.id, teamid: team.id]}">Leave team</g:link>
 </g:if>
 <h4>Members:</h4>
-<g:each var="member"
-	in="${team.getUsers().sort{a,b -> a.username > b.username ? 1 : -1}}">
-	<p>
-		<g:if test="${team.leader.id == member.id }">
-Leader: 
-</g:if>
-		<g:if test="${team.leader.id != member.id }">
-Member: 
-</g:if>
-		${member.username}
-		<g:if test="${team.leader == user && member != user}">
-			<g:link controller="team" action="removefromteam"
-				params="${[userid: member.id, teamid: team.id]}">Remove</g:link>
-	 - <g:link controller="team" action="transferleadership"
-				params="${[userid: member.id, teamid: team.id]}">Transfer leadership</g:link>
-		</g:if>
-	</p>
-</g:each>
-<g:if test="${user.id == team.leader.id }">
-	<g:link controller="invitation" action="create"
-		params="${[userid: 1, teamid: team.id]}">Invite user</g:link>
-	<g:if test="${team.pendingInvitations.size() > 0}">
-		<h4>Pending invitations:</h4>
-		<g:each var="invitation" in="${team.pendingInvitations }">
-			${invitation.invitee.username} - <g:link controller="invitation"
-				action="dismiss" id="${invitation.id}">Cancel</g:link>
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Total km</th>
+			<g:if test="${team.leader == user}">
+				<th></th>
+				<th></th>
+			</g:if>
+		</tr>
+	</thead>
+	<tbody>
+		<g:each var="member"
+			in="${team.getUsers().sort{a,b -> a.username > b.username ? 1 : -1}}">
+			<tr>
+				<g:if test="${team.leader.id == member.id }">
+					<td><strong> ${member.username}
+					</strong> (team leader)</td>
+				</g:if>
+				<g:if test="${team.leader.id != member.id }">
+					<td>
+						${member.username}
+					</td>
+				</g:if>
+				<td>
+					${member.getTotalKm()}
+				</td>
+				<g:if test="${team.leader == user}">
+					<g:if test="${member == user }">
+						<td></td>
+						<td></td>
+					</g:if>
+					<g:if test="${member != user }">
+						<td><g:link controller="team" action="removefromteam"
+								params="${[userid: member.id, teamid: team.id]}">Remove</g:link></td>
+						<td><g:link controller="team" action="transferleadership"
+								params="${[userid: member.id, teamid: team.id]}">Transfer leadership</g:link></td>
+					</g:if>
+				</g:if>
+			</tr>
 		</g:each>
-	</g:if>
-</g:if>
+	</tbody>
+</table>
