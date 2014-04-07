@@ -1,1 +1,8 @@
-<p>${team.name} - ${team.getTotalKm()}</p>
+<tr>
+	<td>
+		${team.name}
+	</td>
+	<td>
+		${team.getTotalKm()}
+	</td>
+</tr>
