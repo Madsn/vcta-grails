@@ -17,7 +17,9 @@
 			<thead>
 				<tr>
 					<th>Team name</th>
+					<th># of Members</th>
 					<th>Total km</th>
+					<th>Km/members</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +34,7 @@
 			<thead>
 				<tr>
 					<th>Username</th>
+					<th>Team</th>
 					<th>Total km</th>
 				</tr>
 			</thead>
