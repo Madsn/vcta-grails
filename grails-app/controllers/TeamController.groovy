@@ -1,6 +1,10 @@
 import Util
 
 class TeamController {
+	
+	def teamService
+	def userService
+	def invitationService
 
 	def create(){
 		render(view: 'create')
@@ -8,33 +12,22 @@ class TeamController {
 
 	def save() {
 		def currentUser = Util.getCurrentUser()
-		println params
 		def teamName = params.name
 
 		def team = new Team(name: teamName, leader: currentUser)
-		// For debugging
-		def user2 = User.get(1)
-		user2.team = team
-		user2.save()
-		team.addToUsers(user2)
-		// -----
+		team = teamService.create(team)
 
-		currentUser.team = team
-		currentUser.save()
-		team.addToUsers(currentUser)
-		team.save()
+		userService.setTeam(team, currentUser)
+		teamService.addToUsers(currentUser, team)
 		redirect (controller:'dashboard')
 	}
 
 	def delete() {
 		def currentUser = Util.getCurrentUser()
-		def team = Team.get(Integer.parseInt(params.id))
+		def team = teamService.get(Integer.parseInt(params.id))
 		if(team != null && currentUser == team.leader){
-			for (u in team.users){
-				u.team = null
-				u.save()
-			}
-			team.delete()
+			teamService.disbandTeam(team)
+			invitationService.deleteAllInvitationsFromTeam(team)
 		}
 		redirect (controller:'dashboard')
 	}
@@ -42,18 +35,14 @@ class TeamController {
 	def removefromteam() {
 		def currentUser = Util.getCurrentUser()
 
-		def userToRemove = User.get(Integer.parseInt(params.userid))
-		def team = Team.get(Integer.parseInt(params.teamid))
+		def userToRemove = userService.get(Integer.parseInt(params.userid))
+		def team = teamService.get(Integer.parseInt(params.teamid))
 		if (userToRemove == team.leader){
 			redirect (controller:'dashboard', params: ['error': 'You can\'t remove the leader from the group, appoint a new leader first'])
 		} else if (currentUser != userToRemove && currentUser != team.leader){
 			redirect(controller:'dashboard', params: ['error': 'Only the leader can remove team members'])
 		} else {
-
-			userToRemove.team = null
-			team.removeFromUsers(userToRemove)
-			userToRemove.save()
-			team.save()
+			teamService.removeFromUsers(userToRemove, team)
 			redirect (controller:'dashboard')
 		}
 	}
@@ -61,8 +50,8 @@ class TeamController {
 	def transferleadership() {
 		def currentUser = Util.getCurrentUser()
 
-		def newLeader = User.get(Integer.parseInt(params.userid))
-		def team = Team.get(Integer.parseInt(params.teamid))
+		def newLeader = userService.get(Integer.parseInt(params.userid))
+		def team = teamService.get(Integer.parseInt(params.teamid))
 		if (currentUser != team.leader){
 			redirect (controller:'dashboard', params: ['error': 'Only the leader can transfer leadership'])
 		}else {
