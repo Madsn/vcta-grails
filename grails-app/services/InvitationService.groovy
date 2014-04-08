@@ -9,6 +9,7 @@ class InvitationService {
 	void acceptInvitation(Invitation invitation){
 		teamService.acceptInvitation(invitation)
 		userService.acceptInvitation(invitation)
+		
 		invitation.delete()
 	}
 

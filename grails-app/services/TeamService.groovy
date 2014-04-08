@@ -10,10 +10,10 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 		team.save()
 	}
 
-	Team create(Team team){
-		//		team.validate()
+	void create(Team team){
+		team.addToUsers(team.leader)
 		team.save()
-		return team
+		userService.setTeam(team, team.leader)
 	}
 
 	void removeFromPendingInvitations(Invitation invitation){
@@ -26,7 +26,6 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 		def team = invitation.team
 		def invitee = invitation.invitee
 		team.addToUsers(invitee)
-		team.removeFromPendingInvitations(invitation)
 		team.save()
 	}
 

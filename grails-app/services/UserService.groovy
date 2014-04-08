@@ -16,8 +16,8 @@ class UserService extends grails.plugin.nimble.core.UserService {
 
 	void acceptInvitation(Invitation invitation){
 		def user = invitation.invitee
-		user.team = invitation.team
-		user.removeFromInvitations(invitation)
+		def team = invitation.team
+		user.team = team
 		user.save()
 	}
 
@@ -32,6 +32,11 @@ class UserService extends grails.plugin.nimble.core.UserService {
 			user.team = null
 			user.save()
 		}
+	}
+	
+	void addToTrips(Trip trip, User user){
+		user.addToTrips(trip)
+		user.save()
 	}
 
 	User get(Integer id){

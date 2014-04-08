@@ -15,10 +15,7 @@ class TeamController {
 		def teamName = params.name
 
 		def team = new Team(name: teamName, leader: currentUser)
-		team = teamService.create(team)
-
-		userService.setTeam(team, currentUser)
-		teamService.addToUsers(currentUser, team)
+		teamService.create(team)
 		redirect (controller:'dashboard')
 	}
 
@@ -55,8 +52,7 @@ class TeamController {
 		if (currentUser != team.leader){
 			redirect (controller:'dashboard', params: ['error': 'Only the leader can transfer leadership'])
 		}else {
-			team.leader = newLeader
-			team.save()
+			teamService.setLeader(newLeader, team)
 			redirect (controller:'dashboard')
 		}
 	}
