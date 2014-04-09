@@ -30,7 +30,7 @@
 			<tr>
 				<g:if test="${team.leader.id == member.id }">
 					<td><strong> ${member.username}
-					</strong> (team leader)</td>
+					</strong> (team captain)</td>
 				</g:if>
 				<g:if test="${team.leader.id != member.id }">
 					<td>
