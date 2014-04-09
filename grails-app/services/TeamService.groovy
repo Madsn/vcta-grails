@@ -3,17 +3,17 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class TeamService extends grails.plugin.nimble.core.GroupService {
 
-	def userService
-
 	void addToUsers(User invitee, Team team){
 		team.addToUsers(invitee)
 		team.save()
 	}
 
-	void create(Team team){
+	void create(String name, User leader){
+		def team = new Team(name: name, leader: leader)
 		team.addToUsers(team.leader)
 		team.save()
-		userService.setTeam(team, team.leader)
+		leader.team = team
+		leader.save()
 	}
 
 	void removeFromPendingInvitations(Invitation invitation){
@@ -38,14 +38,16 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 	void disbandTeam(Team team){
 		if (team != null){
 			for (u in team.users){
-				userService.removeTeam(u)
+				u.team = null
+				u.save()
 			}
 			team.delete()
 		}
 	}
 
 	void removeFromUsers(User user, Team team){
-		userService.removeTeam(user)
+		user.team = null
+		user.save()
 		team.removeFromUsers(user)
 		team.save()
 	}

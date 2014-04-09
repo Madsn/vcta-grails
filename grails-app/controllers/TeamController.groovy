@@ -14,8 +14,7 @@ class TeamController {
 		def currentUser = Util.getCurrentUser()
 		def teamName = params.name
 
-		def team = new Team(name: teamName, leader: currentUser)
-		teamService.create(team)
+		teamService.create(teamName, currentUser)
 		redirect (controller:'dashboard')
 	}
 
