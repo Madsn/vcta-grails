@@ -16,13 +16,18 @@ class InvitationController {
 			redirect(controller:'dashboard', params:['error':'Only invitee can accept an invitation'])
 		} else {
 			invitationService.acceptInvitation(invitation)
-			redirect(controller: 'dashboard', params:['msg':'Team invitation was accepted'])
+			redirect(controller:'dashboard', params:['msg':'Team invitation was accepted'])
 		}
 	}
 
 	def create(){
+		def users = userService.getAll()
+		render(view:'create', model: [users: users])
+	}
+	
+	def save(){
 		def currentUser = Util.getCurrentUser()
-		def invitingTeam = teamService.get(Integer.parseInt(params.teamid))
+		def invitingTeam = currentUser.team
 		def invitee = userService.get(Integer.parseInt(params.userid))
 
 		if (currentUser != invitingTeam.leader){

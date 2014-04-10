@@ -45,7 +45,7 @@
 			<h3>Invitations sent:</h3>
 			<g:if test="${user.id == user.team.leader.id }">
 				<g:link controller="invitation" action="create"
-					params="${[userid: 1, teamid: user.team.id]}">Invite user</g:link>
+					params="${[teamid: user.team.id]}">Invite user</g:link>
 				<g:if test="${user.team.pendingInvitations.size() > 0}">
 					<table class="table table-striped table-hover">
 						<thead>
