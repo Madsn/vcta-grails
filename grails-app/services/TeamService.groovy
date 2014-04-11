@@ -10,7 +10,7 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 
 	void create(String name, User leader){
 		def team = new Team(name: name, leader: leader)
-		team.addToUsers(team.leader)
+		team.addToUsers(leader)
 		team.save()
 		leader.team = team
 		leader.save()
@@ -63,5 +63,9 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 
 	List<Team> getAll(){
 		Team.getAll()
+	}
+	
+	Team findByName(String name){
+		Team.findByName(name)
 	}
 }

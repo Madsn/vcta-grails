@@ -13,9 +13,14 @@ class TeamController {
 	def save() {
 		def currentUser = Util.getCurrentUser()
 		def teamName = params.name
-
-		teamService.create(teamName, currentUser)
-		redirect (controller:'dashboard')
+		if (teamName.size() < 4){
+			render(view: 'create', model: ['error': 'Name must be at least 4 characters'])
+		} else if (teamService.findByName(teamName) != null) {
+			render(view: 'create', model: ['error': 'Team with that name already exists'])
+		} else {
+			teamService.create(teamName, currentUser)
+			redirect (controller:'dashboard')
+		}
 	}
 
 	def delete() {
