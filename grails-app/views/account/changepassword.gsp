@@ -1,16 +1,21 @@
 
 <html>
 
-  <head>
-    <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
+<head>
     <title><g:message code="nimble.view.account.changepassword.initiate.title" /></title>
+          <r:require modules="login-css"/>
+      <r:require modules="bootstrap3" />
+      <r:layoutResources />
 </head>
 
 <body>
+   	<g:render template="/layouts/menu" />
 
-    <div class="accountinformation">
-      <h2><g:message code="nimble.view.account.changepassword.initiate.heading" /></h2>
-
+      <div class="login-container">
+         <div class="login-content">
+            <h2 class="border-bottom">
+      <g:message code="nimble.view.account.changepassword.initiate.heading" /></h2>
+            <n:flashembed />
       <p>
         <g:message code="nimble.view.account.changepassword.initiate.descriptive" />
       </p>
@@ -18,54 +23,33 @@
       <n:errors bean="${user}"/>
 
       <g:form action="updatepassword">
-        <table>
-          <tbody>
-
-            <tr>
-              <td><label for="currentPassword"><g:message code="nimble.label.currentpassword" /></label></td>
-              <td>
+            <div class="login-input">
+                  <div class="form-group">
+                     <div class="controls "> 
+              <label for="currentPassword"><g:message code="nimble.label.currentpassword" /></label>
                 <input type="password" size="30" id="currentPassword" name="currentPassword" class="easyinput"/>
-              </td>
-            </tr>
-
-            <tr>
-              <td><label for="pass"><g:message code="nimble.label.newpassword" /></label></td>
-              <td>
+                </div>
+                </div>
+                <div class="form-group">
+              <label for="pass"><g:message code="nimble.label.newpassword" /></label>
                 <input type="password" size="30" id="pass" name="pass" class="password easyinput"/><a href="#" id="passwordpolicybtn" rel="passwordpolicy" class="empty icon icon_help"></a>
-              </td>
-            </tr>
-
-            <tr>
-              <td><label for="passConfirm"><g:message code="nimble.label.newpassword.confirmation" /></label></td>
-              <td>
+                </div>
+                <div class="form-group">
+              <label for="passConfirm"><g:message code="nimble.label.newpassword.confirmation" /></label></td>
                 <input type="password" size="30" id="passConfirm" name="passConfirm" class="easyinput"/>
-              </td>
-            </tr>
+                </div>
 
             <n:recaptcharequired>
-              <tr>
-                <th><g:message code="nimble.label.captcha" /></th>
-                <td>
+                <g:message code="nimble.label.captcha" />
                   <n:recaptcha/>
-                </td>
-              </tr>
             </n:recaptcharequired>
 
 
-          <tr>
-            <td/>
-            <td>
-              <button class="button icon icon_lock_go" type="submit"><g:message code="nimble.link.changepassword" /></button>
-            </td>
-            <td/>
-          </tr>
-
-          </tbody>
-        </table>
+              <button class="btn btn-primary" type="submit"><g:message code="nimble.link.changepassword" /></button>
+              </div>
       </g:form>
     </div>
 
-<n:passwordpolicy/>
 
 </body>
 

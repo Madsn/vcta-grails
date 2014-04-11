@@ -10,25 +10,28 @@
 <body>
 	<g:render template="/layouts/menu" />
 
-	<h2>
-		<g:message code="nimble.view.account.registeraccount.complete.heading" />
-	</h2>
-	<p>
-		<g:message
-			code="nimble.view.account.registeraccount.complete.descriptive" />
-	</p>
-	<g:if test="${useractive}">
+	<div class="container">
+		<h2>
+			<g:message
+				code="nimble.view.account.registeraccount.complete.heading" />
+		</h2>
 		<p>
 			<g:message
-				code="nimble.view.account.registeraccount.complete.sentemail" />
+				code="nimble.view.account.registeraccount.complete.descriptive" />
 		</p>
-	</g:if>
-	<g:else>
-		<p>
-			<a href="${createLink(uri:'/')}"><g:message
-					code="nimble.view.account.registeraccount.complete.continue" /></a>
-		</p>
-	</g:else>
+		<g:if test="${useractive}">
+			<p>
+				<g:message
+					code="nimble.view.account.registeraccount.complete.sentemail" />
+			</p>
+		</g:if>
+		<g:else>
+			<p>
+				<a href="${createLink(uri:'/')}"><g:message
+						code="nimble.view.account.registeraccount.complete.continue" /></a>
+			</p>
+		</g:else>
+	</div>
 
 </body>
 

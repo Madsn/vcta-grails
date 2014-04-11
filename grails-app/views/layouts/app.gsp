@@ -3,8 +3,8 @@
 <html>
 <head>
 	<title><g:layoutTitle default="Systematic cykler til arbejde" /></title>
-	<r:require module="bootstrap" />
-	<r:require module="bootstrap-js" />
+<g:javascript library="jquery" plugin="jquery"/>
+	<r:require module="bootstrap3" />
 	<g:layoutHead />
 	<r:layoutResources />
 </head>
@@ -13,7 +13,7 @@
 	<g:render template="/layouts/menu" />
 
 	<div id="bd" class="clear">
-		<div id="content">
+		<div id="content" style="margin-top: 80px;">
 			<g:layoutBody />
 			<r:layoutResources />
 		</div>

@@ -6,6 +6,7 @@
       </title>
    </head>
    <body>
+   <div class="container">
       <h3>
          <g:message code="nimble.view.account.changepassword.complete.heading" />
          <span>
@@ -15,5 +16,7 @@
       <div class="box-generic">
          <n:errors bean="${user}"/>
       </div>
+   
+   </div>
    </body>
 </html>

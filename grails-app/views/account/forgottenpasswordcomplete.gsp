@@ -8,6 +8,7 @@
 
 <body>
 
+<div class="container">
   <div class="accountinformation">
     <h2><g:message code="nimble.view.account.forgottenpassword.complete.heading" /></h2>
 
@@ -18,6 +19,7 @@
       <g:link controller="auth" action="login" class="button icon icon_user_go"><g:message code="nimble.link.login.basic" /></g:link>
     </p>
   </div>
+</div>
 
 </body>
 </html>
