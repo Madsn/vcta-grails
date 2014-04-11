@@ -8,7 +8,7 @@
                <div class="form-input">
                   <div class="control-group">
                      <div class="controls ">                         
-                        <input type="datetime-local" id="starttime" name="starttime" value="${fieldValue(bean: trip, field: 'starttime')}"/>                                                  
+                     	<g:datePicker id="starttime" name="starttime" precision="day" value="${new Date() }" noSelection="['':'-Choose-']" />
                      </div>
                   </div>
                   <div class="control-group">
