@@ -25,6 +25,10 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 	void acceptInvitation(Invitation invitation){
 		def team = invitation.team
 		def invitee = invitation.invitee
+		if (invitee.team != null){
+			invitee.team.removeFromUsers(invitee)
+			invitee.team.save()
+		}
 		team.addToUsers(invitee)
 		team.save()
 	}

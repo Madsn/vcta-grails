@@ -14,6 +14,8 @@ class InvitationController {
 
 		if (currentUser != invitee){
 			redirect(controller:'dashboard', params:['error':'Only invitee can accept an invitation'])
+		} else if (currentUser.team?.leader == currentUser){
+			redirect(controller:'dashboard', params:['error':'You must disband your own team or transfer leadership before joining another team'])
 		} else {
 			invitationService.acceptInvitation(invitation)
 			redirect(controller:'dashboard', params:['msg':'Team invitation was accepted'])

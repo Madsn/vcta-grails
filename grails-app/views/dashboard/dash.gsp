@@ -56,8 +56,10 @@
 						</thead>
 						<tbody>
 							<g:each var="invitation" in="${user.team.pendingInvitations }">
+							<tr>
 								<g:render template="pending_invitations" bean="${invitation}"
 									var="invitation" />
+							</tr>
 							</g:each>
 						</tbody>
 					</table>
@@ -84,8 +86,10 @@
 				</thead>
 				<tbody>
 					<g:each var="invitation" in="${user.invitations}">
+					<tr>
 						<g:render template="invitations" bean="${invitation}"
 							var="invitation" />
+					</tr>
 					</g:each>
 				</tbody>
 			</table>
