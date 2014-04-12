@@ -33,7 +33,7 @@ nimble {
 	localusers {
 		authentication { enabled = true } 
 		registration { enabled = true }
-		provision { active = false }
+		provision { active = true }
 	}
 
 	messaging {
