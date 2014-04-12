@@ -13,8 +13,8 @@ class User extends grails.plugin.nimble.core.UserBase {
 
 	Double getTotalKm() {
 		double totalkm = 0
-		for (Trip t in trips){
-			totalkm += t.getDistanceKm()
+		trips.each {
+			totalkm += it.getDistanceKm()
 		}
 		return totalkm
 	}

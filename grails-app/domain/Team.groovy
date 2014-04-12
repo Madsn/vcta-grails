@@ -13,8 +13,8 @@ class Team extends grails.plugin.nimble.core.Group {
 
 	Double getTotalKm() {
 		float teamTotal = 0
-		for (u in users){
-			teamTotal += u.getTotalKm()
+		users.each {
+			teamTotal += it.getTotalKm()
 		}
 		return teamTotal
 	}
