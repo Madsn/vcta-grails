@@ -4,7 +4,8 @@
       <title>
          <g:message code="nimble.view.account.registeraccount.initiate.title" />
       </title>
-      <r:require modules="nimble-login"/>
+      <r:require modules="login-css"/>
+      <r:require modules="bootstrap3" />
       <r:layoutResources/>
        <meta name="layout" content="app" />
 </head>
@@ -19,27 +20,27 @@
             <n:errors bean="${user}"/>
             <g:form action="saveuser" name="signup-form" method="post">
                <div class="login-input">
-                  <div class="control-group">
+                  <div class="form-group">
                      <div class="controls ">                         
                         <input type="text" id="username" name="username" value="${fieldValue(bean: user, field: 'username')}" placeholder="username"/>                                                  
                      </div>
                   </div>
-                  <div class="control-group">
+                  <div class="form-group">
                      <div class="controls">
                         <input type="password" size="30" id="pass" name="pass" value="${user.pass?.encodeAsHTML()}" placeholder="password"/> 
                      </div>
                   </div>
-                  <div class="control-group">
+                  <div class="form-group">
                      <div class="controls">
                         <input type="password" size="30" id="passConfirm" name="passConfirm" value="${user.passConfirm?.encodeAsHTML()}" placeholder="confirm password"/> 						                   
                      </div>
                   </div>
-                  <div class="control-group">
+                  <div class="form-group">
                      <div class="controls">
                         <input type="text" size="30" id="fullName" name="fullName" value="${user.profile?.fullName?.encodeAsHTML()}" placeholder="full name"]> 						                   
                      </div>
                   </div>
-                  <div class="control-group">
+                  <div class="form-group">
                      <div class="controls">
                         <input type="text" size="30" id="email" name="email" value="${user.profile?.email?.encodeAsHTML()}" placeholder="email"/> 						                   
                      </div>

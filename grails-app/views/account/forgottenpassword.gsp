@@ -4,10 +4,12 @@
       <title>
          <g:message code="nimble.view.account.forgottenpassword.initiate.title" />
       </title>
-      <r:require modules="nimble-login" />
+      <r:require modules="login-css"/>
+      <r:require modules="bootstrap3" />
       <r:layoutResources />
    </head>
    <body>
+   	<g:render template="/layouts/menu" />
       <div class="login-container">
          <div class="login-content">
             <h2 class="border-bottom">
@@ -22,7 +24,7 @@
 			</div>               
             <g:form action="forgottenpasswordprocess" method="POST">
                <div class="login-input">
-                  <div class="control-group">
+                  <div class="form-group">
                      <div class="controls "> 
                         <input type="text" size="30" name="email" id="email" placeholder="user@example.com">
                      </div>
