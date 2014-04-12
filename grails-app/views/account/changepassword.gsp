@@ -3,7 +3,7 @@
 
 <head>
     <title><g:message code="nimble.view.account.changepassword.initiate.title" /></title>
-          <r:require modules="login-css"/>
+      <r:require modules="login-css"/>
       <r:require modules="bootstrap3" />
       <r:layoutResources />
 </head>
@@ -51,6 +51,7 @@
     </div>
 
 
+      <r:layoutResources />
 </body>
 
 </html>
