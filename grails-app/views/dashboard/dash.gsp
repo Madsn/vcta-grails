@@ -21,15 +21,14 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>#</th>
+						<th>Date</th>
 						<th>Distance</th>
-						<th>Start time</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<g:each var="trip"
-						in="${user.trips.sort{a,b -> a.startTime > b.startTime ? -1 : 1}}">
+						in="${user.trips.sort{a,b -> a.date > b.date ? -1 : 1}}">
 						<g:render template="trips" bean="${trip}" var="trip" />
 					</g:each>
 				</tbody>

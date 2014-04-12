@@ -13,4 +13,7 @@
 	<td>
 		${user.getTotalKm()}
 	</td>
+	<td>
+		${user.getCyclingDays()}
+	</td>
 </tr>

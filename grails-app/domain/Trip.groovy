@@ -4,7 +4,7 @@ import User
 class Trip {
 
 	double distanceKm
-	Date startTime
+	Date date
 
 	static belongsTo = [owner: User]
 

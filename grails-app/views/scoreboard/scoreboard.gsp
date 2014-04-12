@@ -20,6 +20,7 @@
 					<th># of Members</th>
 					<th>Total km</th>
 					<th>Km/members</th>
+					<th>Cycling days</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +37,7 @@
 					<th>Username</th>
 					<th>Team</th>
 					<th>Total km</th>
+					<th>Cycling days</th>
 				</tr>
 			</thead>
 			<tbody>

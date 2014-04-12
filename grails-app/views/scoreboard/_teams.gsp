@@ -11,4 +11,7 @@
 	<td>
 		${team.getTotalKm()/team.users.size() }
 	</td>
+	<td>
+		${team.getCyclingDays() }
+	</td>
 </tr>

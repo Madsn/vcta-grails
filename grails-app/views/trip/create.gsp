@@ -8,7 +8,7 @@
                <div class="form-input">
                   <div class="control-group">
                      <div class="controls ">                         
-                     	<g:datePicker id="starttime" name="starttime" precision="day" value="${new Date() }" noSelection="['':'-Choose-']" />
+                     	<g:datePicker id="date" name="date" precision="day" value="${new Date() }" noSelection="['':'-Choose-']" />
                      </div>
                   </div>
                   <div class="control-group">

@@ -18,6 +18,7 @@
 		<tr>
 			<th>Username</th>
 			<th>Total km</th>
+			<th>Cycling days</th>
 			<g:if test="${team.leader == user}">
 				<th></th>
 				<th></th>
@@ -39,6 +40,9 @@
 				</g:if>
 				<td>
 					${member.getTotalKm()}
+				</td>
+				<td>
+					${member.getCyclingDays()}
 				</td>
 				<g:if test="${team.leader == user}">
 					<g:if test="${member == user }">

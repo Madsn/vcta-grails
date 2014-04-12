@@ -19,4 +19,12 @@ class Team extends grails.plugin.nimble.core.Group {
 		return teamTotal
 	}
 	
+	Integer getCyclingDays() {
+		int teamTotal = 0
+		users.each {
+			teamTotal += it.getCyclingDays()
+		}
+		return teamTotal
+	}
+	
 }

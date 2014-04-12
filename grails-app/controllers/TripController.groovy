@@ -13,10 +13,10 @@ class TripController {
 		def currentUser = Util.getCurrentUser()
 
 		def distanceKm = Double.parseDouble(params.distanceKm)
-		def startTime = params.starttime
+		def tripDate = params.date
 		def trip = new Trip()
 		trip.setDistanceKm(distanceKm)
-		trip.setStartTime(startTime)
+		trip.setDate(tripDate)
 		tripService.create(trip, currentUser)
 		redirect (controller:'dashboard')
 	}

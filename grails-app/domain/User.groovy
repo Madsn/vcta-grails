@@ -18,4 +18,12 @@ class User extends grails.plugin.nimble.core.UserBase {
 		}
 		return totalkm
 	}
+	
+	Integer getCyclingDays() {
+		if (trips == null){
+			return 0
+		} else {
+			trips.groupBy({trip -> trip.date}).size()
+		}
+	}
 }
