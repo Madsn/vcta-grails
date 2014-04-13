@@ -23,7 +23,11 @@ class InvitationController {
 	}
 
 	def create(){
+		def currentUser = Util.getCurrentUser()
 		def users = userService.getAll()
+		currentUser.team?.users.each {
+			users.remove(it)
+		}
 		render(view:'create', model: [users: users])
 	}
 	
@@ -33,13 +37,13 @@ class InvitationController {
 		def invitee = userService.get(Integer.parseInt(params.userid))
 
 		if (currentUser != invitingTeam.leader){
-			redirect(controller:'dashboard', params:['error':'Only leader can invite members to join a team'])
+			redirect(controller:'team', action:'manage', params:['error':'Only leader can invite members to join a team'])
 		} else if (invitingTeam.users.contains(invitee)){
-			redirect(controller:'dashboard', params:['error':'User already a member of that team'])
+			redirect(controller:'team', action:'manage', params:['error':'User already a member of that team'])
 		} else {
 			def invitation = new Invitation(team: invitingTeam, invitee: invitee)
 			invitationService.createInvitation(invitation)
-			redirect(controller:'dashboard', params:['msg':'Invitation successfully sent'])
+			redirect(controller:'team', action:'manage', params:['msg':'Invitation successfully sent'])
 		}
 	}
 

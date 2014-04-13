@@ -15,7 +15,9 @@ class InvitationService {
 
 	void createInvitation(Invitation invitation){
 		invitation.validate()
-
+		if (invitation.team.pendingInvitations.any {it.invitee = invitation.invitee}){
+			return
+		}
 		invitation.save()
 		userService.addInvitation(invitation)
 		teamService.addInvitation(invitation)
