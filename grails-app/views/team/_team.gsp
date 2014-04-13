@@ -19,6 +19,10 @@
 			<th>Username</th>
 			<th>Total km</th>
 			<th>Cycling days</th>
+			<g:if test="${team.leader == user}">
+				<th></th>
+				<th></th>
+			</g:if>
 		</tr>
 	</thead>
 	<tbody>
@@ -40,6 +44,18 @@
 				<td>
 					${member.getCyclingDays()}
 				</td>
+				<g:if test="${team.leader == user}">
+					<g:if test="${member == user }">
+						<td></td>
+						<td></td>
+					</g:if>
+					<g:if test="${member != user }">
+						<td><g:link controller="team" action="removefromteam"
+								params="${[userid: member.id, teamid: team.id]}">Remove</g:link></td>
+						<td><g:link controller="team" action="transferleadership"
+								params="${[userid: member.id, teamid: team.id]}">Transfer leadership</g:link></td>
+					</g:if>
+				</g:if>
 			</tr>
 		</g:each>
 	</tbody>

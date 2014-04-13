@@ -9,6 +9,15 @@ class TeamController {
 	def create(){
 		render(view: 'create')
 	}
+	
+	def manage(){
+		def currentUser = Util.getCurrentUser()
+		if (currentUser.team?.leader == currentUser){
+			render(view: 'manage', model: [user: currentUser])
+		} else {
+			render(view: 'dashboard')
+		}
+	}
 
 	def save() {
 		def currentUser = Util.getCurrentUser()
