@@ -11,5 +11,5 @@
 </p>
 <p>
 	Team:
-	${user.team.name}
+	<g:link controller="team" action="show" id="${user.team?.id}">${user.team.name}</g:link>
 </p>

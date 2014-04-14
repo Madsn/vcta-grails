@@ -10,6 +10,11 @@ class TeamController {
 		render(view: 'create')
 	}
 	
+	def show(){
+		def team = teamService.get(Integer.parseInt(params.id))
+		render(view: 'teaminfo', model: [team: team])
+	}
+	
 	def manage(){
 		def currentUser = Util.getCurrentUser()
 		if (currentUser.team?.leader == currentUser){
