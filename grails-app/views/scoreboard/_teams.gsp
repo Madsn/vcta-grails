@@ -1,6 +1,6 @@
 <tr>
 	<td>
-		${team.name}
+		<g:link controller="team" action="show" id="${team.id}">${team.name}</g:link>
 	</td>
 	<td>
 		${team.users.size()}

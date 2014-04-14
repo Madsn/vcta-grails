@@ -1,10 +1,10 @@
 <tr>
 	<td>
-		${user.username}
+		<g:link controller="member" action="show" id="${user.id}">${user.username}</g:link>
 	</td>
 	<td>
 		<g:if test="${user.team != null}">
-			${user.team.name}
+			<g:link controller="team" action="show" id="${user.team.id}">${user.team.name}</g:link>
 			<g:if test="${user.team.leader.id == user.id}">
 				(captain)
 			</g:if>
