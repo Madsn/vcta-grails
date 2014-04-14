@@ -7,7 +7,7 @@
 	<div class="container">
 	<h2>Details for team: ${team.name }</h2>
 	<h3>Members</h3>
-		<g:render template="memberstable" collection="${team.users}" />
+		<g:render template="memberstable" bean="${team.users}" />
 	</div>
 </body>
 </html>
