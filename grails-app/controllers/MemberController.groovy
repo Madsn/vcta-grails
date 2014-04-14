@@ -1,6 +1,6 @@
 import Util
 
-class UserController {
+class MemberController {
 	
 	def userService
 	

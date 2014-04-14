@@ -56,7 +56,7 @@
 		</g:if>
 		<br />
 		<h2>My stats:</h2>
-		<g:render template="/user/status" collection="${user}" />
+		<g:render template="/member/status" collection="${user}" />
 	</div>
 </body>
 </html>

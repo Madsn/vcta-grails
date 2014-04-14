@@ -11,5 +11,5 @@
 </p>
 <p>
 	Team:
-	${user.team}
+	${user.team.name}
 </p>

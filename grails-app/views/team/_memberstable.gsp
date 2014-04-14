@@ -15,7 +15,7 @@
 			in="${team.getUsers().sort{a,b -> a.username > b.username ? 1 : -1}}">
 			<tr>
 				<td>
-					<g:link controller="user" action="show" id="${member.id}">
+					<g:link controller="member" action="show" id="${member.id}">
 						<g:if test="${team.leader.id == member.id }">
 							<strong>${member.username}</strong> (team captain)
 						</g:if> 
