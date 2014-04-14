@@ -25,7 +25,7 @@
 		</g:if>
 		<g:if test="${user.team != null }">
 			<g:render template="team" collection="${user }" />
-			<g:if test="${user.id == user.team.leader.id }">
+			<g:if test="${grailsApplication.config.vcta.manageAllowed && user.id == user.team.leader.id}">
 				<g:link controller="team" action="manage">Manage team</g:link>
 			</g:if>
 		</g:if>
