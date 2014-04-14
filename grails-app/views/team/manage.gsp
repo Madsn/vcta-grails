@@ -6,7 +6,8 @@
 </head>
 <body>
 	<div class="container">
-		<g:render template="team" />
+		<h4>Members:</h4>
+		<g:render template="memberstableadmin" bean="${user.team}" var="team" />
 		<h3>Invitations sent:</h3>
 		<g:link controller="invitation" action="create"
 			params="${[teamid: user.team.id]}">Invite user</g:link>
