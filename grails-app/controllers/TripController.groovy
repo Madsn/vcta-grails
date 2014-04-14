@@ -1,7 +1,7 @@
 import Util
 
 class TripController {
-	
+
 	def tripService
 	def userService
 
@@ -23,7 +23,11 @@ class TripController {
 	}
 	
 	def delete() {
-		tripService.delete(Integer.parseInt(params.id))
+		def currentUser = Util.getCurrentUser()
+		def trip = tripService.get(Integer.parseInt(params.id))
+		if (currentUser == trip.owner){
+			tripService.delete(trip)
+		}
 		redirect (controller:'dashboard')
 	}
 }

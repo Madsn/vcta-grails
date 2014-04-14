@@ -16,5 +16,13 @@ class TripService {
 			trip.delete()
 		}
 	}
+	
+	Trip get(Integer id){
+		Trip.get(id)
+	}
+	
+	void delete(Trip trip){
+		trip.delete()
+	}
 
 }
