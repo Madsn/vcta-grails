@@ -16,11 +16,15 @@ class TeamController {
 	}
 	
 	def manage(){
+		if (!grailsApplication.config.vcta.manageAllowed){
+			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
+			return
+		}
 		def currentUser = Util.getCurrentUser()
 		if (currentUser.team?.leader == currentUser){
 			render(view: 'manage', model: [user: currentUser])
 		} else {
-			render(view: 'dashboard')
+			redirect(controller:'dashboard', params: ['error': 'Only the team captain can manage a team'])
 		}
 	}
 

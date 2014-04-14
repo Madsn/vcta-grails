@@ -63,6 +63,8 @@ grails.views.javascript.library="jquery"
 
 grails.app.context="/"
 
+vcta.manageAllowed=true
+
 environments {
     development {
         grails.logging.jul.usebridge = true
