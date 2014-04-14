@@ -17,7 +17,7 @@
 			Trips
 			<g:link controller="trip" action="create">Add</g:link>
 		</h2>
-		<g:render template="/trip/triptable" bean="${user}" />
+		<g:render template="/trip/triptable-editable" bean="${user}" />
 		<br />
 		<h2>Team:</h2>
 		<g:if test="${user.team == null }">
