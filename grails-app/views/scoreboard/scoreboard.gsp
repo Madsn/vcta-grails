@@ -16,6 +16,7 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
+					<th>Rank</th>
 					<th>Team name</th>
 					<th># of Members</th>
 					<th>Total km</th>
@@ -25,8 +26,8 @@
 			</thead>
 			<tbody>
 				<g:each var="team"
-					in="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}">
-					<g:render template="teams" bean="${team}" var="team" />
+					in="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" status="i">
+					<g:render template="teams" model="[team: team, i: i]" />
 				</g:each>
 			</tbody>
 		</table>
@@ -34,6 +35,7 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
+					<th>Rank</th>
 					<th>Username</th>
 					<th>Team</th>
 					<th>Total km</th>
@@ -42,8 +44,8 @@
 			</thead>
 			<tbody>
 				<g:each var="user"
-					in="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}">
-					<g:render template="users" bean="${user}" var="user" />
+					in="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" status="i">
+					<g:render template="users" model="[user: user, i: i]"/>
 				</g:each>
 			</tbody>
 		</table>

@@ -1,5 +1,8 @@
 <tr>
 	<td>
+		${i+1}
+	</td>
+	<td>
 		<g:link controller="member" action="show" id="${user.id}">${user.username}</g:link>
 	</td>
 	<td>
