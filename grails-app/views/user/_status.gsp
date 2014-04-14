@@ -9,3 +9,7 @@
 	Number of trips:
 	${user.trips.size() }
 </p>
+<p>
+	Team:
+	${user.team}
+</p>

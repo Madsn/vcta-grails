@@ -13,34 +13,4 @@
 		params="${[userid: user.id, teamid: team.id]}">Leave team</g:link>
 </g:if>
 <h4>Members:</h4>
-<table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th>Username</th>
-			<th>Total km</th>
-			<th>Cycling days</th>
-		</tr>
-	</thead>
-	<tbody>
-		<g:each var="member"
-			in="${team.getUsers().sort{a,b -> a.username > b.username ? 1 : -1}}">
-			<tr>
-				<g:if test="${team.leader.id == member.id }">
-					<td><strong> ${member.username}
-					</strong> (team captain)</td>
-				</g:if>
-				<g:if test="${team.leader.id != member.id }">
-					<td>
-						${member.username}
-					</td>
-				</g:if>
-				<td>
-					${member.getTotalKm()}
-				</td>
-				<td>
-					${member.getCyclingDays()}
-				</td>
-			</tr>
-		</g:each>
-	</tbody>
-</table>
+<g:render template="/team/memberstable" bean="${team}" />

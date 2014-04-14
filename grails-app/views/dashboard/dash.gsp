@@ -17,23 +17,7 @@
 			Trips
 			<g:link controller="trip" action="create">Add</g:link>
 		</h2>
-		<g:if test="${user.trips.size() > 0}">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>Day (May 2014)</th>
-						<th>Distance</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<g:each var="trip"
-						in="${user.trips.sort{a,b -> a.date > b.date ? -1 : 1}}">
-						<g:render template="trips" bean="${trip}" var="trip" />
-					</g:each>
-				</tbody>
-			</table>
-		</g:if>
+		<g:render template="/trip/triptable" bean="${user}" />
 		<br />
 		<h2>Team:</h2>
 		<g:if test="${user.team == null }">
@@ -72,7 +56,7 @@
 		</g:if>
 		<br />
 		<h2>My stats:</h2>
-		<g:render template="stats" collection="${user}" />
+		<g:render template="/user/status" collection="${user}" />
 	</div>
 </body>
 </html>
