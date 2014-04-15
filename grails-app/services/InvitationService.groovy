@@ -31,9 +31,9 @@ class InvitationService {
 	
 	void deleteAllInvitationsFromTeam(Team team){
 		def invitations = Invitation.findWhere(team: team)
-		for (i in invitations){
-			userService.removeFromInvitations(i)
-			i.delete()
+		invitations.each {
+			userService.removeFromInvitations(it)
+			it.delete()
 		}
 	}
 

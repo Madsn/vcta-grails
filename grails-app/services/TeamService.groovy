@@ -41,9 +41,9 @@ class TeamService extends grails.plugin.nimble.core.GroupService {
 
 	void disbandTeam(Team team){
 		if (team != null){
-			for (u in team.users){
-				u.team = null
-				u.save()
+			team.users.each {
+				it.team = null
+				it.save()
 			}
 			team.delete()
 		}
