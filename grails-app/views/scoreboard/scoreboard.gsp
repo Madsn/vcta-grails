@@ -12,12 +12,18 @@
 		<p style="color: blue;">
 			${msg}
 		</p>
-		<h2>Teams</h2>
+		<ul class="nav nav-tabs">
+  			<li id="teamlink" class="active"><a id="teamtab" href="javascript:changeTab(1)">Teams</a></li>
+  			<li id="peoplelink"><a id="peopletab" href="javascript:changeTab(0);">People</a></li>
+		</ul>
+		<br/>
+		<div id="teams">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>Rank</th>
 					<th>Team name</th>
+					<th>Captain</th>
 					<th># of Members</th>
 					<th>Total km</th>
 					<th>Km/members</th>
@@ -31,7 +37,8 @@
 				</g:each>
 			</tbody>
 		</table>
-		<h2>People</h2>
+		</div>
+		<div id="people" style="display: none;">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -49,6 +56,26 @@
 				</g:each>
 			</tbody>
 		</table>
+		</div>
 	</div>
+<script type="text/javascript">
+$('a#teamtab').click(function() {
+	$('#teams').show();
+	$('#people').hide();
+});
+var changeTab = function(tab){
+	if (tab == 0) {
+		$('#teams').hide();
+		$('#people').show();
+		$('#peoplelink').addClass('active');
+		$('#teamlink').removeClass('active');
+	} else if (tab == 1) {
+		$('#people').hide();
+		$('#teams').show();
+		$('#peoplelink').removeClass('active');
+		$('#teamlink').addClass('active');
+	}
+};
+</script>
 </body>
 </html>

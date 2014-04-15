@@ -8,6 +8,11 @@
 		</g:link>
 	</td>
 	<td>
+		<g:link controller="member" action="show" id="${team.leader.id}">
+			${team.leader.username}
+		</g:link>
+	</td>
+	<td>
 		${team.users.size()}
 	</td>
 	<td>
