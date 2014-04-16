@@ -4,19 +4,11 @@
 <meta name="layout" content="app" />
 </head>
 <body>
-	<g:if test="${trip == null}">
-		<g:set var="action" value="save" />
-		<g:set var="submittext" value="Submit" />
-	</g:if>
-	<g:else>
-		<g:set var="action" value="update" />
-		<g:set var="submittext" value="Update" />
-	</g:else>
-	<g:form action="${action}" name="trip-edit-form" method="post"
+	<g:form action="update" name="trip-edit-form" method="post"
 		class="form-horizontal">
 		<fieldset>
 
-			<legend>Register/edit trip</legend>
+			<legend>Edit trip</legend>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="dayofmonth"> Day
@@ -45,16 +37,14 @@
 				</div>
 			</div>
 
-			<g:if test="${action == 'update'}">
-				<input type="hidden" name="id" value="${trip.id}" />
-			</g:if>
+			<input type="hidden" name="id" value="${trip.id}" />
 
 			<div class="form-group">
 				<div class="col-md-offset-6 col-md-2">
 					<g:link controller="dashboard">
 						<input type="button" class="btn btn-danger" value="Cancel" />
 					</g:link>
-					<button type="submit" class="btn btn-primary">${submittext}</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 			</div>
 

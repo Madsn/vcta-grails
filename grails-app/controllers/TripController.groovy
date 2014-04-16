@@ -4,14 +4,10 @@ class TripController {
 
 	def tripService
 	def userService
-
-	def create() {
-		render(view: 'create')
-	}
 	
 	def edit() {
 		def trip = tripService.get(Integer.parseInt(params.id))
-		render(view: 'create', model: [trip: trip])
+		render(view: 'edit', model: [trip: trip])
 	}
 	
 	def save() {
