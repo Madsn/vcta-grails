@@ -16,10 +16,10 @@
 		${team.users.size()}
 	</td>
 	<td>
-		${team.getTotalKm()}
+		<g:formatNumber number="${team.getTotalKm()}" format="0.00"/>
 	</td>
 	<td>
-		${team.getTotalKm()/team.users.size() }
+		<g:formatNumber number="${team.getTotalKm()/team.users.size() }" format="0.00"/>
 	</td>
 	<td>
 		${team.getCyclingDays() }

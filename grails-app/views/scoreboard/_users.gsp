@@ -14,7 +14,7 @@
 		</g:if>
 	</td>
 	<td>
-		${user.getTotalKm()}
+		<g:formatNumber number="${user.getTotalKm()}" format="0.00"/>
 	</td>
 	<td>
 		${user.getCyclingDays()}

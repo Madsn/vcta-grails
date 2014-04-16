@@ -59,10 +59,6 @@
 		</div>
 	</div>
 <script type="text/javascript">
-$('a#teamtab').click(function() {
-	$('#teams').show();
-	$('#people').hide();
-});
 var changeTab = function(tab){
 	if (tab == 0) {
 		$('#teams').hide();
