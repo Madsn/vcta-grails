@@ -16,7 +16,7 @@ class Team extends grails.plugin.nimble.core.Group {
 		users.each {
 			teamTotal += it.getTotalKm()
 		}
-		return teamTotal
+		return Math.round(teamTotal * 100) / 100
 	}
 	
 	Integer getCyclingDays() {

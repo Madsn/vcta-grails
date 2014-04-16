@@ -24,5 +24,9 @@ class TripService {
 	void delete(Trip trip){
 		trip.delete()
 	}
+	
+	void update(Trip trip){
+		trip.save()
+	}
 
 }

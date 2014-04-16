@@ -5,8 +5,14 @@
 </head>
 <body>
 	<div class="container">
-		<g:form action="save" name="trip-create-form" method="post"
-			class="form-horizontal">
+		<g:if test="${trip == null}">
+			<g:set var="action" value="save" />
+	 	</g:if>
+	 	<g:else>
+	 		<g:set var="action" value="update"/>
+	 	</g:else>
+			<g:form action="${action}" name="trip-edit-form" method="post"
+					class="form-horizontal">
 			<fieldset>
 			
 			<legend>Register/edit trip</legend>
@@ -35,6 +41,10 @@
 						value="${fieldValue(bean: trip, field: 'distanceKm')}" />
 				</div>
 			</div>
+			
+			<g:if test="${action == 'update'}">
+				<input type="hidden" name="id" value="${trip.id}"/>
+			</g:if>
 
 			<div class="form-group">
 				<div class="col-md-offset-6 col-md-2">
