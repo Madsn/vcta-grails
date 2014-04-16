@@ -20,10 +20,10 @@
 					<g:render template="stats" bean="${user}" />
 				</div>
 			</div>
-			<div class="col-md-7">
-				<h3>Trips</h3>
-				<g:render template="/trip/triptable" bean="${user}" />
-			</div>
+		</div>
+		<div class="col-md-7">
+			<h3>Registered trips</h3>
+			<g:render template="/trip/triptable" bean="${user}" />
 		</div>
 	</div>
 </body>

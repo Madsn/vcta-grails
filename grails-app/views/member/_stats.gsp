@@ -5,7 +5,7 @@
 		<tr>
 			<td>Total distance</td>
 			<td>
-				${user.getTotalKm() }
+				<g:formatNumber number="${user.getTotalKm() }" format="0.00"/> km
 			</td>
 		</tr>
 		<tr>
