@@ -5,13 +5,6 @@
 <meta name="layout" content="app" />
 </head>
 <body>
-	<div class="container">
-		<p style="color: red;">
-			${error}
-		</p>
-		<p style="color: blue;">
-			${msg}
-		</p>
 		<div class="page-header">
 			<h2>Scoreboard</h2>
 		</div>
@@ -59,8 +52,6 @@
 				</g:each>
 			</tbody>
 		</table>
-		</div>
-	</div>
 <script type="text/javascript">
 var changeTab = function(tab){
 	if (tab == 0) {

@@ -4,7 +4,6 @@
 <meta name="layout" content="app" />
 </head>
 <body>
-	<p style="color: red;">${error}</p>
 	<g:form action="save" name="team-create-form" method="post">
 		<div class="form-input">
 			<div class="control-group">
@@ -19,7 +18,5 @@
 				</span>
 			</div>
 	</g:form>
-	</div>
-	</div>
 </body>
 </html>
