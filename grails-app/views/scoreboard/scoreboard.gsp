@@ -14,7 +14,7 @@
 		</p>
 		<ul class="nav nav-tabs">
   			<li id="teamlink" class="active"><a id="teamtab" href="javascript:changeTab(1)">Teams</a></li>
-  			<li id="peoplelink"><a id="peopletab" href="javascript:changeTab(0);">People</a></li>
+  			<li id="peoplelink"><a id="peopletab" href="javascript:changeTab(0);">Individuals</a></li>
 		</ul>
 		<br/>
 		<div id="teams">
