@@ -22,8 +22,14 @@
 			</div>
 		</div>
 		<div class="col-md-7">
-			<h3>Members</h3>
-			<g:render template="memberstable" bean="${team.users}" />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Members</h3>
+				</div>
+				<div class="panel-body">
+					<g:render template="memberstable" bean="${team.users}" />
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

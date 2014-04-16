@@ -4,9 +4,8 @@
 	<tbody>
 		<tr>
 			<td>Total distance</td>
-			<td>
-				<g:formatNumber number="${user.getTotalKm() }" format="0.00"/> km
-			</td>
+			<td><g:formatNumber number="${user.getTotalKm() }" format="0.00" />
+				km</td>
 		</tr>
 		<tr>
 			<td>Number of trips</td>

@@ -22,8 +22,14 @@
 			</div>
 		</div>
 		<div class="col-md-7">
-			<h3>Registered trips</h3>
-			<g:render template="/trip/triptable" bean="${user}" />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Registered trips</h3>
+				</div>
+				<div class="panel-body">
+					<g:render template="/trip/triptable" bean="${user}" />
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
