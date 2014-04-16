@@ -53,6 +53,7 @@
 				class="btn btn-primary">Add a new trip</button>
 		</div>
 		<div id="addtripform" style="display: none;">
+			<g:set var="maxday" value="${new DashboardController().maxTripDay()}"/>
 			<g:form controller="trip" action="save" name="trip-add-form"
 				method="post" class="form-horizontal">
 				<fieldset>
@@ -61,7 +62,7 @@
 						<label class="col-md-4 control-label" for="dayofmonth">
 							Day of month (must be in may) </label>
 						<div class="col-md-4">
-							<g:select name="dayofmonth" from="${1..31}"
+							<g:select name="dayofmonth" from="${1..maxday}"
 								value="${new Date().date}" class="form-control"
 								noSelection="['':'-Choose day of month-']" />
 						</div>

@@ -9,7 +9,6 @@ class DashboardController {
 
 	def index() {
 		def currentUser = Util.getCurrentUser()
-		println currentUser
 		if (currentUser == null){
 			redirect uri: '/login'
 		} else {
@@ -23,6 +22,15 @@ class DashboardController {
 			}
 			def map = [user: currentUser, error: errMsg, msg: msg]
 			render(view: 'dash', model: map)
+		}
+	}
+	
+	int maxTripDay() {
+		def today = new Date()
+		if (today.month != 5){
+			return 31
+		} else {
+			return today.date
 		}
 	}
 }

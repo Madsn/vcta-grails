@@ -48,7 +48,7 @@
 
 	</div>
 	<script type="text/javascript">
-	$('.alert').delay(1000).fadeOut(1000);
+	$('.alert').delay(1500).fadeOut(1000);
 	</script>
 </body>
 </html>

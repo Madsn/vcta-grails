@@ -13,14 +13,20 @@ class TripController {
 	def save() {
 		def currentUser = Util.getCurrentUser()
 
+		def today = new Date()
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
 		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth))
 		def trip = new Trip()
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
-		tripService.create(trip, currentUser)
-		redirect (controller:'dashboard', params: ['msg': 'Trip added'])
+		if (today.month == 5 && tripDate > today.date){
+			redirect (controller:'dashboard', params: ['error': "Please don\'t create trips ahead of time"])
+			return
+		} else {
+			tripService.create(trip, currentUser)
+			redirect (controller:'dashboard', params: ['msg': 'Trip added'])
+		}
 	}
 	
 	def update() {

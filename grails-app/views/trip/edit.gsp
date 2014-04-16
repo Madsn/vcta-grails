@@ -4,6 +4,7 @@
 <meta name="layout" content="app" />
 </head>
 <body>
+	<g:set var="maxday" value="${new DashboardController().maxTripDay()}"/>
 	<g:form action="update" name="trip-edit-form" method="post"
 		class="form-horizontal">
 		<fieldset>
@@ -14,16 +15,9 @@
 				<label class="col-md-4 control-label" for="dayofmonth"> Day
 					of month (must be in may) </label>
 				<div class="col-md-4">
-					<g:if test="${trip != null}">
-						<g:select name="dayofmonth" from="${1..31}"
+					<g:select name="dayofmonth" from="${1..maxday}"
 							value="${fieldValue(bean: trip, field: 'date.date')}"
 							class="form-control" noSelection="['':'-Choose day of month-']" />
-					</g:if>
-					<g:if test="${trip == null}">
-						<g:select name="dayofmonth" from="${1..31}"
-							value="${new Date().date}" class="form-control"
-							noSelection="['':'-Choose day of month-']" />
-					</g:if>
 				</div>
 			</div>
 
