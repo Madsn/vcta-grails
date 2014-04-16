@@ -26,4 +26,12 @@ class User extends grails.plugin.nimble.core.UserBase {
 			trips.groupBy({trip -> trip.date}).size()
 		}
 	}
+	
+	public String toString() {
+		String user = username
+		if (this.profile?.fullName){
+			user += " - " + this.profile.fullName
+		}
+		return user
+	}
 }
