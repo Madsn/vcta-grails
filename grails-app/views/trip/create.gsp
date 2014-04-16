@@ -9,7 +9,7 @@
 			class="form-horizontal">
 			<fieldset>
 			
-			<legend>Register new trip</legend>
+			<legend>Register/edit trip</legend>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="dayofmonth"> Day
@@ -17,7 +17,7 @@
 				<div class="col-md-4">
 					<g:if test="${trip != null}">
 					<g:select name="dayofmonth" from="${1..31}"
-						value="${fieldValue(bean: trip, field: 'date')}" class="form-control"
+						value="${fieldValue(bean: trip, field: 'date.date')}" class="form-control"
 						noSelection="['':'-Choose day of month-']" />
 					</g:if>
 					<g:if test="${trip == null}">
@@ -37,7 +37,8 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-md-offset-7 col-md-1">
+				<div class="col-md-offset-6 col-md-2">
+					<g:link controller="dashboard"><input type="button" class="btn btn-danger" value="Cancel"/></g:link>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 			</div>

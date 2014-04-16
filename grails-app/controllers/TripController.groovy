@@ -9,6 +9,11 @@ class TripController {
 		render(view: 'create')
 	}
 	
+	def edit() {
+		def trip = tripService.get(Integer.parseInt(params.id))
+		render(view: 'create', model: [trip: trip])
+	}
+	
 	def save() {
 		def currentUser = Util.getCurrentUser()
 
