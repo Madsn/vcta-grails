@@ -53,7 +53,7 @@ class InvitationController {
 
 		if (currentUser == invitation.invitee || currentUser == invitation.team.leader){
 			invitationService.dismissInvitation(invitation)
-			redirect(controller:'dashboard', params:['msg':'Invitation dismissed'])
+			redirect(controller:'team', action:'manage', params:['msg':'Invitation dismissed'])
 		} else {
 			redirect(controller:'dashboard', params:['error':'Only leader or invitee can dismiss invitations'])
 		}

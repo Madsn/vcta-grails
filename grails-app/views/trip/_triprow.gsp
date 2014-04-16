@@ -2,5 +2,5 @@
 	<g:formatDate format="dd" date="${trip.date}" />
 </td>
 <td>
-	${trip.distanceKm}
+	<g:formatNumber number="${trip.distanceKm}" format="0.00"/>
 </td>
