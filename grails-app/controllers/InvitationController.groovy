@@ -28,7 +28,8 @@ class InvitationController {
 		currentUser.team?.users.each {
 			users.remove(it)
 		}
-		render(view:'create', model: [users: users])
+		def team = teamService.get(Integer.parseInt(params.teamid))
+		render(view:'create', model: [users: users, team: team])
 	}
 	
 	def save(){

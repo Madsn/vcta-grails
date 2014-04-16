@@ -4,11 +4,11 @@
 <meta name="layout" content="app" />
 </head>
 <body>
-	<g:form action="save" name="trip-create-form" method="post"
+	<g:form action="save" name="invitation-create-form" method="post"
 		class="form-horizontal">
 		<fieldset>
 
-			<legend>Invite user to join team</legend>
+			<legend>Invite user to join team ${team?.name}</legend>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="dayofmonth">User</label>

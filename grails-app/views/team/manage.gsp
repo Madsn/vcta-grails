@@ -13,9 +13,22 @@
 	</div>
 	<h3>Members</h3>
 	<g:render template="memberstableadmin" bean="${user.team}" var="team" />
-	<h3>Invitations sent:</h3>
-	<g:link controller="invitation" action="create"
-		params="${[teamid: user.team.id]}">Invite user</g:link>
+	<h3>Invite a user</h3>
+	<g:form controller="invitation" action="save" name="invitation-create-form" method="post"
+		class="form-inline">
+		<fieldset>
+		
+			<div class="form-group">
+					<g:select name="userid" from="${users}" class="form-control" style="width: 250px;"
+						value="${fieldValue(bean: invitation, field: 'invitee.id')}"
+						optionKey="id" optionValue="username" />
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Send invitation</button>
+			</div>
+		</fieldset>
+	</g:form>
+	<h3>Pending invitations</h3>
 	<g:if test="${user.team.pendingInvitations.size() > 0}">
 		<table class="table table-striped table-hover">
 			<thead>

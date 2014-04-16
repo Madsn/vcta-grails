@@ -6,9 +6,11 @@
 <body>
 	<g:if test="${trip == null}">
 		<g:set var="action" value="save" />
+		<g:set var="submittext" value="Submit" />
 	</g:if>
 	<g:else>
 		<g:set var="action" value="update" />
+		<g:set var="submittext" value="Update" />
 	</g:else>
 	<g:form action="${action}" name="trip-edit-form" method="post"
 		class="form-horizontal">
@@ -52,7 +54,7 @@
 					<g:link controller="dashboard">
 						<input type="button" class="btn btn-danger" value="Cancel" />
 					</g:link>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">${submittext}</button>
 				</div>
 			</div>
 

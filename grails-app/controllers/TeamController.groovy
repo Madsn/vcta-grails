@@ -22,7 +22,11 @@ class TeamController {
 		}
 		def currentUser = Util.getCurrentUser()
 		if (currentUser.team?.leader == currentUser){
-			render(view: 'manage', model: [user: currentUser])
+			def users = userService.getAll()
+			currentUser.team?.users.each {
+				users.remove(it)
+			}
+			render(view: 'manage', model: [user: currentUser, users: users])
 		} else {
 			redirect(controller:'dashboard', params: ['error': 'Only the team captain can manage a team'])
 		}
