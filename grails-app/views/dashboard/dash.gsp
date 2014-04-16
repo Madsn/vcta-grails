@@ -13,13 +13,16 @@
 		<p style="color: blue;">
 			${msg}
 		</p>
-		<h2>
+		<div class="page-header">
+		<h2>Dashboard</h2>
+		</div>
+		<h3>
 			Trips
 			<g:link controller="trip" action="create">Add</g:link>
-		</h2>
+		</h3>
 		<g:render template="/trip/triptable-editable" bean="${user}" />
 		<br />
-		<h2>Team:</h2>
+		<h3>Team:</h3>
 		<g:if test="${user.team == null }">
 			<g:render template="noteam" collection="${user }" />
 		</g:if>
@@ -30,7 +33,7 @@
 			</g:if>
 		</g:if>
 		<br />
-		<h3>Invitations received:</h3>
+		<h4>Invitations received:</h4>
 		<g:if test="${user.invitations.size() == 0 }">
 			<p>You currently have no team invitations</p>
 		</g:if>
@@ -55,7 +58,7 @@
 			</table>
 		</g:if>
 		<br />
-		<h2>My stats:</h2>
+		<h3>My stats:</h3>
 		<g:render template="/member/status" collection="${user}" />
 	</div>
 </body>

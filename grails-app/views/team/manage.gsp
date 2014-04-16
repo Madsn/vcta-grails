@@ -6,7 +6,10 @@
 </head>
 <body>
 	<div class="container">
-		<h4>Members:</h4>
+	<div class="page-header">
+		<h2>Management page for: ${user.team?.name}</h2>
+	</div>
+		<h3>Members</h3>
 		<g:render template="memberstableadmin" bean="${user.team}" var="team" />
 		<h3>Invitations sent:</h3>
 		<g:link controller="invitation" action="create"
