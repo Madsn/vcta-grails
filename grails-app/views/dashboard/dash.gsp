@@ -8,11 +8,25 @@
 	<div class="page-header">
 		<h2>Dashboard</h2>
 	</div>
-	<h3>
-		Trips
-		<g:link controller="trip" action="create">Add</g:link>
-	</h3>
-	<g:render template="/trip/triptable-editable" bean="${user}" />
+	<div class="row">
+		<div class="col-md-6">
+			<h3>
+				Trips
+				<g:link controller="trip" action="create">Add</g:link>
+			</h3>
+			<g:render template="/trip/triptable-editable" bean="${user}" />
+		</div>
+		<div class="col-md-4 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">My stats</h3>
+				</div>
+				<div class="panel-body">
+					<g:render template="/member/stats" bean="${user}" />
+				</div>
+			</div>
+		</div>
+	</div>
 	<br />
 	<h3>Team:</h3>
 	<g:if test="${user.team == null }">
@@ -51,7 +65,5 @@
 		</table>
 	</g:if>
 	<br />
-	<h3>My stats:</h3>
-	<g:render template="/member/status" collection="${user}" />
 </body>
 </html>
