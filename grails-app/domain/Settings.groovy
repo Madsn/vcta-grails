@@ -1,0 +1,6 @@
+
+class Settings {
+	
+	boolean manageAllowed
+
+}

@@ -16,7 +16,7 @@ class TeamController {
 	}
 	
 	def manage(){
-		if (!grailsApplication.config.vcta.manageAllowed){
+		if (!SettingsController.manageAllowed()){
 			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
 			return
 		}
