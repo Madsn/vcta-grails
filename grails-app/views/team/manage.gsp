@@ -17,6 +17,16 @@
 		</h2>
 	</div>
 	<div class="row">
+		<div class="col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Team stats</h3>
+				</div>
+				<div class="panel-body">
+					<g:render template="stats" bean="${user.team}" var="team" />
+				</div>
+			</div>
+		</div>
 		<div class="col-md-7">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -44,37 +54,29 @@
 					<g:if test="${user.team.pendingInvitations.size() == 0}">
 						<p>No invitations awaiting response.</p>
 					</g:if>
-					<div class="invitebutton">
-						<button onclick="$('.invitationform').show();$(this).hide();"
-							class="btn btn-primary">Invite a user</button>
-					</div>
-					<div class="invitationform">
-						<g:form controller="invitation" action="save"
-							name="invitation-create-form" method="post" class="form-inline">
-							<fieldset>
-								<div class="form-group">
-									<g:select name="userid" from="${users}" class="form-control"
-										style="min-width: 250px; max-width: 500px;"
-										value="${fieldValue(bean: invitation, field: 'invitee.id')}"
-										optionKey="id" />
-								</div>
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary">Send
-										invitation</button>
-								</div>
-							</fieldset>
-						</g:form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-5">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Team stats</h3>
-				</div>
-				<div class="panel-body">
-					<g:render template="stats" bean="${user.team}" var="team" />
+					<g:if test="${SettingsController.manageAllowed()}">
+						<div class="invitebutton">
+							<button onclick="$('.invitationform').show();$(this).hide();"
+								class="btn btn-primary">Invite a user</button>
+						</div>
+						<div class="invitationform">
+							<g:form controller="invitation" action="save"
+								name="invitation-create-form" method="post" class="form-inline">
+								<fieldset>
+									<div class="form-group">
+										<g:select name="userid" from="${users}" class="form-control"
+											style="min-width: 250px; max-width: 500px;"
+											value="${fieldValue(bean: invitation, field: 'invitee.id')}"
+											optionKey="id" />
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary">Send
+											invitation</button>
+									</div>
+								</fieldset>
+							</g:form>
+						</div>
+					</g:if>
 				</div>
 			</div>
 		</div>

@@ -20,13 +20,13 @@
 			</div>
 		</div>
 		<div class="col-md-7">
-			<g:if test="${ grailsApplication.config.vcta.manageAllowed}">
-				<g:if test="${user.team?.leader == user}">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Team management</h3>
-						</div>
-						<div class="panel-body">
+			<g:if test="${ SettingsController.manageAllowed() }">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Team management</h3>
+					</div>
+					<div class="panel-body">
+						<g:if test="${user.team?.leader == user}">
 							<p>As team captain, you are able to perform a few management
 								tasks, e.g.:
 							<ul>
@@ -42,9 +42,22 @@
 								<input type="button" value="Open team management page"
 									class="btn btn-primary pull-right" />
 							</g:link>
-						</div>
+						</g:if>
+						<g:else>
+							<p>Team management is available until the competition
+								officially starts, allowing users to form teams. The captain
+								of a team can invite other users to join their team.</p>
+							<div id="createteambtn" class="pull-right">
+								<button
+									onclick="$('#createteamform').show();$('#createteambtn').hide();"
+									class="btn btn-primary">Create a team</button>
+							</div>
+							<div id="createteamform" style="display: none;">
+								<g:render template="/team/createform"/>
+							</div>
+						</g:else>
 					</div>
-				</g:if>
+				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Team invitations</h3>
@@ -129,7 +142,6 @@
 							</fieldset>
 						</g:form>
 					</div>
-
 					<g:render template="/trip/triptable-editable" bean="${user}" />
 				</div>
 			</div>
