@@ -6,6 +6,10 @@ class SettingsController {
 	static boolean manageAllowed(){
 		return Settings.getAll()[0].manageAllowed
 	}
+	
+	static boolean frozen(){
+		return Settings.getAll()[0].frozen
+	}
 
 	def admin(){
 		def settings = Settings.getAll()[0]
