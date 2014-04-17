@@ -24,7 +24,7 @@
 			</div>
 			<div style="text-align: center; margin-bottom: 3px;">-- OR --</div>
 
-			<form action="/auth/signin" method="post" name="login-form"
+			<g:form controller="auth" action="signin" method="post" name="login-form"
 				id="login-form" role="form">
 				<div class="login-input">
 					<div class="form-group">
@@ -49,7 +49,7 @@
 					<h4>Forgotten password ?</h4>
 					Click here to <g:link uri="forgottenpassword" style="text-transform: lowercase;"> Reset password </g:link>
 				</div>
-			</form>
+			</g:form>
 		</div>
 	</div>
 <r:layoutResources/>
