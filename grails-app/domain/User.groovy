@@ -10,6 +10,10 @@ class User extends grails.plugin.nimble.core.UserBase {
 		team(nullable: true, blank: true)
 		invitations(nullable: true, blank: true)
 	}
+	
+	static mapping = {
+		table '`user`'
+	}
 
 	Double getTotalKm() {
 		double totalkm = 0

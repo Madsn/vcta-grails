@@ -16,7 +16,7 @@ class TripController {
 		def today = new Date()
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
-		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth))
+		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth) % 31)
 		def trip = new Trip()
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
@@ -34,7 +34,7 @@ class TripController {
 		
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
-		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth))
+		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth) % 31)
 
 		def trip = tripService.get(Integer.parseInt(params.id))
 		trip.setDate(tripDate)

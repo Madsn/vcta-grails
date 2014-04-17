@@ -1,9 +1,9 @@
-class BootStrap {
+import Settings
 
+class BootStrap {
     def init = { servletContext ->
-		if (Settings.findAll().size() == 0){
-			Settings setting = new Settings(manageAllowed:true)
-			setting.save()
+		if (!Settings.count()){
+			new Settings(manageAllowed:true).save(failOnError: true)
 		}
     }
     def destroy = {
