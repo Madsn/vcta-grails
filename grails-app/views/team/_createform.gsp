@@ -1,5 +1,5 @@
 
-<g:form action="save" name="team-create-form" method="post"
+<g:form controller="team" action="save" name="team-create-form" method="post"
 	class="form-inline">
 	<fieldset>
 		<div class="form-group">

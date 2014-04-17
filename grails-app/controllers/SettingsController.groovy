@@ -4,16 +4,16 @@ import Util
 class SettingsController {
 
 	static boolean manageAllowed(){
-		return Settings.get(1).manageAllowed
+		return Settings.getAll()[0].manageAllowed
 	}
 
 	def admin(){
-		def settings = Settings.get(1)
+		def settings = Settings.getAll()[0]
 		render(view:'manage', model: [settings: settings])
 	}
 
 	def update(){
-		def settings = Settings.get(1)
+		def settings = Settings.getAll()[0]
 		def manageAllowed
 		if (params.manageallowed == 'on'){
 			manageAllowed = true
