@@ -31,6 +31,8 @@ Deploy with `git push heroku master`
 
 Current memory limit for the free dyno (1X) is 512 mb ram. If you modify the JAVA_OPTS environment variable, setting `-Xmx128m`, it should be able to run within the limit. The app can still run even though it excees the memory limit, but performance will be [degraded](https://devcenter.heroku.com/articles/error-codes#r14-memory-quota-exceeded).
 
+After around 1 hour with no requests, heroku will put the app in an idle state to save resources. The first request that wakes it from this state will have a long response time.
+
 ## Alternative hosting
 
 Another good hosting option would be [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/). This would require making changes to the DataSource.groovy file.

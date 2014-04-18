@@ -1,9 +1,6 @@
 
 import User
 import Util
-import Team
-import Trip
-import Profile
 
 class DashboardController {
 
@@ -23,6 +20,10 @@ class DashboardController {
 			def map = [user: currentUser, error: errMsg, msg: msg]
 			render(view: 'dash', model: map)
 		}
+	}
+	
+	User getCurrentUser(){
+		return Util.getCurrentUser();
 	}
 	
 	int maxTripDay() {

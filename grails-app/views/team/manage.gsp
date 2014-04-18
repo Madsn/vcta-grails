@@ -28,33 +28,45 @@
 			</div>
 		</div>
 		<div class="col-md-7">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Pending invitations</h3>
+			<g:if test="${SettingsController.manageAllowed()}">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					<h3 class="panel-title">Disband</h3>
+					</div>
+					<div class="panel-body">
+						<h2>WARNING: This will delete the team, leaving all members without a team.</h2>
+						<g:link controller="team" action="delete" id="${user.team?.id}">
+							<input type="button" value="Disband team"
+									class="btn btn-danger" />
+						</g:link>
+					</div>
 				</div>
-				<div class="panel-body">
-					<g:if test="${user.team.pendingInvitations.size() > 0}">
-						<table class="table table-striped table-hover">
-							<thead>
-								<tr>
-									<th>User</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<g:each var="invitation" in="${user.team.pendingInvitations }">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Pending invitations</h3>
+					</div>
+					<div class="panel-body">
+						<g:if test="${user.team.pendingInvitations.size() > 0}">
+							<table class="table table-striped table-hover">
+								<thead>
 									<tr>
-										<g:render template="pending_invitations" bean="${invitation}"
-											var="invitation" />
+										<th>User</th>
+										<th></th>
 									</tr>
-								</g:each>
-							</tbody>
-						</table>
-					</g:if>
-					<g:if test="${user.team.pendingInvitations.size() == 0}">
-						<p>No invitations awaiting response.</p>
-					</g:if>
-					<g:if test="${SettingsController.manageAllowed()}">
+								</thead>
+								<tbody>
+									<g:each var="invitation" in="${user.team.pendingInvitations }">
+										<tr>
+											<g:render template="pending_invitations" bean="${invitation}"
+												var="invitation" />
+										</tr>
+									</g:each>
+								</tbody>
+							</table>
+						</g:if>
+						<g:if test="${user.team.pendingInvitations.size() == 0}">
+							<p>No invitations awaiting response.</p>
+						</g:if>
 						<div class="invitebutton">
 							<button onclick="$('.invitationform').show();$(this).hide();"
 								class="btn btn-primary">Invite a user</button>
@@ -76,9 +88,9 @@
 								</fieldset>
 							</g:form>
 						</div>
-					</g:if>
+					</div>
 				</div>
-			</div>
+			</g:if>
 		</div>
 	</div>
 	<div class="row">

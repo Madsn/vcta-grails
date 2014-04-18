@@ -36,12 +36,12 @@ class TeamController {
 		def currentUser = Util.getCurrentUser()
 		def teamName = params.name
 		if (teamName.size() < 4){
-			render(view: 'dashboard', model: ['error': 'Name must be at least 4 characters'])
+			redirect(controller: 'dashboard', params: ['error': 'Team name must be at least 4 characters'])
 		} else if (teamService.findByName(teamName) != null) {
-			render(view: 'dashboard', model: ['error': 'Team with that name already exists'])
+			redirect(controller: 'dashboard', params: ['error': 'Team with that name already exists'])
 		} else {
 			teamService.create(teamName, currentUser)
-			redirect (controller:'dashboard')
+			redirect (controller:'dashboard', params: ['msg': 'Team created'])
 		}
 	}
 
