@@ -40,7 +40,7 @@
 						<g:form controller="team" action="delete" id="${user.team?.id}">
     						<button class="btn btn-danger" type="button" data-toggle="modal"
     						 data-target="#confirmDelete" data-title="Disband team" 
-    						 data-message="Are you sure you wish to disband this team, removing all members from it? You may want to transfer leadership and simply leave the team instead.">
+    						 data-message="Are you sure you wish to disband this team, removing all members from it? If you just want to leave the team, you can do this after transferring leadership to another member.">
         					<i class="glyphicon glyphicon-trash"></i> Disband
     						</button>
 						</g:form>

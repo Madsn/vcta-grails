@@ -1,11 +1,17 @@
 vcta-grails
 ===========
 
-## TODO
+## TODO / wish list
 
+- Inline editing of trips.
 - Figure out how best to handle group minimum of 5.. Perhaps exclude the group from the team scoreboard if less than 5 members?
-- Performance: Calculate scoreboard state once daily instead of on each page load.
-- Inline editing of trips
+- Admin interface for managing groups
+- "Freeze" feature. Allow admin to freeze all changes, i.e. no editing/adding trips and no signups.
+- Admin interface for setting welcome/login messages that are loaded dynamically.
+- Calculate scoreboard state once daily instead of on each page load.
+- Fetch latest workouts from endomondo and allow users to import a workout as a trip.
+- Comparison of team/individual stats with the official VCTA.
+- Refactoring/cleanup, especially in `/views`.
 
 ## Getting started on development
 
