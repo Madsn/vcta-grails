@@ -9,15 +9,7 @@ class DashboardController {
 		if (currentUser == null){
 			redirect uri: '/login'
 		} else {
-			def errMsg = ""
-			if (params.error != null){
-				errMsg = params.error
-			}
-			def msg = ""
-			if (params.msg != null){
-				msg = params.msg
-			}
-			def map = [user: currentUser, error: errMsg, msg: msg]
+			def map = [user: currentUser, error: params.error, msg: params.msg]
 			render(view: 'dash', model: map)
 		}
 	}

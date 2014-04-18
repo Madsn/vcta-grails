@@ -28,13 +28,13 @@
 					<div class="panel-body">
 						<g:if test="${user.team?.leader == user}">
 							<p>As team captain, you are able to perform a few management
-								tasks, e.g.:
+								tasks, e.g.:</p>
 							<ul>
 								<li>Invite users to join your team</li>
 								<li>Remove users from the team</li>
 								<li>Transfer team leadership to another user</li>
 							</ul>
-							<b>Team management will be disabled</b> shortly after the
+							<p><b>Team management will be disabled</b> shortly after the
 							official start of the competition (may 1st). Be sure to complete
 							all team management tasks prior to that date.
 							</p>
@@ -67,6 +67,11 @@
 							<p>You currently have no team invitations</p>
 						</g:if>
 						<g:if test="${user.invitations.size() > 0 }">
+							<g:if test="${user.team != null}">
+							<div class="alert alert-danger">
+								Accepting an invitation to another team will cause you to leave your current team.
+							</div>
+							</g:if>
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>

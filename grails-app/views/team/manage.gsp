@@ -29,16 +29,18 @@
 		</div>
 		<div class="col-md-7">
 			<g:if test="${SettingsController.manageAllowed()}">
-				<div class="panel panel-default">
+				<div class="panel panel-danger">
 					<div class="panel-heading">
 					<h3 class="panel-title">Disband</h3>
 					</div>
 					<div class="panel-body">
-						<h2>WARNING: This will delete the team, leaving all members without a team.</h2>
-						<g:link controller="team" action="delete" id="${user.team?.id}">
+						<p>Remove all team members and delete the team. Can not be undone.</p>
+						<div style="text-align: center;">
+							<g:link controller="team" action="delete" id="${user.team?.id}">
 							<input type="button" value="Disband team"
 									class="btn btn-danger" />
-						</g:link>
+							</g:link>
+						</div>
 					</div>
 				</div>
 				<div class="panel panel-default">
@@ -68,8 +70,10 @@
 							<p>No invitations awaiting response.</p>
 						</g:if>
 						<div class="invitebutton">
-							<button onclick="$('.invitationform').show();$(this).hide();"
-								class="btn btn-primary">Invite a user</button>
+							<div style="text-align: center;">
+								<button onclick="$('.invitationform').show();$(this).hide();"
+									class="btn btn-primary">Invite a user</button>
+							</div>
 						</div>
 						<div class="invitationform">
 							<g:form controller="invitation" action="save"

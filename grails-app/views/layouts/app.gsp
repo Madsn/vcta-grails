@@ -14,7 +14,7 @@
 	height: 10px;
 	margin: 20px auto;
 }
-.alert {
+.flash {
 	position: absolute;
 	width: 350px;
 	top: 50px;
@@ -27,12 +27,12 @@
 <body onload="${pageProperty(name:'body.onload')}">
 	<div class="alertcontainer">
 		<g:if test="${error?.length() > 0}">
-			<div class="alert alert-danger">
+			<div class="alert alert-danger flash">
 				${error }
 			</div>
 		</g:if>
 		<g:if test="${msg?.length() > 0}">
-			<div class="alert alert-info">
+			<div class="alert alert-info flash">
 				${msg }
 			</div>
 		</g:if>
@@ -48,7 +48,7 @@
 
 	</div>
 	<script type="text/javascript">
-	$('.alert').delay(1500).fadeOut(1000);
+	$('.flash').delay(1500).fadeOut(1000);
 	</script>
 </body>
 </html>
