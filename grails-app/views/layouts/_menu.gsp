@@ -15,6 +15,9 @@
 			<div class="collapse navbar-collapse" id="bs-menu-navbar-items">
 				<nav:menu scope="menu" class="nav navbar-nav"></nav:menu>
 				<ul class="nav navbar-nav navbar-right">
+					<n:isNotLoggedIn>
+						<li><g:link class="brand" uri="/login">Sign in</g:link></li>
+					</n:isNotLoggedIn>
 					<n:isLoggedIn>
 						<li><g:link class="brand" uri="/logout">Log out</g:link></li>
 					</n:isLoggedIn>
