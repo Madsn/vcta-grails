@@ -106,7 +106,7 @@
 					<div id="addtripbtn" class="pull-right">
 						<button
 							onclick="$('#addtripform').show();$('#addtripbtn').hide();"
-							class="btn btn-primary">Add a new trip</button>
+							class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add a new trip</button>
 					</div>
 					<div id="addtripform" style="display: none;">
 						<g:set var="maxday"

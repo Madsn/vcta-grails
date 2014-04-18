@@ -76,7 +76,7 @@
 						<div class="invitebutton">
 							<div style="text-align: center;">
 								<button onclick="$('.invitationform').show();$(this).hide();"
-									class="btn btn-primary">Invite a user</button>
+									class="btn btn-primary"><i class="glyphicon glyphicon-user"></i> Invite a user</button>
 							</div>
 						</div>
 						<div class="invitationform">
@@ -90,7 +90,7 @@
 											optionKey="id" />
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Send
+										<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i> Send
 											invitation</button>
 									</div>
 								</fieldset>

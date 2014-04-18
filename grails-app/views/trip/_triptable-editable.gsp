@@ -14,10 +14,10 @@
 			<tr>
 				<g:render template="/trip/triprow" bean="${trip}" var="trip" />
 				<td>
-					<g:link controller="trip" action="edit" id="${trip.id}">Edit</g:link>
+					<g:link controller="trip" action="edit" id="${trip.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>
 				</td>
 				<td>
-					<g:link controller="trip" action="delete" id="${trip.id}">Delete</g:link>
+					<g:link controller="trip" action="delete" id="${trip.id}"><i class="glyphicon glyphicon-remove"></i></g:link>
 				</td>
 			</tr>
 			</g:each>

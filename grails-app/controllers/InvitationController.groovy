@@ -51,6 +51,10 @@ class InvitationController {
 	def dismiss(){
 		def currentUser = Util.getCurrentUser()
 		def invitation = invitationService.get(Integer.parseInt(params.id))
+		if (invitation == null){
+			redirect(controller:'dashboard', params:['error':'That invitation no longer exists'])
+			return
+		}
 
 		if (currentUser == invitation.invitee || currentUser == invitation.team.leader){
 			if (currentUser == invitation.team.leader){
