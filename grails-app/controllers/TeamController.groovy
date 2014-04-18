@@ -1,7 +1,7 @@
 import Util
 
 class TeamController {
-	
+
 	def teamService
 	def userService
 	def invitationService
@@ -9,12 +9,12 @@ class TeamController {
 	def create(){
 		render(view: 'create')
 	}
-	
+
 	def show(){
 		def team = teamService.get(Integer.parseInt(params.id))
 		render(view: 'teaminfo', model: [team: team])
 	}
-	
+
 	def manage(){
 		if (!SettingsController.manageAllowed()){
 			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
@@ -23,10 +23,8 @@ class TeamController {
 		def currentUser = Util.getCurrentUser()
 		if (currentUser.team?.leader == currentUser){
 			def users = userService.getAll()
-			currentUser.team?.users.each {
-				users.remove(it)
-			}
-			render(view: 'manage', model: [user: currentUser, users: users])
+			currentUser.team?.users.each { users.remove(it) }
+			render(view: 'manage', model: [user: currentUser, users: users, error: params.error, msg: params.msg])
 		} else {
 			redirect(controller:'dashboard', params: ['error': 'Only the team captain can manage a team'])
 		}
@@ -62,11 +60,13 @@ class TeamController {
 		def team = teamService.get(Integer.parseInt(params.teamid))
 		if (userToRemove == team.leader){
 			redirect (controller:'team', action:'manage', params: ['error': 'You can\'t remove the leader from the group, appoint a new leader first'])
-		} else if (currentUser != userToRemove && currentUser != team.leader){
-			redirect(controller:'dashboard', params: ['error': 'Only the leader can remove team members'])
-		} else {
+		} else if (currentUser == userToRemove){
 			teamService.removeFromUsers(userToRemove, team)
-			redirect (controller:'team', action:'manage')
+			redirect (controller:'dashboard')
+		} else if (currentUser == team.leader){
+			redirect (controller:'team', action:'manage', params: [msg: 'User removed from team'])
+		} else {
+			redirect(controller:'dashboard', params: ['error': 'Only the leader can remove team members'])
 		}
 	}
 

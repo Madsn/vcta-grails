@@ -34,9 +34,10 @@
 								<li>Remove users from the team</li>
 								<li>Transfer team leadership to another user</li>
 							</ul>
-							<p><b>Team management will be disabled</b> shortly after the
-							official start of the competition (may 1st). Be sure to complete
-							all team management tasks prior to that date.
+							<p>
+								<b>Team management will be disabled</b> shortly after the
+								official start of the competition (may 1st). Be sure to complete
+								all team management tasks prior to that date.
 							</p>
 							<g:link controller="team" action="manage" id="${user.team?.id}">
 								<input type="button" value="Open team management page"
@@ -45,16 +46,32 @@
 						</g:if>
 						<g:else>
 							<p>Team management is available until the competition
-								officially starts, allowing users to form teams. The captain
-								of a team can invite other users to join their team.</p>
-							<div id="createteambtn" class="pull-right">
-								<button
-									onclick="$('#createteamform').show();$('#createteambtn').hide();"
-									class="btn btn-primary">Create a team</button>
-							</div>
-							<div id="createteamform" style="display: none;">
-								<g:render template="/team/createform"/>
-							</div>
+								officially starts, allowing users to form teams. The captain of
+								a team can invite other users to join their team.</p>
+							<g:if test="${user.team != null}">
+								<g:render template="/team/confirmbox" />
+								<div class="pull-right">
+									<g:form controller="team" action="removefromteam"
+										params="[userid: user.id, teamid: user.team.id]">
+										<button class="btn btn-danger" type="button"
+											data-toggle="modal" data-target="#confirmDelete"
+											data-title="Leave team"
+											data-message="Are you sure you wish to leave this team?"
+    						 				data-confirm="Leave team">
+											Leave current team</button>
+									</g:form>
+								</div>
+							</g:if>
+							<g:else>
+								<div id="createteambtn" class="pull-right">
+									<button
+										onclick="$('#createteamform').show();$('#createteambtn').hide();"
+										class="btn btn-primary">Create a team</button>
+								</div>
+								<div id="createteamform" style="display: none;">
+									<g:render template="/team/createform" />
+								</div>
+							</g:else>
 						</g:else>
 					</div>
 				</div>
@@ -68,9 +85,8 @@
 						</g:if>
 						<g:if test="${user.invitations.size() > 0 }">
 							<g:if test="${user.team != null}">
-							<div class="alert alert-danger">
-								Accepting an invitation to another team will cause you to leave your current team.
-							</div>
+								<div class="alert alert-danger">Accepting an invitation to
+									another team will cause you to leave your current team.</div>
 							</g:if>
 							<table class="table table-striped table-hover">
 								<thead>
@@ -96,6 +112,7 @@
 			</g:if>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -106,7 +123,9 @@
 					<div id="addtripbtn" class="pull-right">
 						<button
 							onclick="$('#addtripform').show();$('#addtripbtn').hide();"
-							class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add a new trip</button>
+							class="btn btn-primary">
+							<i class="glyphicon glyphicon-plus"></i> Add a new trip
+						</button>
 					</div>
 					<div id="addtripform" style="display: none;">
 						<g:set var="maxday"

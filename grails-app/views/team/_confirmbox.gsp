@@ -11,7 +11,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" id="confirm">Disband</button>
+        <button type="button" class="btn btn-danger modal-confirm" id="confirm">Confirm</button>
       </div>
     </div>
   </div>
@@ -24,6 +24,8 @@
       $(this).find('.modal-body p').text($message);
       $title = $(e.relatedTarget).attr('data-title');
       $(this).find('.modal-title').text($title);
+      $title = $(e.relatedTarget).attr('data-confirm');
+      $(this).find('.modal-confirm').text($title);
 
       // Pass form reference to modal for submission on yes/ok
       var form = $(e.relatedTarget).closest('form');

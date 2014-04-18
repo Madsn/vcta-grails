@@ -35,6 +35,10 @@ class InvitationController {
 	def save(){
 		def currentUser = Util.getCurrentUser()
 		def invitingTeam = currentUser.team
+		if (params.userid == null){
+			redirect(controller:'team', action:'manage', params:['error':'Invalid user'])
+			return
+		}
 		def invitee = userService.get(Integer.parseInt(params.userid))
 
 		if (currentUser != invitingTeam.leader){
