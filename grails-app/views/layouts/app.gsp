@@ -5,6 +5,9 @@
 <title><g:layoutTitle default="Systematic cykler til arbejde" /></title>
 <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" /> 
 <g:javascript library="jquery" plugin="jquery" />
+<!--[if lt IE 9]>
+<g:javascript library="legacy-support"/>
+<![endif]-->
 <r:require module="bootstrap3" />
 <g:layoutHead />
 <r:layoutResources />
