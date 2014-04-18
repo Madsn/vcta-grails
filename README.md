@@ -4,6 +4,7 @@ vcta-grails
 ## TODO / wish list
 
 - Inline editing of trips.
+- Account management access from menu (views already exist, we just need a dropdown in the menu next to "log out")
 - Figure out how best to handle group minimum of 5.. Perhaps exclude the group from the team scoreboard if less than 5 members?
 - Admin interface for managing groups
 - "Freeze" feature. Allow admin to freeze all changes, i.e. no editing/adding trips and no signups.
