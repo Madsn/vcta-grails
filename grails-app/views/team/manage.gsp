@@ -35,11 +35,15 @@
 					</div>
 					<div class="panel-body">
 						<p>Remove all team members and delete the team. Can not be undone.</p>
+						<g:render template="/team/confirmbox" />
 						<div style="text-align: center;">
-							<g:link controller="team" action="delete" id="${user.team?.id}">
-							<input type="button" value="Disband team"
-									class="btn btn-danger" />
-							</g:link>
+						<g:form controller="team" action="delete" id="${user.team?.id}">
+    						<button class="btn btn-danger" type="button" data-toggle="modal"
+    						 data-target="#confirmDelete" data-title="Disband team" 
+    						 data-message="Are you sure you wish to disband this team, removing all members from it? You may want to transfer leadership and simply leave the team instead.">
+        					<i class="glyphicon glyphicon-trash"></i> Disband
+    						</button>
+						</g:form>
 						</div>
 					</div>
 				</div>
