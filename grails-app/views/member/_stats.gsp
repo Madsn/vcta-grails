@@ -3,6 +3,12 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td>Full name</td>
+			<td>
+				${user.getFullName()}
+			</td>
+		</tr>
+		<tr>
 			<td>Total distance</td>
 			<td><g:formatNumber number="${user.getTotalKm() }" format="0.00" />
 				km</td>

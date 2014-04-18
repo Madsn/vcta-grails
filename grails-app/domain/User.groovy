@@ -38,4 +38,12 @@ class User extends grails.plugin.nimble.core.UserBase {
 		}
 		return user
 	}
+	
+	public String getFullName() {
+		if (this.profile?.fullName){
+			return this.profile.fullName
+		} else {
+			return ""
+		}
+	}
 }
