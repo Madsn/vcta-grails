@@ -3,10 +3,12 @@
 <html>
 <head>
 <title><g:layoutTitle default="Systematic cykler til arbejde" /></title>
-<link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" /> 
+<link rel="shortcut icon"
+	href="${createLinkTo(dir:'images',file:'favicon.ico')}"
+	type="image/x-icon" />
 <g:javascript library="jquery" plugin="jquery" />
 <r:require module="chosen" />
-<r:require module="legacy-support"/>
+<r:require module="legacy-support" />
 <r:require module="bootstrap3" />
 <g:layoutHead />
 <r:layoutResources />
@@ -17,6 +19,7 @@
 	height: 10px;
 	margin: 20px auto;
 }
+
 .flash {
 	position: absolute;
 	width: 350px;
@@ -24,6 +27,18 @@
 	left: 50%;
 	margin-left: -175px;
 	text-align: center;
+}
+
+:-ms-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+::-webkit-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+.placeholder {
+	color: rgb(186, 186, 186);
 }
 </style>
 </head>
@@ -59,5 +74,10 @@
 			disable_search_threshold: 2
 		});
 	</script>
+	<!-- if lt ie9 >
+	<script>
+		$('input, textarea').placeholder();	
+	</script>
+	<!endif -->
 </body>
 </html>

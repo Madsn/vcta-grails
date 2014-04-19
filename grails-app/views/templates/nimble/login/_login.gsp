@@ -7,8 +7,21 @@
 <g:javascript library="jquery" plugin="jquery" />
 <r:require modules="bootstrap3" />
 <r:require modules="login-css" />
-<r:require module="legacy-support"/>
+<r:require module="legacy-support" />
 <r:layoutResources />
+<style>
+:-ms-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+::-webkit-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+.placeholder {
+	color: rgb(186, 186, 186);
+}
+</style>
 </head>
 <body>
 	<g:render template="/layouts/menu" />
@@ -26,16 +39,17 @@
 			</div>
 			<div style="text-align: center; margin-bottom: 3px;">-- OR --</div>
 
-			<g:form controller="auth" action="signin" method="post" name="login-form"
-				id="login-form" role="form">
+			<g:form controller="auth" action="signin" method="post"
+				name="login-form" id="login-form" role="form">
 				<div class="login-input">
 					<div class="form-group">
-						<input type="hidden" name="targetUri" value="/main/index">
-						<input type="text" name="username" id="username"
+						<label class="sr-only" for="username">Username</label> <input
+							type="text" name="username" id="username"
 							placeholder="user@example.com">
 					</div>
 					<div class="form-group">
-						<input type="password" name="password" id="password"
+						<label class="sr-only" for="password">Password</label> <input
+							type="password" name="password" id="password"
 							placeholder="password">
 					</div>
 				</div>
@@ -44,16 +58,21 @@
 						<label class="" style="display: inline-block;"> <input
 							type="checkbox" name="rememberme"> Stay logged in?
 						</label>
-						<button type="submit" class="pull-right btn btn-primary">Sign in</button>
+						<button type="submit" class="pull-right btn btn-primary">Sign
+							in</button>
 					</div>
 				</div>
 				<div class="login-options border-top">
 					<h4>Forgotten password ?</h4>
-					Click here to <g:link uri="forgottenpassword" style="text-transform: lowercase;"> Reset password </g:link>
+					Click here to
+					<g:link uri="forgottenpassword" style="text-transform: lowercase;"> Reset password </g:link>
 				</div>
 			</g:form>
 		</div>
 	</div>
-<r:layoutResources/>
+	<r:layoutResources />
+	<script>
+		$('input, textarea').placeholder();
+	</script>
 </body>
 </html>

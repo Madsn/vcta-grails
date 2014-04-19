@@ -14,9 +14,10 @@ modules = {
 	}
 	
 	'legacy-support' { // IE8
-		wrapper: {s-> "<!-- if lt ie9>$s<!endif-->"}
+		wrapper: {s-> "<!-- if lt ie10>$s<!endif-->"}
 		resource url:'js/html5shiv.js'
 		resource url:'js/respond.min.js'
+		resource url:'js/jquery.placeholder.js'
 	}
 	
 	'chosen' { // http://harvesthq.github.io/chosen/
