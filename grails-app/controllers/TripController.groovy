@@ -12,7 +12,10 @@ class TripController {
 	
 	def save() {
 		def currentUser = Util.getCurrentUser()
-
+		if (params.distanceKm == ""){
+			redirect (controller:'dashboard', params: ['error': "Invalid distance"])
+			return
+		}
 		def today = new Date()
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)

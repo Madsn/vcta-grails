@@ -14,7 +14,8 @@ modules = {
 	}
 	
 	'legacy-support' { // IE8
-		resource url:'js/html5shiv.min.js'
+		wrapper: {s-> "<!-- if lt ie9>$s<!endif-->"}
+		resource url:'js/html5shiv.js'
 		resource url:'js/respond.min.js'
 	}
 	
@@ -22,6 +23,5 @@ modules = {
 		dependsOn: 'jquery'
 		resource url:'chosen/chosen.min.css'
 		resource url:'chosen/chosen.jquery.js'
-		resource url:'chosen/chosen-sprite.png'
 	}
 }

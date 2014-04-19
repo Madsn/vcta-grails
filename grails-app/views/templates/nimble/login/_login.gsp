@@ -6,6 +6,7 @@
 <meta name="layout" content="app" />
 <r:require modules="bootstrap3" />
 <r:require modules="login-css" />
+<r:require module="legacy-support"/>
 <r:layoutResources />
 </head>
 <body>
@@ -19,7 +20,7 @@
 				<h4>Don't have an account yet ?</h4>
 				Create a new account
 				<g:link controller="account" action="createuser">
-                Signup
+                Sign up
             </g:link>
 			</div>
 			<div style="text-align: center; margin-bottom: 3px;">-- OR --</div>

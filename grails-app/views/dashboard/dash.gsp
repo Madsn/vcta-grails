@@ -39,10 +39,9 @@
 								official start of the competition (may 1st). Be sure to complete
 								all team management tasks prior to that date.
 							</p>
-							<g:link controller="team" action="manage" id="${user.team?.id}">
-								<input type="button" value="Open team management page"
-									class="btn btn-primary pull-right" />
-							</g:link>
+							<button class="btn btn-primary pull-right" onClick="window.location = '/team/manage/${user.team?.id}' ">
+								Open team management page
+							</button>
 						</g:if>
 						<g:else>
 							<p>Team management is available until the competition
