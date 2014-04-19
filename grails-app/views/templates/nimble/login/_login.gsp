@@ -4,6 +4,7 @@
 <head>
 <title>Login</title>
 <meta name="layout" content="app" />
+<g:javascript library="jquery" plugin="jquery" />
 <r:require modules="bootstrap3" />
 <r:require modules="login-css" />
 <r:require module="legacy-support"/>
