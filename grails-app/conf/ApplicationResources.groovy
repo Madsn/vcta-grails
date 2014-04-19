@@ -17,4 +17,11 @@ modules = {
 		resource url:'js/html5shiv.min.js'
 		resource url:'js/respond.min.js'
 	}
+	
+	'chosen' { // http://harvesthq.github.io/chosen/
+		dependsOn: 'jquery'
+		resource url:'chosen/chosen.min.css'
+		resource url:'chosen/chosen.jquery.js'
+		resource url:'chosen/chosen-sprite.png'
+	}
 }

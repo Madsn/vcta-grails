@@ -53,6 +53,12 @@
 	</div>
 	<script type="text/javascript">
 	$('.flash').delay(1500).fadeOut(1000);
+	$(".chosen-select").chosen({
+			width: '100%',
+			disable_search: false,
+			search_contains: true,
+			disable_search_threshold: 2
+		});
 	</script>
 </body>
 </html>
