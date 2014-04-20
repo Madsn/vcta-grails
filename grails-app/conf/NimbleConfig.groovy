@@ -47,7 +47,7 @@ nimble {
 			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
 			host = "smtp.mandrillapp.com"
 			port = 587
-			username = System.env.DATABASE_URL?:"app24243842@heroku.com"
+			username = System.env.MANDRILL_USERNAME?:"app24243842@heroku.com"
 			password = System.env.MANDRILL_APIKEY?:"bLdBfOSCJFQ6qhXerkEzwQ" // The default is a test key, no emails will be sent unless a proper key is provided in ENV
 			props = [
 				"mail.smtp.protocol":"smtps",
