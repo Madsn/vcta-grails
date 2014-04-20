@@ -37,22 +37,24 @@ nimble {
 	}
 
 	messaging {
-		enabled = false
+		enabled = true
 
 		registration { subject = "Your new account is ready!" }
 		passwordreset { subject = "Your password has been reset" }
 		changeemail { subject = "Your email address has been changed" }
 
 		mail {
-			from = "App <app@company.com>"
-			host = ""
-			port = 25
-			username = ""
-			password = ""
-			props = ["mail.smtp.auth": "false",
-				"mail.smtp.socketFactory.port": "25",
-				"mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
-				"mail.smtp.socketFactory.fallback": "false"]
+			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
+			host = "smtp.mandrillapp.com"
+			port = 587
+			username = System.env.DATABASE_URL?:"app24243842@heroku.com"
+			password = System.env.MANDRILL_APIKEY?:"bLdBfOSCJFQ6qhXerkEzwQ" // The default is a test key, no emails will be sent unless a proper key is provided in ENV
+			props = [
+				"mail.smtp.protocol":"smtps",
+                "mail.smtp.channel":"plain",
+                "mail.smtp.auth":"true",
+                "mail.debug":"false"
+				]
 		}
 	}
 

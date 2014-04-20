@@ -28,9 +28,10 @@ vcta-grails
 [Grails deployment on heroku](https://devcenter.heroku.com/articles/getting-started-with-grails#set-up-the-database)
 
 1. Install heroku toolbelt
-2. `heroku create vcta-2014 --region eu`
+2. `heroku create APP_NAME_HERE --region eu`
 3. `heroku addons:add heroku-postgresql`
-4. `heroku addons:add pgbackups:auto-month` requires CC info is entered for heroku account
+4. `heroku addons:add mandrill` - this is the mail provider. Attaching mandrill to the app will automatically create the environment variables needed for e-mail sending to work
+5. (optional - postgresql backups) `heroku addons:add pgbackups:auto-month` requires CC info is entered for heroku account
 
 Deploy with `git push heroku master`
 
