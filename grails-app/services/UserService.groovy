@@ -7,7 +7,7 @@ class UserService extends grails.plugin.nimble.core.UserService {
 	
 	User getAdmin() {
 		if(this.adminIndex < 0){
-			this.adminIndex = User.findByUsername('admin').id
+			this.adminIndex = User.findByUsername('ADMIN').id
 			log.info 'UserService.getAdmin() - Refreshing admin index'
 		} else {
 			log.info 'UserService.getAdmin() - Using existing admin index'

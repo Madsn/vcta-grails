@@ -64,11 +64,11 @@ class NimbleBootStrap {
 //			}
 //		}
 
-		if(!UserBase.findByUsername("admin")) {
+		if(!UserBase.findByUsername("ADMIN")) {
 			// Create example Administrative account
 			def admins = Role.findByName(AdminsService.ADMIN_ROLE)
 			def admin = InstanceGenerator.user(grailsApplication)
-			admin.username = "admin"
+			admin.username = "ADMIN"
 			admin.pass = "admiN123!"
 			admin.passConfirm = "admiN123!"
 			admin.enabled = true
