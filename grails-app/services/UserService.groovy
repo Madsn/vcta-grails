@@ -2,6 +2,18 @@ import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 class UserService extends grails.plugin.nimble.core.UserService {
+	
+	private int adminIndex = -1
+	
+	User getAdmin() {
+		if(this.adminIndex < 0){
+			this.adminIndex = User.findByUsername('admin').id
+			log.info 'UserService.getAdmin() - Refreshing admin index'
+		} else {
+			log.info 'UserService.getAdmin() - Using existing admin index'
+		}
+		return User.get(this.adminIndex)
+	}
 
 	void setTeam(Team team, User user){
 		user.team = team
@@ -44,6 +56,8 @@ class UserService extends grails.plugin.nimble.core.UserService {
 	}
 
 	List<User> getAll(){
-		User.getAll()
+		def users = User.getAll()
+		users.remove(this.getAdmin())
+		return users
 	}
 }
