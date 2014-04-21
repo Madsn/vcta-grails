@@ -25,9 +25,29 @@ import org.apache.shiro.authc.UsernamePasswordToken
 /**
  * @author Bradley Beddoes
  */
-class AuthController extends grails.plugin.nimble.core.AuthController {
+class AuthController {
 
-	@Override
+	private static final String TARGET = 'grails.plugin.nimble.controller.AuthController.TARGET'
+
+	def shiroSecurityManager
+	def userService
+
+	static Map allowedMethods = [ signin: 'POST' ]
+
+	static defaultAction = 'list'
+
+	def login(String targetUri, String username, String rememberMe) {
+		def local = nimbleConfig.localusers.authentication.enabled
+		def registration = nimbleConfig.localusers.registration.enabled
+
+		if(targetUri) {
+			session.setAttribute(AuthController.TARGET, targetUri)
+		}
+
+		render(template: "/templates/nimble/login/login",
+		       model: [local: local, registration: registration, username: username, rememberMe: (rememberMe != null), targetUri: targetUri])
+	}
+
 	def signin(String username, String password, String rememberme) {
 		def authToken = new UsernamePasswordToken(username.toUpperCase(), password)
 
@@ -80,4 +100,23 @@ class AuthController extends grails.plugin.nimble.core.AuthController {
 		redirect(action: 'login')
 	}
 
+	def logout() { signout() }
+
+	def signout() {
+		log.info("Signing out user ${authenticatedUser?.username}")
+
+		if(userService.events["logout"]) {
+			log.info("Executing logout callback")
+			userService.events["logout"](authenticatedUser)
+		}
+
+		SecurityUtils.subject?.logout()
+		redirect(uri: '/')
+	}
+
+	def unauthorized() { response.sendError(403) }
+
+	private getNimbleConfig() {
+		grailsApplication.config.nimble
+	}
 }
