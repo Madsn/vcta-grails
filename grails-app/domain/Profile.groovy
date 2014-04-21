@@ -3,10 +3,6 @@
 
 class Profile extends grails.plugin.nimble.core.ProfileBase {
 	
-	def beforeValidate() {
-		this.nickName = this.nickName?.toUpperCase()
-	}
-
 	// Extend ProfileBase with your custom values here
 	static constraints = {
 		fullName(nullable: true, blank: false)
