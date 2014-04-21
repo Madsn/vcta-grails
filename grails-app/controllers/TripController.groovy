@@ -12,14 +12,18 @@ class TripController {
 	
 	def save() {
 		def currentUser = Util.getCurrentUser()
+		def dayOfMonth = Integer.parseInt(params.dayofmonth)
 		if (params.distanceKm == ""){
 			redirect (controller:'dashboard', params: ['error': "Invalid distance"])
+			return
+		} else if (dayOfMonth > 31 || dayOfMonth < 1) {
+			redirect (controller:'dashboard', params: ['error': "Invalid day of month"])
 			return
 		}
 		def today = new Date()
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
-		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth) % 31)
+		def tripDate = new Date(currentYear, 5, dayOfMonth)
 		def trip = new Trip()
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
@@ -37,7 +41,7 @@ class TripController {
 		
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
-		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth) % 31)
+		def tripDate = new Date(currentYear, 5, Integer.parseInt(params.dayofmonth))
 
 		def trip = tripService.get(Integer.parseInt(params.id))
 		trip.setDate(tripDate)
