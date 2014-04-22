@@ -13,7 +13,7 @@
 	<h3>VCTA</h3>
 	<p>First off, what is VCTA? "<b>V</b>i <b>C</b>ykler <b>T</b>il <b>A</b>rbejde" is a <emph>bike-to-work</emph> 
 	month-long competition running in May every year, with teams and individuals competing	to see who rides their 
-	bikes to work most often and the furthest distance. The employees association has chosen to do our own VCTA 
+	bikes to work most often and the furthest distance. The employees club has chosen to do our own VCTA 
 	rather than take part in the <a href="http://www.vcta.dk">official one</a>, using the money which would have 
 	gone to sign up fees, to buy better prizes. We are also modifying the rules a bit, allowing for other means of non-motorized transportation.</p>
 	<h4>Prizes</h4>
@@ -32,7 +32,7 @@
 	</ol>
 	<h3>General rules</h3>
 	<ol>
-		<li>Participants must be members of the Systematic employee association</li>
+		<li>Participants must be members of the Systematic employees club</li>
 		<li>No motorized methods of transportation</li>
 		<li>No being pulled by kite/dog/cat/car/motorcycle/etc</li>
 		<li>Permitted means of transportation include:
