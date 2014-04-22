@@ -11,10 +11,6 @@ class User extends grails.plugin.nimble.core.UserBase {
 		invitations(nullable: true, blank: true)
 	}
 	
-	def beforeValidate() {
-		this.username = this.username?.toUpperCase()
-	}
-
 	static mapping = {
 		table '`user`'
 	}
