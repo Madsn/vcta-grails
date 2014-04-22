@@ -19,7 +19,7 @@
 						<li><g:link class="brand" uri="/login">Sign in</g:link></li>
 					</n:isNotLoggedIn>
 					<n:isLoggedIn>
-						<li><g:link class="brand" uri="/logout">Log out</g:link></li>
+						<li><g:link class="brand" controller="auth" action="signout">Log out</g:link></li>
 					</n:isLoggedIn>
 				</ul>
 			</div>
