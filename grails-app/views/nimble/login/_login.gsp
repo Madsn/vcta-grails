@@ -32,7 +32,7 @@
                      <div class="controls ">
                         <input type="hidden" name="targetUri" value="${targetUri}"/>
 						<label for="username">UPPERCASE!</label>
-                        <input type="text" name="username" id="username" placeholder="user@example.com">                           
+                        <input type="text" name="username" id="username" placeholder="INITIALS">                           
                      </div>
                   </div>
                   <div class="control-group">
