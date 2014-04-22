@@ -22,7 +22,6 @@
                <div class="login-input">
                   <div class="form-group">
                      <div class="controls ">                         
-                        <label for="email">Please use your employee initials</label>
                         <input type="text" id="username" name="username" value="${fieldValue(bean: user, field: 'username')}" placeholder="username"/>                                                  
                      </div>
                   </div>

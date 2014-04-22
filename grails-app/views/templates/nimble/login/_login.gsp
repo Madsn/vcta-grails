@@ -43,9 +43,9 @@
 				name="login-form" id="login-form" role="form">
 				<div class="login-input">
 					<div class="form-group">
-						<label for="username">Initials (uppercase)</label> <input
+						<label class="sr-only" for="username">Username</label> <input
 							type="text" name="username" id="username"
-							placeholder="MIKMA">
+							placeholder="username">
 					</div>
 					<div class="form-group">
 						<label class="sr-only" for="password">Password</label> <input
