@@ -31,6 +31,7 @@
                   <div class="control-group">
                      <div class="controls ">
                         <input type="hidden" name="targetUri" value="${targetUri}"/>
+						<label for="username">UPPERCASE!</label>
                         <input type="text" name="username" id="username" placeholder="user@example.com">                           
                      </div>
                   </div>
