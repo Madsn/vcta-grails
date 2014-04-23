@@ -22,6 +22,10 @@ class TripController {
 		}
 		def today = new Date()
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
+		if (distanceKm <= 0 || distanceKm > 300){
+			redirect (controller:'dashboard', params: ['error': "Unlikely or invalid distance"])
+			return
+		}
 		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
 		def tripDate = new Date(currentYear, 5, dayOfMonth)
 		def trip = new Trip()
