@@ -35,7 +35,7 @@
 
 			<div class="login-options">
 				<h4>Don't have an account yet ?</h4>
-				Create a new account
+				Create a new account - 
 				<g:link controller="account" action="createuser">
                 Sign up
             </g:link>
@@ -47,12 +47,12 @@
 				<div class="login-input">
 					<div class="form-group">
 						<label class="sr-only" for="username">Username</label> <input
-							type="text" name="username" id="username"
+							type="text" name="username" id="username" class="form-control"
 							placeholder="username">
 					</div>
 					<div class="form-group">
 						<label class="sr-only" for="password">Password</label> <input
-							type="password" name="password" id="password"
+							type="password" name="password" id="password" class="form-control"
 							placeholder="password">
 					</div>
 				</div>
