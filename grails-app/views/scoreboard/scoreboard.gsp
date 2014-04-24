@@ -15,19 +15,31 @@
 			href="javascript:changeTab(0);">Individuals</a></li>
 	</ul>
 	<br />
-	<g:if test="${page == 'users'}">
-		<g:javascript>changeTab(0);</g:javascript>
-	</g:if>
-	<g:if test="${page == 'teams'}">
-		<g:javascript>changeTab(1);</g:javascript>
-	</g:if>
 	<g:if test="${span != null}">
 		<g:javascript>
 			$(function() {
 				 $(".sorted")[0].children[0].innerHTML += " <span class='${span}'></span>"
 				});
 		</g:javascript>
+		<g:if test="${page == 'teams'}">
+			<g:javascript>changeTab(1);</g:javascript>
+			<g:set var="teamvals" value="${teams}" />
+			<g:set var="uservals"
+				value="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+		</g:if>
+		<g:else>
+			<g:javascript>changeTab(0);</g:javascript>
+			<g:set var="uservals" value="${users}" />
+			<g:set var="teamvals"
+				value="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+		</g:else>
 	</g:if>
+	<g:else>
+		<g:set var="teamvals"
+			value="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+		<g:set var="uservals"
+			value="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+	</g:else>
 	<div class="row">
 		<div class="col-md-12">
 			<div id="teams">
@@ -45,12 +57,12 @@
 								defaultOrder="desc" action="teams" />
 							<g:sortableColumn property="averageKm" title="Km/members"
 								defaultOrder="desc" action="teams" />
-							<g:sortableColumn property="team-cyclingDays" title="Cycling days"
-								defaultOrder="desc" action="teams" />
+							<g:sortableColumn property="team-cyclingDays"
+								title="Cycling days" defaultOrder="desc" action="teams" />
 						</tr>
 					</thead>
 					<tbody>
-						<g:each var="team" in="${teams}" status="i">
+						<g:each var="team" in="${teamvals}" status="i">
 							<g:render template="teams" model="[team: team, i: i]" />
 						</g:each>
 					</tbody>
@@ -72,7 +84,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<g:each var="user" in="${users}" status="i">
+						<g:each var="user" in="${uservals}" status="i">
 							<g:render template="users" model="[user: user, i: i]" />
 						</g:each>
 					</tbody>

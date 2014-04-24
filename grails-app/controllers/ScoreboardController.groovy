@@ -48,6 +48,7 @@ class ScoreboardController {
 
 	def teams(){
 		def teams = teamService.getAll()
+		teams.sort{it.getAverageKm()}
 		def users = userService.getAll()
 		def sortOrder = params.order
 		def sortField = params.sort
