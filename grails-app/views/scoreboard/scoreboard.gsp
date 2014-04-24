@@ -28,18 +28,18 @@
 					<thead>
 						<tr>
 							<th></th>
-							<g:sortableColumn property="name" title="Team name" 
+							<g:sortableColumn property="name" title="Team name"
 								action="teams" />
 							<g:sortableColumn property="leader" title="Captain"
 								action="teams" />
-							<g:sortableColumn property="userCount" title="# of Members" defaultOrder="desc"
-								action="teams" />
-							<g:sortableColumn property="totalKm" title="Total km" defaultOrder="desc"
-								action="teams" />
-							<g:sortableColumn property="averageKm" title="Km/members" defaultOrder="desc"
-								action="teams" />
-							<g:sortableColumn property="cyclingDays" title="Cycling days" defaultOrder="desc"
-								action="teams" />
+							<g:sortableColumn property="userCount" title="# of Members"
+								defaultOrder="desc" action="teams" />
+							<g:sortableColumn property="totalKm" title="Total km"
+								defaultOrder="desc" action="teams" />
+							<g:sortableColumn property="averageKm" title="Km/members"
+								defaultOrder="desc" action="teams" />
+							<g:sortableColumn property="cyclingDays" title="Cycling days"
+								defaultOrder="desc" action="teams" />
 						</tr>
 					</thead>
 					<tbody>
@@ -58,37 +58,15 @@
 								title="Username" action="users" />
 							<g:sortableColumn property="team" params="[page: 'users']"
 								title="Team" action="users" />
-							<g:sortableColumn property="totalKm" params="[page: 'users']" defaultOrder="desc"
-								title="Total km" action="users" />
-							<g:sortableColumn property="cyclingDays" params="[page: 'users']" defaultOrder="desc"
-								title="Cycling days" action="users" />
+							<g:sortableColumn property="totalKm" params="[page: 'users']"
+								defaultOrder="desc" title="Total km" action="users" />
+							<g:sortableColumn property="cyclingDays" params="[page: 'users']"
+								defaultOrder="desc" title="Cycling days" action="users" />
 						</tr>
 					</thead>
 					<tbody>
-						<g:each in="${users}" status="i" var="user">
-							<tr>
-
-								<td>
-									${i + 1 }
-								</td>
-
-								<td>
-									${user.username}
-								</td>
-
-								<td>
-									${user.team?.name}
-								</td>
-
-								<td>
-									${user.getTotalKm()}
-								</td>
-
-								<td>
-									${user.getCyclingDays()}
-								</td>
-
-							</tr>
+						<g:each var="user" in="${users}" status="i">
+							<g:render template="users" model="[user: user, i: i]" />
 						</g:each>
 					</tbody>
 				</table>
