@@ -3,13 +3,29 @@
 <head>
 <title><g:message
 		code="nimble.view.account.registeraccount.initiate.title" /></title>
-<r:require modules="login-css" />
-<r:require modules="bootstrap3" />
-<r:layoutResources />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <meta name="layout" content="app" />
+<g:javascript library="jquery" plugin="jquery" />
+<r:require modules="bootstrap3" />
+<r:require modules="login-css" />
+<r:require module="legacy-support" />
+<r:layoutResources />
 <style>
 .login-content {
 margin-left: 10px;
+}
+:-ms-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+::-webkit-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+.placeholder {
+	color: rgb(186, 186, 186);
 }
 </style>
 </head>
@@ -70,5 +86,8 @@ margin-left: 10px;
 		</div>
 	</div>
 	<r:layoutResources />
+		<script>
+		$('input, textarea').placeholder();
+	</script>
 </body>
 </html>
