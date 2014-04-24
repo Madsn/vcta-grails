@@ -15,25 +15,35 @@
 			href="javascript:changeTab(0);">Individuals</a></li>
 	</ul>
 	<br />
+	<g:if test="${page == 'users'}">
+		<g:javascript>changeTab(0);</g:javascript>
+	</g:if>
+	<g:if test="${page == 'teams'}">
+		<g:javascript>changeTab(1);</g:javascript>
+	</g:if>
 	<div class="row">
 		<div class="col-md-12">
 			<div id="teams">
-				<table class="table table-striped table-hover">
+				<table class="table table-striped table-hover" id="teamtable">
 					<thead>
 						<tr>
-							<th>Rank</th>
-							<th>Team name</th>
-							<th>Captain</th>
-							<th># of Members</th>
-							<th>Total km</th>
-							<th>Km/members</th>
-							<th>Cycling days</th>
+							<th></th>
+							<g:sortableColumn property="name" title="Team name" 
+								action="teams" />
+							<g:sortableColumn property="leader" title="Captain"
+								action="teams" />
+							<g:sortableColumn property="userCount" title="# of Members" defaultOrder="desc"
+								action="teams" />
+							<g:sortableColumn property="totalKm" title="Total km" defaultOrder="desc"
+								action="teams" />
+							<g:sortableColumn property="averageKm" title="Km/members" defaultOrder="desc"
+								action="teams" />
+							<g:sortableColumn property="cyclingDays" title="Cycling days" defaultOrder="desc"
+								action="teams" />
 						</tr>
 					</thead>
 					<tbody>
-						<g:each var="team"
-							in="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}"
-							status="i">
+						<g:each var="team" in="${teams}" status="i">
 							<g:render template="teams" model="[team: team, i: i]" />
 						</g:each>
 					</tbody>
@@ -43,18 +53,42 @@
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
-							<th>Rank</th>
-							<th>Username</th>
-							<th>Team</th>
-							<th>Total km</th>
-							<th>Cycling days</th>
+							<th></th>
+							<g:sortableColumn property="username" params="[page: 'users']"
+								title="Username" action="users" />
+							<g:sortableColumn property="team" params="[page: 'users']"
+								title="Team" action="users" />
+							<g:sortableColumn property="totalKm" params="[page: 'users']" defaultOrder="desc"
+								title="Total km" action="users" />
+							<g:sortableColumn property="cyclingDays" params="[page: 'users']" defaultOrder="desc"
+								title="Cycling days" action="users" />
 						</tr>
 					</thead>
 					<tbody>
-						<g:each var="user"
-							in="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}"
-							status="i">
-							<g:render template="users" model="[user: user, i: i]" />
+						<g:each in="${users}" status="i" var="user">
+							<tr>
+
+								<td>
+									${i + 1 }
+								</td>
+
+								<td>
+									${user.username}
+								</td>
+
+								<td>
+									${user.team?.name}
+								</td>
+
+								<td>
+									${user.getTotalKm()}
+								</td>
+
+								<td>
+									${user.getCyclingDays()}
+								</td>
+
+							</tr>
 						</g:each>
 					</tbody>
 				</table>

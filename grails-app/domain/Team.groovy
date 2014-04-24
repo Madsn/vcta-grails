@@ -10,6 +10,10 @@ class Team extends grails.plugin.nimble.core.Group {
 		leader(nullable: true, blank: true)
 		pendingInvitations(nullable: true, blank: true)
 	}
+	
+	Integer getUserCount() {
+		return this.users.size()
+	}
 
 	Double getTotalKm() {
 		float teamTotal = 0
@@ -17,6 +21,10 @@ class Team extends grails.plugin.nimble.core.Group {
 			teamTotal += it.getTotalKm()
 		}
 		return Math.round(teamTotal * 100) / 100
+	}
+	
+	Double getAverageKm() {
+		return getTotalKm() / getUserCount()
 	}
 	
 	Integer getCyclingDays() {
