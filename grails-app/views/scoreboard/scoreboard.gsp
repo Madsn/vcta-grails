@@ -21,6 +21,13 @@
 	<g:if test="${page == 'teams'}">
 		<g:javascript>changeTab(1);</g:javascript>
 	</g:if>
+	<g:if test="${span != null}">
+		<g:javascript>
+			$(function() {
+				 $(".sorted")[0].children[0].innerHTML += " <span class='${span}'></span>"
+				});
+		</g:javascript>
+	</g:if>
 	<div class="row">
 		<div class="col-md-12">
 			<div id="teams">
@@ -34,11 +41,11 @@
 								action="teams" />
 							<g:sortableColumn property="userCount" title="# of Members"
 								defaultOrder="desc" action="teams" />
-							<g:sortableColumn property="totalKm" title="Total km"
+							<g:sortableColumn property="team-totalKm" title="Total km"
 								defaultOrder="desc" action="teams" />
 							<g:sortableColumn property="averageKm" title="Km/members"
 								defaultOrder="desc" action="teams" />
-							<g:sortableColumn property="cyclingDays" title="Cycling days"
+							<g:sortableColumn property="team-cyclingDays" title="Cycling days"
 								defaultOrder="desc" action="teams" />
 						</tr>
 					</thead>

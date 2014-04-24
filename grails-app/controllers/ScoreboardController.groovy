@@ -18,7 +18,13 @@ class ScoreboardController {
 		def sortOrder = params.order
 		def sortField = params.sort
 		def page = params.page
+		def spanClass = ""
 		if (sortOrder != null && sortField != null){
+			if (sortOrder == 'desc'){
+				spanClass += "glyphicon glyphicon-chevron-up"
+			} else {
+				spanClass += "glyphicon glyphicon-chevron-down"
+			}
 			if (sortField == "team"){
 				users.sort{ a, b ->
 					if (sortOrder == 'desc') {
@@ -37,7 +43,7 @@ class ScoreboardController {
 				}
 			}
 		}
-		render(view:'scoreboard', model: [teams: teams, users: users, page: 'users'])
+		render(view:'scoreboard', model: [teams: teams, users: users, page: 'users', span: spanClass])
 	}
 
 	def teams(){
@@ -45,8 +51,15 @@ class ScoreboardController {
 		def users = userService.getAll()
 		def sortOrder = params.order
 		def sortField = params.sort
+		sortField?.replaceAll("team-", "")
 		def page = params.page
+		def spanClass = ""
 		if (sortOrder != null && sortField != null){
+			if (sortOrder == 'desc'){
+				spanClass += "glyphicon glyphicon-chevron-down"
+			} else {
+				spanClass += "glyphicon glyphicon-chevron-up"
+			}
 			if (sortField == "leader"){
 				teams.sort{ a, b ->
 					if (sortOrder == 'desc') {
@@ -65,6 +78,6 @@ class ScoreboardController {
 				}
 			}
 		}
-		render(view:'scoreboard', model: [teams: teams, users: users, page: 'teams'])
+		render(view:'scoreboard', model: [teams: teams, users: users, page: 'teams', span: spanClass])
 	}
 }
