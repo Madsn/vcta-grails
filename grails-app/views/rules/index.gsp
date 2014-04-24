@@ -46,9 +46,9 @@
 		<li>You must be either on your way to work, or on your way home from work (or to wherever you are going after work) for the trip to count</li>
 		<li>If your work is outside the office, e.g. you have a meeting, then your place of work is wherever the meeting is</li>
 		<li>For trips using several means of transportation, you can register a trip for the non-motorized part(s), e.g. riding a bicycle to the train station</li>
-		<li>You may not register trips on sick/vacation days - sorry</li>
-		<li>If you work from home, you may register a trip that day if you go for a ride/walk - but the registered distance can not exceed the distance between your home and the office</li>
-		<li>You may register trips for work days during weekends</li>
+		<li>You may NOT register trips on sick/vacation days - sorry</li>
+		<li>You may NOT register trips weekends, national holidays etc.</li>
+		<li>If you work from home (a full day), you may register a trip that day if you take a ride/walk/other</li>
 	</ol>
 </body>
 </html>
