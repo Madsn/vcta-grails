@@ -48,14 +48,13 @@ class ScoreboardController {
 
 	def teams(){
 		def teams = teamService.getAll()
-		teams.sort{it.getAverageKm()}
 		def users = userService.getAll()
 		def sortOrder = params.order
 		def sortField = params.sort
-		sortField?.replaceAll("team-", "")
 		def page = params.page
 		def spanClass = ""
 		if (sortOrder != null && sortField != null){
+			sortField.replaceAll("team-", "")
 			if (sortOrder == 'desc'){
 				spanClass += "glyphicon glyphicon-chevron-down"
 			} else {
