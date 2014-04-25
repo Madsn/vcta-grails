@@ -54,7 +54,6 @@ class ScoreboardController {
 		def page = params.page
 		def spanClass = ""
 		if (sortOrder != null && sortField != null){
-			sortField.replaceAll("team-", "")
 			if (sortOrder == 'desc'){
 				spanClass += "glyphicon glyphicon-chevron-down"
 			} else {
@@ -69,6 +68,7 @@ class ScoreboardController {
 					}
 				}
 			}else{
+				sortField = sortField.replaceAll("team-", "")
 				teams.sort{ a, b ->
 					if (sortOrder == 'desc') {
 						b."${sortField}" <=> a."${sortField}"
