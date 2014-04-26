@@ -6,13 +6,14 @@ vcta-grails
 - Inline editing of trips.
 - Account management access from menu (views already exist, we just need a dropdown in the menu next to "log out")
 - Figure out how best to handle group minimum of 5.. Perhaps exclude the group from the team scoreboard if less than 5 members?
-- Admin interface for managing groups
+- Admin interface for managing groups (bonus: ability to randomly group individuals without a group)
 - "Freeze" feature. Allow admin to freeze all changes, i.e. no editing/adding trips and no signups.
 - Admin interface for setting welcome/login messages that are loaded dynamically.
 - Calculate scoreboard state once daily instead of on each page load.
 - Fetch latest workouts from endomondo and allow users to import a workout as a trip.
 - Comparison of team/individual stats with the official VCTA.
 - Refactoring/cleanup, especially in `/views`.
+- Replace nimble with direct apache shiro
 
 ## Getting started on development
 
