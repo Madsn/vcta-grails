@@ -8,7 +8,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<g:link uri="/" class="navbar-brand">VCTA</g:link>
+				<g:link uri="/" class="navbar-brand"><g:img dir="images" file="cykel-logo.png" /></g:link>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
