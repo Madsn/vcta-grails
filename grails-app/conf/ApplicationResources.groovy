@@ -8,6 +8,10 @@ modules = {
 		resource url:'css/bootstrap/bootstrap.min.css'
 	}
 	
+	'vcta' {
+		resource url:'css/vcta.css'
+	}
+	
 	'login-css' {
 		dependsOn: 'bootstrap3, jquery'
 		resource url:'css/nimble-login.css'

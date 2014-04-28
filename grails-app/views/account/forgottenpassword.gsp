@@ -6,6 +6,7 @@
       </title>
       <r:require modules="login-css"/>
       <r:require modules="bootstrap3" />
+	  <r:require module="vcta" />
       <r:layoutResources />
    </head>
    <body>

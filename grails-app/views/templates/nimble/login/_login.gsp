@@ -11,20 +11,8 @@
 <r:require modules="bootstrap3" />
 <r:require modules="login-css" />
 <r:require module="legacy-support" />
+<r:require module="vcta" />
 <r:layoutResources />
-<style>
-:-ms-input-placeholder {
-	color: rgb(186, 186, 186);
-}
-
-::-webkit-input-placeholder {
-	color: rgb(186, 186, 186);
-}
-
-.placeholder {
-	color: rgb(186, 186, 186);
-}
-</style>
 </head>
 <body>
 	<g:render template="/layouts/menu" />

@@ -13,37 +13,9 @@
 <r:require module="chosen" />
 <r:require module="legacy-support" />
 <r:require module="bootstrap3" />
+<r:require module="vcta" />
 <g:layoutHead />
 <r:layoutResources />
-<style type="text/css">
-.alertcontainer {
-	position: relative;
-	width: 50%;
-	height: 10px;
-	margin: 20px auto;
-}
-
-.flash {
-	position: absolute;
-	width: 350px;
-	top: 50px;
-	left: 50%;
-	margin-left: -175px;
-	text-align: center;
-}
-
-:-ms-input-placeholder {
-	color: rgb(186, 186, 186);
-}
-
-::-webkit-input-placeholder {
-	color: rgb(186, 186, 186);
-}
-
-.placeholder {
-	color: rgb(186, 186, 186);
-}
-</style>
 </head>
 <body onload="${pageProperty(name:'body.onload')}">
 	<div class="alertcontainer">
