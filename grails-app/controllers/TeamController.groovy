@@ -6,6 +6,15 @@ class TeamController {
 	def userService
 	def invitationService
 
+	def beforeInterceptor = [action: this.&manageDisabledIntercept, except: 'show']
+	
+	private manageDisabledIntercept(){
+		if (!SettingsController.manageAllowed()){
+			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
+			return
+		}
+	}
+	
 	def create(){
 		render(view: 'create')
 	}
@@ -16,10 +25,6 @@ class TeamController {
 	}
 
 	def manage(){
-		if (!SettingsController.manageAllowed()){
-			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
-			return
-		}
 		def currentUser = Util.getCurrentUser()
 		if (currentUser.team?.leader == currentUser){
 			def users = userService.getAll()

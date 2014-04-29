@@ -5,7 +5,16 @@ class InvitationController {
 	def invitationService
 	def userService
 	def teamService
-
+	
+	def beforeInterceptor = [action: this.&manageDisabledIntercept]
+	
+	private manageDisabledIntercept(){
+		if (!SettingsController.manageAllowed()){
+			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
+			return false
+		}
+	}
+	
 	def accept(){
 		def currentUser = Util.getCurrentUser()
 
