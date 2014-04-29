@@ -1,7 +1,9 @@
+
 import Util
 
 class InvitationController {
-	
+
+	def grailsApplication
 	def invitationService
 	def userService
 	def teamService
@@ -57,6 +59,15 @@ class InvitationController {
 		} else {
 			def invitation = new Invitation(team: invitingTeam, invitee: invitee)
 			invitationService.createInvitation(invitation)
+			def messageConf = grailsApplication.config.nimble.messaging
+			if(messageConf.enabled) {
+				sendMail {
+					to invitee.getProfile().email
+					from messageConf.mail.from
+					subject messageConf.invitation.subject
+					html g.render(template: "/templates/nimble/mail/invitation_email", model: [invitation: invitation]).toString()
+				}
+			}
 			redirect(controller:'team', action:'manage', params:['msg':'Invitation successfully sent'])
 		}
 	}

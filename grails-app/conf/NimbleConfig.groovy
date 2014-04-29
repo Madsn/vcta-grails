@@ -42,6 +42,7 @@ nimble {
 		registration { subject = "Your new account is ready!" }
 		passwordreset { subject = "Your password has been reset" }
 		changeemail { subject = "Your email address has been changed" }
+		invitation { subject = "You have a new team invitation" }
 
 		mail {
 			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
