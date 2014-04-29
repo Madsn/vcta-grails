@@ -5,6 +5,15 @@ class TripController {
 	def tripService
 	def userService
 	
+	def beforeInterceptor = [action: this.&frozenInterceptor]
+	
+	private frozenInterceptor(){
+		if (SettingsController.frozen()){
+			redirect(controller:'dashboard', params: ['error': 'Entry of trips has been frozen by admin.'])
+			return false
+		}
+	}
+	
 	def edit() {
 		def trip = tripService.get(Integer.parseInt(params.id))
 		render(view: 'edit', model: [trip: trip])
