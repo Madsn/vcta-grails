@@ -11,11 +11,9 @@
 <r:require modules="bootstrap3" />
 <r:require modules="login-css" />
 <r:require module="legacy-support" />
+<r:require module="vcta" />
 <r:layoutResources />
 <style>
-.login-content {
-margin-left: 10px;
-}
 :-ms-input-placeholder {
 	color: rgb(186, 186, 186);
 }

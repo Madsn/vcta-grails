@@ -18,14 +18,9 @@
 	text-align: center;
 }
 
-:-ms-input-placeholder {
-	color: rgb(186, 186, 186);
+.login-container {
+	margin-top: 80px;
 }
-
-::-webkit-input-placeholder {
-	color: rgb(186, 186, 186);
-}
-
-.placeholder {
-	color: rgb(186, 186, 186);
+.login-content {
+	margin-left: 10px;
 }

@@ -13,10 +13,23 @@
 <r:require module="legacy-support" />
 <r:require module="vcta" />
 <r:layoutResources />
+<style>
+:-ms-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+::-webkit-input-placeholder {
+	color: rgb(186, 186, 186);
+}
+
+.placeholder {
+	color: rgb(186, 186, 186);
+}
+</style>
 </head>
 <body>
 	<g:render template="/layouts/menu" />
-	<div class="login-container" style="margin-top: 80px;">
+	<div class="login-container">
 		<div class="login-content">
 			<h2 class="border-bottom">Sign In</h2>
 
