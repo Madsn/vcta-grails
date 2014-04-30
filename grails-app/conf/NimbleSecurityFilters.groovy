@@ -44,9 +44,17 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 		}
 		
 		// Not secure: scoreboard, rules, member
-		secure(controller: "(dashboard|team|trip|invitation|profile)") {
+		secure(controller: "(dashboard|trip|invitation|profile)") {
 			before = {
 				accessControl { true }
+			}
+		}
+		
+		team(controller: "team"){
+			before = {
+				if (!actionName.equals('show')){
+					accessControl { true }
+				}
 			}
 		}
 	}
