@@ -11,7 +11,7 @@ class TeamController {
 	private manageDisabledIntercept(){
 		if (!SettingsController.manageAllowed()){
 			redirect(controller:'dashboard', params: ['error': 'Team management has been disabled by the admin.'])
-			return
+			return false
 		}
 	}
 	
