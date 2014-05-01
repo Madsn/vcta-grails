@@ -20,7 +20,7 @@
 	<p>Current plans for prizes include:</p>
 	<ul>
 		<li>Team with the highest average distance per member</li>
-		<li>Team with the highest number of cycling days</li>
+		<li>Team with the highest number of cycling days per member</li>
 		<li>Top 3 individuals - distance</li>
 		<li>Random individual with at least <b>7</b> cycling days (who didn't receive any of the above prizes)</li>
 	</ul>
