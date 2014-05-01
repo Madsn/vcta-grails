@@ -29,18 +29,20 @@ class TripController {
 			redirect (controller:'dashboard', params: ['error': "Invalid day of month"])
 			return
 		}
-		def today = new Date()
+		
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		if (distanceKm <= 0 || distanceKm > 300){
 			redirect (controller:'dashboard', params: ['error': "Unlikely or invalid distance"])
 			return
 		}
-		def currentYear = Calendar.getInstance().get(Calendar.YEAR)
-		def tripDate = new Date(currentYear, 5, dayOfMonth)
+		Calendar cal = Calendar.getInstance();
+		def tripDate = new Date(cal.get(Calendar.YEAR), 5, dayOfMonth)
+		Calendar tripCal = Calendar.getInstance()
+		tripCal.setTime(tripDate)
 		def trip = new Trip()
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
-		if (today.month == 5 && tripDate > today.date){
+		if (tripCal.get(Calendar.DATE) > cal.get(Calendar.DATE) && cal.get(Calendar.MONTH) == Calendar.MAY){
 			redirect (controller:'dashboard', params: ['error': "Please don\'t create trips ahead of time"])
 			return
 		} else {
