@@ -19,9 +19,9 @@
 		<g:formatNumber number="${team.getTotalKm()}" format="0.00"/>
 	</td>
 	<td>
-		<g:formatNumber number="${team.getTotalKm()/team.users.size() }" format="0.00"/>
+		<g:formatNumber number="${team.getAverageKm() }" format="0.00"/>
 	</td>
 	<td>
-		${team.getCyclingDays() }
+		<g:formatNumber number="${team.getAverageCyclingDays() }" format="0.00"/>
 	</td>
 </tr>

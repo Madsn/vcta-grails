@@ -58,7 +58,7 @@
 							<g:sortableColumn property="averageKm" title="Km/members"
 								defaultOrder="desc" action="teams" />
 							<g:sortableColumn property="team-cyclingDays"
-								title="Cycling days" defaultOrder="desc" action="teams" />
+								title="Cycling days/members" defaultOrder="desc" action="teams" />
 						</tr>
 					</thead>
 					<tbody>

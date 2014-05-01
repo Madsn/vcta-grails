@@ -24,11 +24,15 @@
 	</tr>
 	<tr>
 		<td>Average km per member</td>
-		<td><g:formatNumber number="${totalkm/size}" format="0.00"/></td>
+		<td><g:formatNumber number="${team.getAverageKm()}" format="0.00"/></td>
 	</tr>
 	<tr>
 		<td>Total cycling days</td>
 		<td>${team.getCyclingDays()}</td>
+	</tr>
+	<tr>
+		<td>Average cycling days per member</td>
+		<td><g:formatNumber number="${team.getAverageCyclingDays()}" format="0.00"/></td>
 	</tr>
 </tbody>
 </table>
