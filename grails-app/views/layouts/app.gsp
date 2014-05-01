@@ -30,7 +30,7 @@
 			</div>
 		</g:if>
 	</div>
-	<div class="container">
+	<div class="container contentcontainer">
 		<g:render template="/layouts/menu" />
 		<div id="bd" class="clear" />
 

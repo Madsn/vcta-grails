@@ -20,6 +20,13 @@
 					<g:render template="stats" bean="${team}" />
 				</div>
 			</div>
+			<g:if test="${team.name == 'Java Life'}">
+				<div class="vid">
+					<iframe width="560" height="315"
+						src="//www.youtube.com/embed/b-Cr0EWwaTk" frameborder="0"
+						allowfullscreen></iframe>
+				</div>
+			</g:if>
 		</div>
 		<div class="col-md-7">
 			<div class="panel panel-default">
@@ -32,16 +39,6 @@
 			</div>
 		</div>
 	</div>
-	<g:if test="${team.name == 'Java Life'}">
-		<div class="row">
-			<div class="col-md-5">
-				<div class="vid">
-					<iframe width="560" height="315"
-						src="//www.youtube.com/embed/b-Cr0EWwaTk" frameborder="0"
-						allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</g:if>
+
 </body>
 </html>
