@@ -32,5 +32,16 @@
 			</div>
 		</div>
 	</div>
+	<g:if test="${team.name == 'Java Life'}">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="vid">
+					<iframe width="560" height="315"
+						src="//www.youtube.com/embed/b-Cr0EWwaTk" frameborder="0"
+						allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</g:if>
 </body>
 </html>
