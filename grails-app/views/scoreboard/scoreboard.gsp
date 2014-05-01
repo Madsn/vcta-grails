@@ -31,7 +31,7 @@
 			<g:javascript>changeTab(0);</g:javascript>
 			<g:set var="uservals" value="${users}" />
 			<g:set var="teamvals"
-				value="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+				value="${teams.sort{a,b -> a.getAverageKm() > b.getAverageKm() ? -1 : 1}}" />
 		</g:else>
 	</g:if>
 	<g:else>
@@ -57,7 +57,7 @@
 								defaultOrder="desc" action="teams" />
 							<g:sortableColumn property="averageKm" title="Km/members"
 								defaultOrder="desc" action="teams" />
-							<g:sortableColumn property="team-cyclingDays"
+							<g:sortableColumn property="team-averageCyclingDays"
 								title="Cycling days/members" defaultOrder="desc" action="teams" />
 						</tr>
 					</thead>
