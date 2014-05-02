@@ -3,7 +3,8 @@
 <html>
 <head>
 <title>Login</title>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta name="layout" content="app" />
@@ -35,26 +36,31 @@
 
 
 			<div class="login-options">
-				<h4>Don't have an account yet ?</h4>
-				Create a new account - 
-				<g:link controller="account" action="createuser">
-                Sign up
-            </g:link>
+				<g:if
+					test="${grailsApplication.config.nimble.localusers.registration.enabled}">
+					<h4>Don't have an account yet ?</h4>
+                    Create a new account - 
+                	<g:link controller="account" action="createuser">
+                        Sign up
+            		</g:link>
+				</g:if>
+				<g:else>
+					<h4>Sign ups are closed at this time.</h4>
+				</g:else>
 			</div>
-			<div style="text-align: center; margin-bottom: 3px;">-- OR --</div>
 
 			<g:form controller="auth" action="signin" method="post"
 				name="login-form" id="login-form" role="form">
 				<div class="login-input">
 					<div class="form-group">
-						<label class="sr-only" for="username">Username</label> <input
+						<label for="username">Username</label> <input
 							type="text" name="username" id="username" class="form-control"
 							placeholder="username">
 					</div>
 					<div class="form-group">
-						<label class="sr-only" for="password">Password</label> <input
-							type="password" name="password" id="password" class="form-control"
-							placeholder="password">
+						<label for="password">Password</label> <input
+							type="password" name="password" id="password"
+							class="form-control" placeholder="password">
 					</div>
 				</div>
 				<div class="login-actions">

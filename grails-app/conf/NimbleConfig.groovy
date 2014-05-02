@@ -32,7 +32,7 @@ nimble {
 
 	localusers {
 		authentication { enabled = true } 
-		registration { enabled = true }
+		registration { enabled = false }
 		provision { active = true }
 	}
 
