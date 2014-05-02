@@ -15,6 +15,7 @@
 			<div class="collapse navbar-collapse" id="bs-menu-navbar-items">
 				<nav:menu scope="menu" class="nav navbar-nav"></nav:menu>
 				<ul class="nav navbar-nav navbar-right">
+						<li><g:link controller="rules" action="help">Help</g:link></li>
 					<n:isNotLoggedIn>
 						<li><g:link class="brand" uri="/login">Sign in</g:link></li>
 					</n:isNotLoggedIn>
