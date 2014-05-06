@@ -47,7 +47,6 @@ class TripController {
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
 
-		println tripCal.get(Calendar.DAY_OF_WEEK)
 		if (tripCal.get(Calendar.DATE) > currentDateCal.get(Calendar.DATE) && currentDateCal.get(Calendar.MONTH) == Calendar.MAY){
 			redirect (controller:'dashboard', params: ['error': "Please don\'t create trips ahead of time"])
 			return
