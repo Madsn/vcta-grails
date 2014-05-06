@@ -35,15 +35,22 @@ class TripController {
 			redirect (controller:'dashboard', params: ['error': "Unlikely or invalid distance"])
 			return
 		}
-		Calendar cal = Calendar.getInstance();
-		def tripDate = new Date(cal.get(Calendar.YEAR), 5, dayOfMonth)
+
+		Calendar currentDateCal = Calendar.getInstance();
+		def tripDate = new Date(currentDateCal.get(Calendar.YEAR), 5, dayOfMonth)
+
 		Calendar tripCal = Calendar.getInstance()
 		tripCal.setTime(tripDate)
+
 		def trip = new Trip()
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
-		if (tripCal.get(Calendar.DATE) > cal.get(Calendar.DATE) && cal.get(Calendar.MONTH) == Calendar.MAY){
+
+		if (tripCal.get(Calendar.DATE) > currentDateCal.get(Calendar.DATE) && currentDateCal.get(Calendar.MONTH) == Calendar.MAY){
 			redirect (controller:'dashboard', params: ['error': "Please don\'t create trips ahead of time"])
+			return
+		} else if (tripCal.DAY_OF_WEEK == Calendar.SATURDAY || tripCal.DAY_OF_WEEK == Calendar.SUNDAY){
+			redirect (controller:'dashboard', params: ['error': "The rules do not permit registering trips on weekends"])
 			return
 		} else {
 			tripService.create(trip, currentUser)
