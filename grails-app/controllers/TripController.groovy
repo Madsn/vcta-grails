@@ -38,7 +38,7 @@ class TripController {
 
 		Calendar currentDateCal = Calendar.getInstance();
 		def tripDate = new Date()
-		tripDate.set(year: currentDateCal.get(Calendar.YEAR), 5, dayOfMonth)
+		tripDate.set(year: currentDateCal.get(Calendar.YEAR), month: Calendar.MAY, date: dayOfMonth)
 
 		Calendar tripCal = Calendar.getInstance()
 		tripCal.setTime(tripDate)
@@ -47,10 +47,11 @@ class TripController {
 		trip.setDistanceKm(distanceKm)
 		trip.setDate(tripDate)
 
+		println tripCal.get(Calendar.DAY_OF_WEEK)
 		if (tripCal.get(Calendar.DATE) > currentDateCal.get(Calendar.DATE) && currentDateCal.get(Calendar.MONTH) == Calendar.MAY){
 			redirect (controller:'dashboard', params: ['error': "Please don\'t create trips ahead of time"])
 			return
-		} else if (tripCal.DAY_OF_WEEK == Calendar.SATURDAY || tripCal.DAY_OF_WEEK == Calendar.SUNDAY){
+		} else if (tripCal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || tripCal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
 			redirect (controller:'dashboard', params: ['error': "The rules do not permit registering trips on weekends"])
 			return
 		} else {
