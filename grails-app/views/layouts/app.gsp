@@ -20,7 +20,8 @@
 <body onload="${pageProperty(name:'body.onload')}">
 	<div class="alertcontainer">
 		<g:if test="${error?.length() > 0}">
-			<div class="alert alert-danger flash">
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert">×</a>
 				${error }
 			</div>
 		</g:if>
