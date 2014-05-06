@@ -37,7 +37,8 @@ class TripController {
 		}
 
 		Calendar currentDateCal = Calendar.getInstance();
-		def tripDate = new Date(currentDateCal.get(Calendar.YEAR), 5, dayOfMonth)
+		def tripDate = new Date()
+		tripDate.set(year: currentDateCal.get(Calendar.YEAR), 5, dayOfMonth)
 
 		Calendar tripCal = Calendar.getInstance()
 		tripCal.setTime(tripDate)
