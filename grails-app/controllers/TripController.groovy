@@ -62,7 +62,9 @@ class TripController {
 	
 	def update() {
 		def currentUser = Util.getCurrentUser()
+		def trip = tripService.get(Integer.parseInt(params.id))
 		
+		def dayOfMonth = Integer.parseInt(params.dayofmonth)
 		def distanceKm = Double.parseDouble(params.distanceKm.replaceAll(",", "."))
 		
 		Calendar currentDateCal = Calendar.getInstance();
@@ -70,7 +72,6 @@ class TripController {
 		tripDate.set(year: currentDateCal.get(Calendar.YEAR), month: Calendar.MAY, date: dayOfMonth)
 		tripDate.clearTime()
 
-		def trip = tripService.get(Integer.parseInt(params.id))
 		trip.setDate(tripDate)
 		trip.setDistanceKm(distanceKm)
 		tripService.update(trip)
