@@ -27,7 +27,7 @@ class User extends grails.plugin.nimble.core.UserBase {
 		if (trips == null){
 			return 0
 		} else {
-			trips.groupBy({trip -> trip.date}).size()
+			trips.groupBy({trip -> trip.date.clearTime()}).size()
 		}
 	}
 	
