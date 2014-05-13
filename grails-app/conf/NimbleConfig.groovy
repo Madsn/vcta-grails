@@ -58,6 +58,13 @@ nimble {
 				]
 		}
 	}
+	
+	localusers {
+		usernames {
+			minlength = 2
+			validregex = '[a-zA-Z0-9]*'
+		}
+	}
 
 	implementation {
 		user = "User"
