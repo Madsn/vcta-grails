@@ -1,6 +1,18 @@
 vcta-grails
 ===========
 
+## What is it?
+A website to manage a "bike to work month" competition (running in may every year in Denmark).
+
+### Screenshots
+
+#### Login
+![Login screenshot](/screenshots/login.PNG?raw=true "Login page")
+#### Dashboard
+![Dashboard screenshot](/screenshots/dashboard.PNG?raw=true "Dashboard")
+#### Scoreboard
+![Scoreboard screenshot](/screenshots/scoreboard.PNG?raw=true "Scoreboard")
+
 ## TODO / wish list
 
 - Inline editing of trips.
@@ -46,11 +58,3 @@ After around 1 hour with no requests, heroku will put the app in an idle state t
 
 Another good hosting option would be [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/). This would require making changes to the DataSource.groovy file.
 
-## Screenshots
-
-### Login
-![Login screenshot](/screenshots/login.PNG?raw=true "Login page")
-### Dashboard
-![Dashboard screenshot](/screenshots/dashboard.PNG?raw=true "Dashboard")
-### Scoreboard
-![Scoreboard screenshot](/screenshots/scoreboard.PNG?raw=true "Scoreboard")
