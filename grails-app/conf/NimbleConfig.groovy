@@ -23,6 +23,10 @@ nimble {
 		logo = ""
 		logosmall = ""
 		url = ""
+		organizer {
+			name = "Mikkel Madsen"
+			email = "mikkel.madsen@systematic.com"
+		}
 	}
 
 	layout {

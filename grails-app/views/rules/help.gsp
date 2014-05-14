@@ -18,7 +18,7 @@
 		<li>want to request sign up / change of teams after the deadline</li>
 		<li>would like to modify your username or team name</li>
 	</ul>
-	Contact me by email at <a href="mailto:mikkel.madsen@systematic.com">mikkel.madsen@systematic.com</a>.
+	Contact the organizer by email at <a href="mailto:${grailsApplication.config.nimble.organization.organizer.email}">${grailsApplication.config.nimble.organization.organizer.email}</a>.
 	</p>
 
 </body>
