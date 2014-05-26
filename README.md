@@ -26,6 +26,7 @@ A website to manage a "bike to work month" competition (running in may every yea
 - Comparison of team/individual stats with the official VCTA.
 - Refactoring/cleanup, especially in `/views`.
 - Replace nimble with direct apache shiro
+- Calendar/datepicker for registering trips form
 
 ## Getting started on development
 
