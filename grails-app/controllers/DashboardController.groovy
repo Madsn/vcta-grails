@@ -13,17 +13,20 @@ class DashboardController {
 			render(view: 'dash', model: map)
 		}
 	}
-	
+
 	User getCurrentUser(){
 		return Util.getCurrentUser();
 	}
-	
+
 	int maxTripDay() {
+		return 31
+		/*
 		def today = new Date()
 		if (today.month != 5){
 			return 31
 		} else {
 			return today.date
 		}
+		*/
 	}
 }
