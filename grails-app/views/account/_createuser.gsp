@@ -36,7 +36,15 @@
 					code="nimble.view.account.registeraccount.initiate.heading" />
 			</h2>
 			<n:flashembed />
-			<n:errors bean="${user}" />
+			<g:hasErrors bean="${user}">
+				<div class="alert alert-danger" role="alert">
+					<a class="close" data-dismiss="alert" href="#">×</a>
+					<h5 class='alert-heading'>
+						<g:message code="nimble.label.error" />
+					</h5>
+					<g:renderErrors bean="${user}" as="list" />
+				</div>
+			</g:hasErrors>
 			<g:form action="saveuser" name="signup-form" method="post"
 				class="form-horizontal" role="form">
 				<div class="login-input">
