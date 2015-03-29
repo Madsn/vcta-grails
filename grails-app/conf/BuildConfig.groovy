@@ -24,6 +24,9 @@ grails.project.dependency.resolution = {
 	repositories {
 		inherits true // Whether to inherit repository definitions from plugins
 
+		mavenRepo "http://repo.grails.org/grails/core"
+		mavenRepo "http://repo.grails.org/grails/plugins"
+
 		grailsPlugins()
 		grailsHome()
 		grailsCentral()
@@ -66,7 +69,7 @@ grails.project.dependency.resolution = {
 
 		runtime ":hibernate:$grailsVersion"
 		runtime ":database-migration:1.3.8"
-		compile ":platform-core:1.0.RC6" // for marking current page as active in menu
+		compile ":platform-core:1.0.0" // for marking current page as active in menu
 		//compile ":twitter-bootstrap:3.1.1" // Nimble not compatible with bootstrap 3
 	}
 }
