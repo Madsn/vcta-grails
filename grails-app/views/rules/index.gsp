@@ -50,6 +50,7 @@
 		<li>You may NOT register trips on sick/vacation days - sorry</li>
 		<li>You may NOT register trips weekends, national holidays etc.</li>
 		<li>If you work from home (a full day), you may register a trip that day if you take a ride/walk/other</li>
+		<li>If you work during a weekend or holiday, you may register a trip that day - IF you have a day off on one of the regular workdays of that week. In this case you should register the trip on your off day (the site does not allow registering on weekends).</li>
 	</ol>
 </body>
 </html>
