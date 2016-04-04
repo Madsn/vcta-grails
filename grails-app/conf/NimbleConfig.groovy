@@ -49,17 +49,14 @@ nimble {
 		invitation { subject = "You have a new team invitation" }
 
 		mail {
-			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
-			host = "smtp.mandrillapp.com"
-			port = 587
-			username = System.env.MANDRILL_USERNAME?:"app24243842@heroku.com"
-			password = System.env.MANDRILL_APIKEY?:"bLdBfOSCJFQ6qhXerkEzwQ" // The default is a test key, no emails will be sent unless a proper key is provided in ENV
-			props = [
-				"mail.smtp.protocol":"smtps",
-                "mail.smtp.channel":"plain",
-                "mail.smtp.auth":"true",
-                "mail.debug":"false"
-				]
+			host = "smtp.gmail.com"
+			port = 465
+			username = System.env.VCTA_MAIL_USERNAME?:"systematic-pf@gmail.com"
+                        password = System.env.VCTA_MAIL_PASSWORD?:"replace with actual pass"
+			props = ["mail.smtp.auth":"true", 					   
+				"mail.smtp.socketFactory.port":"465",
+				"mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+				"mail.smtp.socketFactory.fallback":"false"]
 		}
 	}
 	
