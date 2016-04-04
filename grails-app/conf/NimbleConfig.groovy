@@ -36,7 +36,7 @@ nimble {
 
 	localusers {
 		authentication { enabled = true } 
-		registration { enabled = false }
+		registration { enabled = true }
 		provision { active = true }
 	}
 
@@ -50,14 +50,6 @@ nimble {
 
 		mail {
 			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
-			host = "smtp.gmail.com"
-			port = 465
-			username = System.env.VCTA_MAIL_USERNAME?:"systematicpf@gmail.com"
-                        password = System.env.VCTA_MAIL_PASSWORD?:"replace with actual pass"
-			props = ["mail.smtp.auth":"true", 					   
-				"mail.smtp.socketFactory.port":"465",
-				"mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-				"mail.smtp.socketFactory.fallback":"false"]
 		}
 	}
 	
