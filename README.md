@@ -109,6 +109,10 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 3. Redirect port 80 to 8080: `iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080`
 4. Persist above rule with `service iptables-persistent save`
 
+### Postfix
+
+1. `apt-get install postfix` - "internet site", "systematic-pf.dk"
+
 ### Deploy
 
 - `grails war /var/lib/jetty/webapps/root.war`
