@@ -75,14 +75,16 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
   - `iptables -A INPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT`
   - `iptables -A OUTPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state ESTABLISHED -j ACCEPT` 
 3. `apt-get install iptables-persistent` to persist iptables changes
-4. Add following lines to '/etc/postgresql/9.3/main/pg_hba.conf' (and restart postgresql service)
-  - `listen_addresses = '*'`
+4. Add following lines to '/etc/postgresql/9.3/main/pg_hba.conf'
   - `host    all             all             0.0.0.0/0            md5`
-5. Create vcta user - `adduser vcta`
-6. Switch to postgres user - `sudo -i -u postgres`
-7. Create vcta role - `createuser vcta` (to set a password, enter psql console and enter `alter user vcta with password 'XXX';`)
-8. Create db - `createdb vcta`
-9. It should now be possible to connect with pgadmin3 for user vcta
+5. Set following in `/etc/postgresql/9.3/main/postgresql.conf`
+  - `listen_addresses = '*'`
+6. Restart postgresql `service postgresql restart`
+7. Create vcta user - `adduser vcta`
+8. Switch to postgres user - `sudo -i -u postgres`
+9. Create vcta role - `createuser vcta` (to set a password, enter psql console and enter `alter user vcta with password 'XXX';`)
+10. Create db - `createdb vcta`
+11. It should now be possible to connect with pgadmin3 for user vcta
 
 ### Java 8 jdk
 
