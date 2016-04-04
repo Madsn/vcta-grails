@@ -49,6 +49,7 @@ nimble {
 		invitation { subject = "You have a new team invitation" }
 
 		mail {
+			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
 			host = "smtp.gmail.com"
 			port = 465
 			username = System.env.VCTA_MAIL_USERNAME?:"systematicpf@gmail.com"
