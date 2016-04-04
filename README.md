@@ -57,44 +57,61 @@ After around 1 hour with no requests, heroku will put the app in an idle state t
 
 ## DigitalOcean
 
-### Postgres/Tomcat
+### User script
+(work in progress)
+```
+#!/bin/bash
+apt-get -y update
+apt-get -y install unzip git postgresql postgresql-contrib htop
+iptables -A INPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state ESTABLISHED -j ACCEPT
+iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+```
 
-1. Setup droplet with tomcat - [use this droplet](https://github.com/digitalocean/do_user_scripts/blob/master/Ubuntu-14.04/web-servers/tomcat7.yml)
-2. Install postgres - `apt-get install postgresql postgresql-contrib`
-3. Open firewall access to ports (for connecting with pgadmin remotely)
+### Postgres
+
+1. Install postgres - `apt-get install postgresql postgresql-contrib`
+2. Open firewall access to ports (for connecting with pgadmin remotely)
   - `iptables -A INPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT`
   - `iptables -A OUTPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state ESTABLISHED -j ACCEPT` 
-4. `apt-get install iptables-persistent` to persist iptables changes
-5. Add following lines to '/etc/postgresql/9.3/main/pg_hba.conf' (and restart postgresql service)
+3. `apt-get install iptables-persistent` to persist iptables changes
+4. Add following lines to '/etc/postgresql/9.3/main/pg_hba.conf' (and restart postgresql service)
   - `listen_addresses = '*'`
   - `host    all             all             0.0.0.0/0            md5`
-6. Create vcta user - `adduser vcta`
-7. Switch to postgres user - `sudo -i -u postgres`
-8. Create vcta role - `createuser vcta` (to set a password, enter psql console and enter `alter user vcta with password 'XXX';`)
-9. Create db - `createdb vcta;`
-10. It should now be possible to connect with pgadmin3 for user vcta
-11. Increase java heap space for tomcat by setting -Xmx=192m -XX:MaxPermSize=128m in JAVA_OPTS in /etc/default/tomcat7
-12. In /etc/default/tomcat7 set `authbind=yes` (to allow binding to port 80)
-13. Run following commands:
-  - `apt-get install authbind`
-  - `sudo touch /etc/authbind/byport/80`
-  - `sudo chmod 500 /etc/authbind/byport/80`
-  - `sudo chown tomcat7 /etc/authbind/byport/80`
-14. In /var/lib/tomcat7/conf/server.xml, change the connector to use port 80, and add the following:
-  - ```<Context path="" docBase="vcta" debug="0" reloadable="true">
-    <WatchedResource>WEB-INF/web.xml</WatchedResource>
-</Context>
-<Context path="/ROOT" docBase="ROOT">
-    <WatchedResource>WEB-INF/web.xml</WatchedResource>
-</Context>```
+5. Create vcta user - `adduser vcta`
+6. Switch to postgres user - `sudo -i -u postgres`
+7. Create vcta role - `createuser vcta` (to set a password, enter psql console and enter `alter user vcta with password 'XXX';`)
+8. Create db - `createdb vcta`
+9. It should now be possible to connect with pgadmin3 for user vcta
 
+### Java 8 jdk
+
+1. add-apt-repository ppa:openjdk-r/ppa
+2. apt-get update
+3. apt-get install openjdk-8-jdk
+4. update-alternatives --config java
+5. update-alternatives --config javac
 
 ### Grails
 
+1. `apt-get install unzip git`
+2. `curl -s http://get.sdkman.io | bash`
+3. `sdk i grails 2.2.5`
+4. `echo "DATABASE_URL='postgres://vcta:XXXX@localhost:5432/vcta'" >> /etc/environment`
+5. git clone (repo url)
+ 
+### Jetty
 
-1. `curl -s http://get.sdkman.io | bash`
-2. `sdk i grails 2.2.5`
-3. `echo "DATABASE_URL='postgres://vcta:XXXX@localhost:5432/vcta'" >> /etc/environment`
+1. `apt-get install jetty libjetty8-extra-java libjetty8-java libjetty-extra-java libjetty-extra libjetty-java-doc jetty8 libjetty8-java-doc libjetty-java jsvc apache2-utils adduser`
+2. Edit /etc/default/jetty - set JETTY_HOST=0.0.0.0, JETTY_PORT=8080, NO_START=0 and change java opts to set -Xmx=192m
+3. Redirect port 80 to 8080: `iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080`
+4. Persist above rule with `service iptables-persistent save`
+
+### Deploy
+
+- `grails war /var/lib/jetty/webapps/root.war`
+- `service jetty restart`
+- logs are found in `/usr/share/jetty/logs`
 
 ## Alternative hosting
 
