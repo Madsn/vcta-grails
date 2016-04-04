@@ -51,7 +51,7 @@ nimble {
 		mail {
 			host = "smtp.gmail.com"
 			port = 465
-			username = System.env.VCTA_MAIL_USERNAME?:"systematic-pf@gmail.com"
+			username = System.env.VCTA_MAIL_USERNAME?:"systematicpf@gmail.com"
                         password = System.env.VCTA_MAIL_PASSWORD?:"replace with actual pass"
 			props = ["mail.smtp.auth":"true", 					   
 				"mail.smtp.socketFactory.port":"465",
