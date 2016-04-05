@@ -86,13 +86,11 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 10. Create db - `createdb vcta`
 11. It should now be possible to connect with pgadmin3 for user vcta
 
-### Java 8 jdk
+### Java 6 jdk
 
-1. add-apt-repository ppa:openjdk-r/ppa
-2. apt-get update
-3. apt-get install openjdk-8-jdk
-4. update-alternatives --config java
-5. update-alternatives --config javac
+1. apt-get install openjdk-6-jdk
+2. update-alternatives --config java
+3. update-alternatives --config javac
 
 ### Grails
 
