@@ -25,20 +25,20 @@
 			<g:javascript>changeTab(1);</g:javascript>
 			<g:set var="teamvals" value="${teams}" />
 			<g:set var="uservals"
-				value="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+				value="${users.sort{a,b -> a.getTotalKm() >= b.getTotalKm() ? -1 : 1}}" />
 		</g:if>
 		<g:else>
 			<g:javascript>changeTab(0);</g:javascript>
 			<g:set var="uservals" value="${users}" />
 			<g:set var="teamvals"
-				value="${teams.sort{a,b -> a.getAverageKm() > b.getAverageKm() ? -1 : 1}}" />
+				value="${teams.sort{a,b -> a.getAverageKm() >= b.getAverageKm() ? -1 : 1}}" />
 		</g:else>
 	</g:if>
 	<g:else>
 		<g:set var="teamvals"
-			value="${teams.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+			value="${teams.sort{a,b -> a.getTotalKm() >= b.getTotalKm() ? -1 : 1}}" />
 		<g:set var="uservals"
-			value="${users.sort{a,b -> a.getTotalKm() > b.getTotalKm() ? -1 : 1}}" />
+			value="${users.sort{a,b -> a.getTotalKm() >= b.getTotalKm() ? -1 : 1}}" />
 	</g:else>
 	<div class="row">
 		<div class="col-md-12">
