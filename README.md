@@ -62,7 +62,7 @@ After around 1 hour with no requests, heroku will put the app in an idle state t
 ```
 #!/bin/bash
 apt-get -y update
-apt-get -y install unzip git postgresql postgresql-contrib htop
+apt-get -y install unzip git postgresql-9.3 postgresql-contrib-9.3 htop
 iptables -A INPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state ESTABLISHED -j ACCEPT
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
@@ -70,7 +70,7 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 
 ### Postgres
 
-1. Install postgres - `apt-get install postgresql postgresql-contrib`
+1. Install postgres - `apt-get install postgresql-9.3 postgresql-contrib-9.3`
 2. Open firewall access to ports (for connecting with pgadmin remotely)
   - `iptables -A INPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT`
   - `iptables -A OUTPUT -p tcp -s 0/0 --sport 5432 -d 0/0 --dport 5432 -m state --state ESTABLISHED -j ACCEPT` 
