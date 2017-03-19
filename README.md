@@ -91,6 +91,8 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 1. apt-get install openjdk-6-jdk
 2. update-alternatives --config java
 3. update-alternatives --config javac
+4. `echo 'JAVA_HOME="/usr/lib/jvm/java-6-openjdk-amd64" >> /etc/environment'`
+5. Alter `PATH=XX` in /etc/environment to include `$JAVA_HOME/bin`
 
 ### Grails
 
