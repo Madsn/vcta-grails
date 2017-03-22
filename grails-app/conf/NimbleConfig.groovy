@@ -50,14 +50,6 @@ nimble {
 
 		mail {
 			from = "Systematic Employees Club <mikkel.madsen@systematic.com>"
-			host = System.env.POSTMARK_SMTP_SERVER?:"smtp.gmail.com"
- -			port = 2525
- -			username = System.env.POSTMARK_API_TOKEN?:"systematicpf@gmail.com"
- -                      password = System.env.POSTMARK_API_TOKEN?:"replace with actual pass"
- -			props = ["mail.smtp.protocol":"smtps",
- -                		"mail.smtp.channel":"plain",
- -                		"mail.smtp.auth":"true",
- -                		"mail.debug":"false"]
 		}
 	}
 	
