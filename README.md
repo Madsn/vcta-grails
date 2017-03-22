@@ -82,9 +82,10 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 6. Restart postgresql `service postgresql restart`
 7. Create vcta user - `adduser vcta`
 8. Switch to postgres user - `sudo -i -u postgres`
-9. Create vcta role - `createuser vcta` (to set a password, enter psql console and enter `alter user vcta with password 'XXX';`)
-10. Create db - `createdb vcta`
-11. It should now be possible to connect with pgadmin3 for user vcta
+9. Create vcta role - `createuser vcta` 
+10. To set a password, enter psql console and enter `alter user vcta with password 'XXX';`. Quit psql console with `\q`
+11. Create db - `createdb vcta`
+12. It should now be possible to connect with pgadmin3 for user vcta
 
 ### Java 6 jdk
 
