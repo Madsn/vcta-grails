@@ -97,8 +97,9 @@ iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 
 ### Grails
 
-1. `apt-get install unzip git`
+1. `apt-get install zip git`
 2. `curl -s http://get.sdkman.io | bash`
+3. `source "/root/.sdkman/bin/sdkman-init.sh"`
 3. `sdk i grails 2.2.5`
 4. `echo "DATABASE_URL='postgres://vcta:XXXX@localhost:5432/vcta'" >> /etc/environment`
 5. git clone (repo url)
