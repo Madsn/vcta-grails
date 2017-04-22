@@ -2,7 +2,7 @@
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>Day (May 2015)</th>
+				<th>Day</th>
 				<th>Distance</th>
 			</tr>
 		</thead>
