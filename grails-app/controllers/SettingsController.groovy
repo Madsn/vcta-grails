@@ -2,6 +2,10 @@ import Settings
 import Util
 
 class SettingsController {
+	
+	static string welcomeText(){
+		return Settings.getAll()[0].welcometext
+	}
 
 	static boolean manageAllowed(){
 		return Settings.getAll()[0].manageAllowed
