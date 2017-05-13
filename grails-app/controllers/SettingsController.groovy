@@ -3,7 +3,7 @@ import Util
 
 class SettingsController {
 	
-	static string welcomeText(){
+	static String welcomeText(){
 		return Settings.getAll()[0].welcometext
 	}
 
